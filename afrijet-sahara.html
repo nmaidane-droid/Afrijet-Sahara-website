@@ -1056,6 +1056,9 @@ footer {
   background: var(--white);
   border-top: 1px solid var(--border);
   padding: 40px 32px;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
 }
 .footer-inner {
   max-width: 1280px;
@@ -1095,17 +1098,18 @@ footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* iPad landscape et desktop : menu complet */
+@media (min-width: 769px) {
+  .nav-menu { display: flex !important; }
+  .hamburger { display: none !important; }
+  .btn-devis { display: flex !important; }
+}
+
 @media (max-width: 1400px) {
-
   .map-container { height: 360px; }
-
   .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 8px; gap: 12px; }
   .hero-stat { padding: 10px 12px; flex: 1; }
   .hero-stat-num { font-size: 26px; }
-  .nav-menu { display: none; }
-  .hamburger { display: flex; }
-  .btn-devis { display: none; }
-  .nav-link.btn-devis-nav { display: none; }
   footer { padding: 12px 32px; }
   #accueil .hero-content { padding-bottom: 8px; }
 }
