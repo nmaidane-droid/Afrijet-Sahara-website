@@ -1099,20 +1099,27 @@ footer {
 
   .map-container { height: 360px; }
 
-  .hero-stats { display: flex; padding: 12px 20px 24px; gap: 8px; }
+  .hero-stats { display: flex; padding: 8px 20px 8px; gap: 8px; }
   .hero-stat { padding: 12px 8px; }
   .hero-stat-num { font-size: 26px; }
   .nav-menu { display: none; }
   .hamburger { display: flex; }
   .btn-devis { display: none; }
   .nav-link.btn-devis-nav { display: none; }
+  footer { padding: 12px 32px; }
+  #accueil .hero-content { padding-bottom: 8px; }
 }
 @media (max-width: 768px) {
   .hero-title { font-size: 28px; line-height: 1.15; }
-  section { padding: 88px 20px 64px; }
-  #temps-de-vol { padding: 88px 20px 64px; }
-  #contact { padding: 88px 20px 64px; }
-  footer { padding: 32px 20px; }
+  #accueil .hero-content { padding-bottom: 8px; }
+  .hero-stats { display: flex; padding: 8px 20px 8px; gap: 6px; }
+  .hero-stat { padding: 10px 6px; }
+  .hero-stat-num { font-size: 22px; }
+  section { padding: 88px 20px 24px; }
+  #temps-de-vol { padding: 88px 20px 24px; }
+  #contact { padding: 88px 20px 24px; }
+  #accueil { padding-bottom: 0; }
+  footer { padding: 12px 20px; }
   .nav-inner { padding: 0 20px; }
 
   .values-grid { grid-template-columns: 1fr; }
