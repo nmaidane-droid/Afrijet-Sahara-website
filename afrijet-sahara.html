@@ -250,8 +250,6 @@ section { padding: 96px 32px 80px; }
    ============================================================ */
 #accueil {
   background: var(--off-white);
-  display: flex;
-  flex-direction: column;
 }
 
 .hero-photo-placeholder {
@@ -1100,8 +1098,16 @@ footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-/* iPad landscape et desktop : menu complet */
-@media (min-width: 769px) {
+/* Mobile : hamburger visible, menu caché */
+@media (max-width: 1024px) {
+  .nav-menu { display: none; }
+  .hamburger { display: flex !important; }
+  .btn-devis { display: none; }
+  .nav-link.btn-devis-nav { display: none; }
+}
+
+/* iPad landscape et desktop : menu complet, hamburger caché */
+@media (min-width: 1025px) {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
   .btn-devis { display: flex !important; }
@@ -1324,7 +1330,6 @@ footer {
       
       
     </div>
-  </div>
 
   <div class="hero-stats">
     <div class="hero-stat">
