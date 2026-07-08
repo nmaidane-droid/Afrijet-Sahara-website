@@ -118,18 +118,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-mid);
+  color: #E8001C;
   padding: 8px 14px;
   border-radius: var(--radius);
-  transition: color var(--transition), background var(--transition);
+  transition: opacity var(--transition), background var(--transition);
   white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active {
-  color: var(--navy);
-  background: var(--off-white);
-}
-.nav-link.active {
-  color: #E8001C;
+  opacity: 0.7;
+  background: transparent;
 }
 .nav-actions {
   display: flex;
@@ -254,6 +251,7 @@ section { padding: 96px 32px 80px; }
   min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 0;
 }
 
@@ -360,9 +358,8 @@ section { padding: 96px 32px 80px; }
   display: flex;
   flex-direction: row;
   gap: 12px;
-  padding: 0 32px 24px;
+  padding: 24px 32px;
   width: 100%;
-  margin-top: auto;
 }
 .hero-stat {
   flex: 1;
@@ -794,21 +791,8 @@ section { padding: 96px 32px 80px; }
   color: #cc0000;
 }
 .calc-error.visible { display: block; }
-.map-container {
-  margin-top: 32px;
-  height: 360px;
-  border-radius: 0;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--navy-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-}
-#map, #map *, #map canvas, .mapboxgl-canvas { border-radius: 0 !important; }
+
+
 
 /* ============================================================
    SECURITE
@@ -1120,7 +1104,7 @@ footer {
 }
 
 @media (max-width: 1400px) {
-  .map-container { height: 360px; }
+  
   .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 40px; gap: 12px; }
   .hero-stat { padding: 10px 12px; flex: 1; }
   .hero-stat-num { font-size: 26px; }
@@ -1215,6 +1199,14 @@ footer {
   font-size: 13px;
 }
 
+
+.calc-row-inputs {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: var(--white);
+  margin-bottom: 16px;
+}
 /* ============================================================
    SCROLL REVEAL
    ============================================================ */
@@ -1262,7 +1254,6 @@ footer {
 #lightbox-close:hover { opacity: 1; }
 </style>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 </head>
 <body>
 
@@ -1571,7 +1562,7 @@ footer {
 
     <div class="flight-calc">
       <div class="calc-panel">
-        <div class="calc-airports-row">
+        <div class="calc-airports-row" style="border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;background:var(--white);">
           <div class="calc-airport-col">
             <label class="calc-label">Départ</label>
             <div class="autocomplete-wrap" id="depWrap">
@@ -1887,13 +1878,7 @@ function showSection(id) {
   allSections.forEach(s => {
     s.style.display = (s.id === id) ? '' : 'none';
   });
-  // Init carte Mapbox quand la section Temps de Vol devient visible
-  if (id === 'temps-de-vol') {
-    setTimeout(() => {
-      if (!mapInitialized) initMap();
-      else if (map) map.resize();
-    }, 150);
-  }
+
   // Marquer lien actif
   navLinks.forEach(l => {
     l.classList.toggle('active', l.getAttribute('href') === '#' + id);
@@ -1939,7 +1924,6 @@ document.getElementById('btnSubmit')?.addEventListener('click', () => {
 });
 
 /* ---- Flight calculator ---- */
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoibm1haWRhbmUiLCJhIjoiY21xd2dwZm9lMTNicjJzcjQ0Z2thNmJtdiJ9.x1S5ogXqsfjCbgmm9-9vtQ'; // ← Remplacer par votre token Mapbox
 
 // Base de données aéroports (codes IATA → [lat, lon, nom])
 const AIRPORTS = {
@@ -2118,29 +2102,6 @@ const AIRPORTS = {
   'DJE': [33.8750, 10.7755, 'Djerba', 'Tunisie'],
 };
 
-let map = null;
-let mapInitialized = false;
-
-function initMap() {
-  if (mapInitialized) return;
-  if (typeof mapboxgl === 'undefined') return;
-  mapboxgl.accessToken = MAPBOX_TOKEN;
-  map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/navigation-day-v1',
-    center: [15, 20],
-    zoom: 2,
-    projection: 'globe',
-    attributionControl: false
-  });
-  map.addControl(new mapboxgl.AttributionControl({ compact: true }));
-  map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
-  mapInitialized = true;
-  const noTok = document.getElementById('mapNoToken');
-  if (noTok) noTok.style.display = 'none';
-}
-
-// La carte sera initialisée à la demande lors du calcul
 
 function toRad(d) { return d * Math.PI / 180; }
 
@@ -2150,33 +2111,7 @@ function haversine(lat1, lon1, lat2, lon2) {
   const dLon = toRad(lon2 - lon1);
   const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon/2)**2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-}
 
-function greatCirclePoints(lat1, lon1, lat2, lon2, n = 80) {
-  // Loxodromie (rhumb line) — cap constant
-  const pts = [];
-  const φ1 = lat1 * Math.PI / 180;
-  const φ2 = lat2 * Math.PI / 180;
-  const Δλ = (lon2 - lon1) * Math.PI / 180;
-
-  // Calcul du cap loxodromique
-  const Δψ = Math.log(Math.tan(φ2/2 + Math.PI/4) / Math.tan(φ1/2 + Math.PI/4));
-  const q = Math.abs(Δψ) > 1e-10 ? (φ2 - φ1) / Δψ : Math.cos(φ1);
-  let θ = Math.atan2(Δλ, Δψ); // cap
-
-  for (let i = 0; i <= n; i++) {
-    const f = i / n;
-    const lat = lat1 + f * (lat2 - lat1);
-    let lon;
-    if (Math.abs(φ2 - φ1) < 1e-10) {
-      lon = lon1 + f * (lon2 - lon1);
-    } else {
-      const φ = lat * Math.PI / 180;
-      const Δψi = Math.log(Math.tan(φ/2 + Math.PI/4) / Math.tan(φ1/2 + Math.PI/4));
-      lon = lon1 + (Δψi / Δψ) * (lon2 - lon1);
-    }
-    pts.push([lon, lat]);
-  }
   return pts;
 }
 
@@ -2186,48 +2121,7 @@ function formatTime(hours) {
   return `${h}h${m.toString().padStart(2,'0')}`;
 }
 
-function drawRoute(depData, arrData) {
-  if (!map || !mapInitialized) return;
-  const [lat1, lon1] = depData;
-  const [lat2, lon2] = arrData;
-  const pts = greatCirclePoints(lat1, lon1, lat2, lon2);
-  const geojson = { type: 'Feature', geometry: { type: 'LineString', coordinates: pts } };
-  if (map.getSource('route')) {
-    map.getSource('route').setData(geojson);
-  } else {
-    if (map.isStyleLoaded()) {
-      addRouteLayer(geojson);
-    } else {
-      map.on('load', () => addRouteLayer(geojson));
-    }
-  }
-  const bounds = new mapboxgl.LngLatBounds();
-  bounds.extend([lon1, lat1]); bounds.extend([lon2, lat2]);
-  map.fitBounds(bounds, { padding: 80, duration: 1200 });
-}
 
-function addRouteLayer(geojson) {
-  if (map.getSource('route')) { map.getSource('route').setData(geojson); return; }
-  map.addSource('route', { type: 'geojson', data: geojson });
-  map.addLayer({ id: 'route-glow', type: 'line', source: 'route',
-    paint: { 'line-color': '#E8001C', 'line-width': 6, 'line-opacity': 0.3, 'line-blur': 4 } });
-  map.addLayer({ id: 'route-line', type: 'line', source: 'route',
-    paint: { 'line-color': '#FF3344', 'line-width': 2.5, 'line-opacity': 0.9 } });
-  document.querySelectorAll('.mapbox-marker').forEach(m => m.remove());
-}
-
-function addMarkers(depData, arrData, dep, arr) {
-  if (!map || !mapInitialized) return;
-  document.querySelectorAll('.mapbox-marker').forEach(m => m.remove());
-  [[depData, dep, '#4CAF50'], [arrData, arr, '#E8001C']].forEach(([data, code, color]) => {
-    const el = document.createElement('div');
-    el.className = 'mapbox-marker';
-    el.style.cssText = `width:12px;height:12px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 0 6px rgba(0,0,0,0.5);`;
-    new mapboxgl.Marker({ element: el }).setLngLat([data[1], data[0]])
-      .setPopup(new mapboxgl.Popup({ offset: 15 }).setText(`${code} — ${data[2]}`))
-      .addTo(map);
-  });
-}
 
 function doCalc() {
   // Récupérer le code depuis la sélection autocomplete ou depuis la saisie directe
@@ -2305,32 +2199,6 @@ function doCalc() {
 
   resEl.classList.add('visible');
 
-  // Map
-  if (mapInitialized && map) {
-    if (!mapInitialized) {
-      initMap();
-    }
-    const waitAndDraw = () => {
-      if (map && map.isStyleLoaded()) {
-        document.querySelectorAll('.mapbox-marker').forEach(m => m.remove());
-        drawRoute(depData, arrData);
-        setTimeout(() => addMarkers(depData, arrData, dep, arr), 200);
-      } else {
-        setTimeout(waitAndDraw, 300);
-      }
-    };
-    waitAndDraw();
-  } else {
-    // Carte canvas — pas besoin de token
-    if (!mapInitialized) initMap();
-    const canvas = document.getElementById('map');
-    if (canvas) {
-      const W = canvas.offsetWidth || 800;
-      const H = canvas.offsetHeight || 400;
-      canvas.width = W; canvas.height = H;
-    }
-    drawRoute(depData, arrData);
-  }
 }
 
 // ── Autocomplete airports ──
