@@ -2110,18 +2110,29 @@ function haversine(lat1, lon1, lat2, lon2) {
 }
 
 function greatCirclePoints(lat1, lon1, lat2, lon2, n = 80) {
+  // Loxodromie (rhumb line) — cap constant
   const pts = [];
-  const φ1 = toRad(lat1), λ1 = toRad(lon1);
-  const φ2 = toRad(lat2), λ2 = toRad(lon2);
-  const d = 2 * Math.asin(Math.sqrt(Math.sin((φ2-φ1)/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin((λ2-λ1)/2)**2));
+  const φ1 = lat1 * Math.PI / 180;
+  const φ2 = lat2 * Math.PI / 180;
+  const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+  // Calcul du cap loxodromique
+  const Δψ = Math.log(Math.tan(φ2/2 + Math.PI/4) / Math.tan(φ1/2 + Math.PI/4));
+  const q = Math.abs(Δψ) > 1e-10 ? (φ2 - φ1) / Δψ : Math.cos(φ1);
+  let θ = Math.atan2(Δλ, Δψ); // cap
+
   for (let i = 0; i <= n; i++) {
     const f = i / n;
-    const A = Math.sin((1-f)*d) / Math.sin(d);
-    const B = Math.sin(f*d) / Math.sin(d);
-    const x = A*Math.cos(φ1)*Math.cos(λ1) + B*Math.cos(φ2)*Math.cos(λ2);
-    const y = A*Math.cos(φ1)*Math.sin(λ1) + B*Math.cos(φ2)*Math.sin(λ2);
-    const z = A*Math.sin(φ1) + B*Math.sin(φ2);
-    pts.push([Math.atan2(y, x) * 180/Math.PI, Math.atan2(z, Math.sqrt(x*x+y*y)) * 180/Math.PI]);
+    const lat = lat1 + f * (lat2 - lat1);
+    let lon;
+    if (Math.abs(φ2 - φ1) < 1e-10) {
+      lon = lon1 + f * (lon2 - lon1);
+    } else {
+      const φ = lat * Math.PI / 180;
+      const Δψi = Math.log(Math.tan(φ/2 + Math.PI/4) / Math.tan(φ1/2 + Math.PI/4));
+      lon = lon1 + (Δψi / Δψ) * (lon2 - lon1);
+    }
+    pts.push([lon, lat]);
   }
   return pts;
 }
