@@ -1209,6 +1209,8 @@ footer {
   transform: translateY(0);
 }
 </style>
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 </head>
 <body>
 
@@ -1589,7 +1591,7 @@ footer {
       </div>
 
       <div class="map-container" id="mapContainer">
-        <canvas id="map" width="800" height="400" style="width:100%;height:100%;display:block;"></canvas>
+        <div id="map" style="width:100%;height:100%;"></div>
         <div id="mapNoToken" style="display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:12px;color:var(--text-light);font-size:13px;text-align:center;padding:20px;">
           <div style="font-size:32px;">🗺️</div>
           <div>Carte disponible après configuration du token Mapbox</div>
@@ -1846,6 +1848,7 @@ function showSection(id) {
   if (id === 'temps-de-vol') {
     setTimeout(() => {
       if (!mapInitialized) initMap();
+      else if (map) map.resize();
     }, 150);
   }
   // Marquer lien actif
@@ -2077,65 +2080,21 @@ let mapInitialized = false;
 
 function initMap() {
   if (mapInitialized) return;
-  // Carte Canvas simple — fonctionne sans internet
-  const canvas = document.getElementById('map');
-  if (!canvas) return;
-  map = canvas.getContext('2d');
+  if (typeof mapboxgl === 'undefined') return;
+  mapboxgl.accessToken = MAPBOX_TOKEN;
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v11',
+    center: [15, 20],
+    zoom: 2,
+    projection: 'globe',
+    attributionControl: false
+  });
+  map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+  map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
   mapInitialized = true;
-  drawMapBackground();
   const noTok = document.getElementById('mapNoToken');
   if (noTok) noTok.style.display = 'none';
-}
-
-function drawMapBackground() {
-  const canvas = document.getElementById('map');
-  if (!canvas || !map) return;
-  const W = canvas.offsetWidth || 800;
-  const H = canvas.offsetHeight || 400;
-  canvas.width = W;
-  canvas.height = H;
-  // Fond océan
-  map.fillStyle = '#0d1b2a';
-  map.fillRect(0, 0, W, H);
-  // Grille méridiens/parallèles
-  map.strokeStyle = 'rgba(255,255,255,0.06)';
-  map.lineWidth = 0.5;
-  for (let lon = -180; lon <= 180; lon += 30) {
-    const x = lonToX(lon, W);
-    map.beginPath(); map.moveTo(x, 0); map.lineTo(x, H); map.stroke();
-  }
-  for (let lat = -90; lat <= 90; lat += 30) {
-    const y = latToY(lat, H);
-    map.beginPath(); map.moveTo(0, y); map.lineTo(W, y); map.stroke();
-  }
-  // Continents simplifiés (polygones approximatifs)
-  map.fillStyle = '#1e3a5f';
-  drawContinent(map, W, H, [
-    [-18,36],[37,36],[37,24],[51,11],[51,-1],[42,-11],[34,-35],[18,-35],[12,-18],[8,-5],[2,5],[-5,5],[-8,4],[-17,15],[-18,36]
-  ]); // Afrique
-  drawContinent(map, W, H, [
-    [-10,36],[40,36],[40,70],[60,70],[60,50],[130,50],[130,10],[100,0],[80,8],[68,23],[57,22],[50,30],[40,36]
-  ]); // Europe+Asie approx
-  drawContinent(map, W, H, [
-    [-74,-55],[-74,12],[-62,12],[-60,7],[-50,0],[-35,-10],[-35,-55],[-74,-55]
-  ]); // Amérique Sud
-  drawContinent(map, W, H, [
-    [-170,60],[-50,60],[-50,15],[-80,8],[-92,16],[-117,32],[-170,32],[-170,60]
-  ]); // Amérique Nord
-}
-
-function lonToX(lon, W) { return (lon + 180) / 360 * W; }
-function latToY(lat, H) { return (90 - lat) / 180 * H; }
-
-function drawContinent(ctx, W, H, coords) {
-  ctx.beginPath();
-  coords.forEach(([lon, lat], i) => {
-    const x = lonToX(lon, W);
-    const y = latToY(lat, H);
-    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-  });
-  ctx.closePath();
-  ctx.fill();
 }
 
 // La carte sera initialisée à la demande lors du calcul
@@ -2173,22 +2132,21 @@ function formatTime(hours) {
   return `${h}h${m.toString().padStart(2,'0')}`;
 }
 
-function drawRoute(dep, arr) {
+function drawRoute(depData, arrData) {
   if (!map || !mapInitialized) return;
-  const canvas = document.getElementById('map');
-  if (!canvas || !canvas.getContext) return;
-  const [lat1, lon1] = dep; const [lat2, lon2] = arr;
+  const [lat1, lon1] = depData;
+  const [lat2, lon2] = arrData;
   const pts = greatCirclePoints(lat1, lon1, lat2, lon2);
   const geojson = { type: 'Feature', geometry: { type: 'LineString', coordinates: pts } };
-
   if (map.getSource('route')) {
     map.getSource('route').setData(geojson);
   } else {
-    map.on('load', () => addRouteLayer(geojson));
-    if (map.isStyleLoaded()) addRouteLayer(geojson);
+    if (map.isStyleLoaded()) {
+      addRouteLayer(geojson);
+    } else {
+      map.on('load', () => addRouteLayer(geojson));
+    }
   }
-
-  // Fit bounds
   const bounds = new mapboxgl.LngLatBounds();
   bounds.extend([lon1, lat1]); bounds.extend([lon2, lat2]);
   map.fitBounds(bounds, { padding: 80, duration: 1200 });
@@ -2201,12 +2159,21 @@ function addRouteLayer(geojson) {
     paint: { 'line-color': '#E8001C', 'line-width': 6, 'line-opacity': 0.3, 'line-blur': 4 } });
   map.addLayer({ id: 'route-line', type: 'line', source: 'route',
     paint: { 'line-color': '#FF3344', 'line-width': 2.5, 'line-opacity': 0.9 } });
-
-  // Clear existing markers
   document.querySelectorAll('.mapbox-marker').forEach(m => m.remove());
 }
 
-function addMarkers() {}
+function addMarkers(depData, arrData, dep, arr) {
+  if (!map || !mapInitialized) return;
+  document.querySelectorAll('.mapbox-marker').forEach(m => m.remove());
+  [[depData, dep, '#4CAF50'], [arrData, arr, '#E8001C']].forEach(([data, code, color]) => {
+    const el = document.createElement('div');
+    el.className = 'mapbox-marker';
+    el.style.cssText = `width:12px;height:12px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 0 6px rgba(0,0,0,0.5);`;
+    new mapboxgl.Marker({ element: el }).setLngLat([data[1], data[0]])
+      .setPopup(new mapboxgl.Popup({ offset: 15 }).setText(`${code} — ${data[2]}`))
+      .addTo(map);
+  });
+}
 
 function doCalc() {
   // Récupérer le code depuis la sélection autocomplete ou depuis la saisie directe
@@ -2285,7 +2252,7 @@ function doCalc() {
   resEl.classList.add('visible');
 
   // Map
-  if (true) { // carte canvas intégrée
+  if (mapInitialized && map) {
     if (!mapInitialized) {
       initMap();
     }
