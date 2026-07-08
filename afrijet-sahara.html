@@ -834,6 +834,7 @@ section:not(#accueil) { padding-top: 100px; }
 .sec-icon {
   width: 48px;
   height: 48px;
+  min-width: 48px;
   background: var(--off-white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -841,7 +842,7 @@ section:not(#accueil) { padding-top: 100px; }
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 .sec-title {
   font-family: var(--font-display);
@@ -1186,6 +1187,13 @@ footer {
   font-size: 11px;
   color: var(--text-light);
   float: right;
+}
+
+
+#formInputDep::placeholder, #formInputArr::placeholder {
+  text-transform: none;
+  color: #aab;
+  font-size: 13px;
 }
 
 /* ============================================================
@@ -1605,8 +1613,8 @@ footer {
     <div class="securite-grid">
             <div class="sec-card reveal ">
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon">🛡️</div>
-          <div class="sec-title">SMS Certifié</div>
+          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🛡️</div>
+          <div class="sec-title" style="line-height:1;margin:0;">SMS Certifié</div>
           
         </div>
         <p class="sec-text">Notre Système de Gestion de la Sécurité est pleinement opérationnel, permettant une identification et une mitigation proactive des risques.</p>
@@ -1752,14 +1760,18 @@ footer {
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Aéroport départ (IATA)</label>
-              
-              <input class="form-input" type="text" placeholder="CMN" maxlength="4" style="text-transform:uppercase" />
+              <label class="form-label">Aéroport de départ</label>
+              <div class="autocomplete-wrap" id="formDepWrap">
+                <input class="form-input" id="formInputDep" placeholder="IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+                <div class="autocomplete-list" id="formListDep"></div>
+              </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Aéroport arrivée (IATA)</label>
-              
-              <input class="form-input" type="text" placeholder="CDG" maxlength="4" style="text-transform:uppercase" />
+              <label class="form-label">Aéroport d'arrivée</label>
+              <div class="autocomplete-wrap" id="formArrWrap">
+                <input class="form-input" id="formInputArr" placeholder="IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+                <div class="autocomplete-list" id="formListArr"></div>
+              </div>
             </div>
           </div>
 
@@ -1770,14 +1782,9 @@ footer {
               <input class="form-input" type="date" />
             </div>
             <div class="form-group">
-              <label class="form-label">Nombre de passagers</label>
+              <label class="form-label">Nombre de passagers (max. 18)</label>
               
-              <select class="form-select">
-                <option>1 – 5</option>
-                <option>6 – 10</option>
-                <option>11 – 15</option>
-                <option>16 – 18</option>
-              </select>
+              <input class="form-input" type="number" min="1" max="18" placeholder="1 – 18" />
             </div>
           </div>
 
@@ -2367,6 +2374,10 @@ function setupAutocomplete(inputId, listId, side) {
 setupAutocomplete('inputDep', 'listDep', 'dep');
 setupAutocomplete('inputArr', 'listArr', 'arr');
 document.getElementById('btnCalc')?.addEventListener('click', doCalc);
+
+// ── Autocomplete formulaire devis ──
+setupAutocomplete('formInputDep', 'formListDep', 'formDep');
+setupAutocomplete('formInputArr', 'formListArr', 'formArr');
 </script>
 </body>
 </html>
