@@ -1116,14 +1116,14 @@ footer {
 }
 @media (max-width: 768px) {
   .hero-title { font-size: 28px; line-height: 1.15; }
-  #accueil .hero-content { padding-bottom: 8px; }
-  .hero-stats { display: flex; padding: 8px 20px 8px; gap: 6px; }
+  .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
   .hero-stat { padding: 10px 6px; }
   .hero-stat-num { font-size: 22px; }
   section { padding: 88px 20px 24px; }
   #temps-de-vol { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
-  #accueil { padding-bottom: 0; }
+  #accueil { padding: 0 !important; min-height: calc(100vh - 72px - 60px); }
+  #accueil .hero-content { padding: 88px 20px 0; flex: 1; }
   footer { padding: 12px 20px; }
   .nav-inner { padding: 0 20px; }
 
@@ -1132,7 +1132,6 @@ footer {
   .cabin-features { grid-template-columns: 1fr; }
   .result-stats { grid-template-columns: 1fr 1fr; }
   .contact-form { padding: 24px; }
-  #accueil .hero-content { padding: 72px 20px 0; }
 }
 @media (max-width: 480px) {
   .hero-title { font-size: 26px; line-height: 1.15; }
