@@ -174,7 +174,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--navy);
+  background: #fff;
   border-radius: 2px;
   transition: all var(--transition);
 }
@@ -1107,12 +1107,12 @@ footer {
 }
 
 @media (max-width: 1400px) {
-  
   .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 40px; gap: 12px; }
   .hero-stat { padding: 10px 12px; flex: 1; }
   .hero-stat-num { font-size: 26px; }
   footer { padding: 12px 32px; }
-  #accueil .hero-content { padding-bottom: 8px; }
+  #accueil .hero-content { padding-bottom: 8px; flex: 1; }
+  #accueil { min-height: calc(100vh - 72px - 52px); }
 }
 @media (max-width: 768px) {
   .hero-title { font-size: 28px; line-height: 1.15; }
@@ -1581,7 +1581,7 @@ footer {
             </div>
           </div>
         </div>
-        <button class="btn-calc" id="btnCalc" style="margin-top:16px;">Calculer la route →</button>
+        <button class="btn-calc" id="btnCalc" style="margin-top:16px;">Calculer le temps de vol →</button>
         
         <p class="calc-error" id="calcError"></p>
         <p id="fuelStop" style="display:none;margin-top:12px;font-size:13px;color:#E8001C;font-weight:600;text-align:left;"></p>
@@ -1628,7 +1628,7 @@ footer {
         
       </div>
       <p style="margin-top:14px;font-size:11px;color:var(--text-light);line-height:1.7;text-align:justify;font-style:italic;">
-        Cette route est une simple estimation. Elle peut changer en fonction des autorisations de survol. Afrijet Sahara ne peut être tenue responsable si la route est plus longue. La route sera calculée lors de l'établissement de votre devis.
+        Ce temps de vol est une simple estimation. Il peut changer en fonction des autorisations de survol. Afrijet Sahara ne peut être tenue responsable si la route est plus longue. Un temps de vol plus précis sera calculé lors de l'établissement de votre devis.
       </p>
     </div>
   </div>
