@@ -2024,17 +2024,17 @@ footer {
 
       <div class="contact-form">
         <div id="contactFormWrap">
-          <div class="form-title">Demande de vol</div>
+          <div class="form-title" data-i18n="form.title">Demande de vol</div>
           
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Nom complet</label>
+              <label class="form-label" data-i18n="form.name">Nom complet</label>
               
               <input class="form-input" type="text" placeholder="—" />
             </div>
             <div class="form-group">
-              <label class="form-label">Société / Organisation</label>
+              <label class="form-label" data-i18n="form.org">Société / Organisation</label>
               
               <input class="form-input" type="text" placeholder="—" />
             </div>
@@ -2042,12 +2042,12 @@ footer {
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Email</label>
+              <label class="form-label" data-i18n="form.email">Email</label>
               
               <input class="form-input" type="email" placeholder="—" />
             </div>
             <div class="form-group">
-              <label class="form-label">Téléphone / WhatsApp</label>
+              <label class="form-label" data-i18n="form.phone">Téléphone / WhatsApp</label>
               
               <input class="form-input" type="tel" placeholder="—" />
             </div>
@@ -2055,14 +2055,14 @@ footer {
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Aéroport de départ</label>
+              <label class="form-label" data-i18n="form.dep">Aéroport de départ</label>
               <div class="autocomplete-wrap" id="formDepWrap">
                 <input class="form-input" id="formInputDep" placeholder="IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
                 <div class="autocomplete-list" id="formListDep"></div>
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Aéroport d'arrivée</label>
+              <label class="form-label" data-i18n="form.arr">Aéroport d'arrivée</label>
               <div class="autocomplete-wrap" id="formArrWrap">
                 <input class="form-input" id="formInputArr" placeholder="IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
                 <div class="autocomplete-list" id="formListArr"></div>
@@ -2072,19 +2072,19 @@ footer {
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Date souhaitée</label>
+              <label class="form-label" data-i18n="form.date">Date souhaitée</label>
               
               <input class="form-input" type="date" />
             </div>
             <div class="form-group">
-              <label class="form-label">Nombre de passagers (max. 18)</label>
+              <label class="form-label" data-i18n="form.pax">Nombre de passagers (max. 18)</label>
               
               <input class="form-input" type="number" min="1" max="18" placeholder="1 – 18" />
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Informations complémentaires</label>
+            <label class="form-label" data-i18n="form.info">Informations complémentaires</label>
             
             <textarea class="form-textarea" placeholder="—" id="formMsg"></textarea>
           </div>
@@ -2095,9 +2095,9 @@ footer {
 
         <div class="form-success" id="formSuccess">
           <div class="form-success-icon">✓</div>
-          <div class="form-success-msg">Demande envoyée</div>
+          <div class="form-success-msg" data-i18n="form.sent">Demande envoyée</div>
           
-          <p class="form-success-sub">Notre équipe vous contactera sous 2 heures.</p>
+          <p class="form-success-sub" data-i18n="form.sub">Notre équipe vous contactera sous 2 heures.</p>
           
         </div>
       </div>
@@ -2247,6 +2247,18 @@ const translations = {
     'cta.btn': 'Envoyer la demande →',
     'footer.copy': '© 2026 Afrijet Sahara. Tous droits réservés.',
     'footer.legal': 'Mentions légales',
+    'form.title': 'Demande de vol',
+    'form.name': 'Nom complet',
+    'form.org': 'Société / Organisation',
+    'form.email': 'Email',
+    'form.phone': 'Téléphone / WhatsApp',
+    'form.dep': 'Aéroport de départ',
+    'form.arr': "Aéroport d'arrivée",
+    'form.date': 'Date souhaitée',
+    'form.pax': 'Nombre de passagers (max. 18)',
+    'form.info': 'Informations complémentaires',
+    'form.sent': 'Demande envoyée',
+    'form.sub': 'Notre équipe vous contactera sous 2 heures.',
     'footer.privacy': 'Politique de confidentialité',
   },
   en: {
@@ -2286,6 +2298,18 @@ const translations = {
     'cta.btn': 'Send Request →',
     'footer.copy': '© 2026 Afrijet Sahara. All rights reserved.',
     'footer.legal': 'Legal Notice',
+    'form.title': 'Flight Request',
+    'form.name': 'Full Name',
+    'form.org': 'Company / Organisation',
+    'form.email': 'Email',
+    'form.phone': 'Phone / WhatsApp',
+    'form.dep': 'Departure Airport',
+    'form.arr': 'Arrival Airport',
+    'form.date': 'Preferred Date',
+    'form.pax': 'Number of Passengers (max. 18)',
+    'form.info': 'Additional Information',
+    'form.sent': 'Request Sent',
+    'form.sub': 'Our team will contact you within 2 hours.',
     'footer.privacy': 'Privacy Policy',
   },
   es: {
@@ -2325,6 +2349,18 @@ const translations = {
     'cta.btn': 'Enviar Solicitud →',
     'footer.copy': '© 2026 Afrijet Sahara. Todos los derechos reservados.',
     'footer.legal': 'Aviso Legal',
+    'form.title': 'Solicitud de Vuelo',
+    'form.name': 'Nombre Completo',
+    'form.org': 'Empresa / Organización',
+    'form.email': 'Email',
+    'form.phone': 'Teléfono / WhatsApp',
+    'form.dep': 'Aeropuerto de Salida',
+    'form.arr': 'Aeropuerto de Llegada',
+    'form.date': 'Fecha Deseada',
+    'form.pax': 'Número de Pasajeros (máx. 18)',
+    'form.info': 'Información Adicional',
+    'form.sent': 'Solicitud Enviada',
+    'form.sub': 'Nuestro equipo le contactará en 2 horas.',
     'footer.privacy': 'Política de Privacidad',
   }
 };
