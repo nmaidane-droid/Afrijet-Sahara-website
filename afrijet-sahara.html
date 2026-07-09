@@ -1385,6 +1385,32 @@ footer {
   line-height: 1.7;
 }
 
+
+/* ── Lang switcher ── */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  opacity: 0.5;
+  transition: opacity var(--transition), transform var(--transition);
+  line-height: 1;
+}
+.lang-btn:hover { opacity: 0.9; transform: scale(1.15); }
+.lang-btn.active { opacity: 1; transform: scale(1.15); }
+@media (max-width: 1024px) {
+  .lang-switcher { margin-left: 0; }
+  .lang-btn { font-size: 20px; }
+}
+
 </style>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
 </head>
@@ -1400,20 +1426,27 @@ footer {
     </a>
 
     <ul class="nav-menu" id="navMenu">
-      <li><a href="#accueil" class="nav-link">Accueil</a></li>
-      <li><a href="#compagnie" class="nav-link">La Compagnie</a></li>
-      <li><a href="#flotte" class="nav-link">Notre Flotte</a></li>
-      <li><a href="#services" class="nav-link">Nos Services</a></li>
-      <li><a href="#temps-de-vol" class="nav-link">Temps de Vol</a></li>
-      <li><a href="#securite" class="nav-link">Sécurité</a></li>
-      <li><a href="#actualites" class="nav-link">Actualités</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#accueil" class="nav-link" data-i18n="nav.accueil">Accueil</a></li>
+      <li><a href="#compagnie" class="nav-link" data-i18n="nav.compagnie">La Compagnie</a></li>
+      <li><a href="#flotte" class="nav-link" data-i18n="nav.flotte">Notre Flotte</a></li>
+      <li><a href="#services" class="nav-link" data-i18n="nav.services">Nos Services</a></li>
+      <li><a href="#temps-de-vol" class="nav-link" data-i18n="nav.temps">Temps de Vol</a></li>
+      <li><a href="#securite" class="nav-link" data-i18n="nav.securite">Sécurité</a></li>
+      <li><a href="#actualites" class="nav-link" data-i18n="nav.actualites">Actualités</a></li>
+      <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
     </ul>
 
     <div class="nav-actions">
       
-      <a href="#contact" class="btn-devis">Demander un devis</a>
-      
+      <a href="#contact" class="btn-devis" data-i18n="nav.devis">Demander un devis</a>
+
+      <!-- Sélecteur langue -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+      </div>
+
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -1423,21 +1456,21 @@ footer {
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#accueil" class="nav-link" onclick="closeMobile()">Accueil</a>
+  <a href="#accueil" class="nav-link" onclick="closeMobile()" data-i18n="nav.accueil">Accueil</a>
   
-  <a href="#compagnie" class="nav-link" onclick="closeMobile()">La Compagnie</a>
+  <a href="#compagnie" class="nav-link" onclick="closeMobile()" data-i18n="nav.compagnie">La Compagnie</a>
   
-  <a href="#flotte" class="nav-link" onclick="closeMobile()">Notre Flotte</a>
+  <a href="#flotte" class="nav-link" onclick="closeMobile()" data-i18n="nav.flotte">Notre Flotte</a>
   
-  <a href="#services" class="nav-link" onclick="closeMobile()">Nos Services</a>
+  <a href="#services" class="nav-link" onclick="closeMobile()" data-i18n="nav.services">Nos Services</a>
   
-  <a href="#temps-de-vol" class="nav-link" onclick="closeMobile()">Temps de Vol</a>
+  <a href="#temps-de-vol" class="nav-link" onclick="closeMobile()" data-i18n="nav.temps">Temps de Vol</a>
   
-  <a href="#securite" class="nav-link" onclick="closeMobile()">Sécurité</a>
+  <a href="#securite" class="nav-link" onclick="closeMobile()" data-i18n="nav.securite">Sécurité</a>
   
-  <a href="#actualites" class="nav-link" onclick="closeMobile()">Actualités</a>
+  <a href="#actualites" class="nav-link" onclick="closeMobile()" data-i18n="nav.actualites">Actualités</a>
   
-  <a href="#contact" class="nav-link" onclick="closeMobile()">Contact / Devis</a>
+  <a href="#contact" class="nav-link" onclick="closeMobile()" data-i18n="nav.contact">Contact / Devis</a>
   
 </div>
 
@@ -1447,16 +1480,16 @@ footer {
 <section id="accueil">
 
   <div class="hero-content">
-    <p class="section-label">Aviation Charter d'Exception</p>
+    <p class="section-label" data-i18n="acc.label">Aviation Charter d'Exception</p>
     <div class="divider"></div>
-    <h1 class="section-title">Volez à votre <em>rythme,</em><br>vers vos destinations.</h1>
-    <p class="section-subtitle">
+    <h1 class="section-title" data-i18n="acc.title">Volez à votre <em>rythme,</em><br>vers vos destinations.</h1>
+    <p class="section-subtitle" data-i18n="acc.sub">
       Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Discrétion, flexibilité et excellence opérationnelle.
     </p>
     
 
     <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Demander un devis →</a>
+      <a href="#contact" class="btn-primary" data-i18n="acc.cta">Demander un devis →</a>
       
       
     </div>
@@ -1466,17 +1499,17 @@ footer {
   <div class="hero-stats">
     <div class="hero-stat">
       <div class="hero-stat-num">18</div>
-      <div class="hero-stat-label">Sièges Full Business</div>
+      <div class="hero-stat-label" data-i18n="acc.stat1">Sièges Full Business</div>
       
     </div>
     <div class="hero-stat">
       <div class="hero-stat-num">M.78</div>
-      <div class="hero-stat-label">Vitesse de croisière</div>
+      <div class="hero-stat-label" data-i18n="acc.stat2">Vitesse de croisière</div>
       
     </div>
     <div class="hero-stat">
       <div class="hero-stat-num">24/7</div>
-      <div class="hero-stat-label">Disponibilité</div>
+      <div class="hero-stat-label" data-i18n="acc.stat3">Disponibilité</div>
       
     </div>
   </div>
@@ -1491,12 +1524,12 @@ footer {
   <div class="container">
     <div class="compagnie-grid">
       <div class="compagnie-text reveal">
-        <p class="section-label">La Compagnie</p>
+        <p class="section-label" data-i18n="comp.label">La Compagnie</p>
         
         <div class="divider"></div>
-        <h2 class="section-title">Une compagnie au service de <em>votre ambition</em></h2>
+        <h2 class="section-title" data-i18n="comp.title">Une compagnie au service de <em>votre ambition</em></h2>
         </h2>
-        <p class="section-subtitle">
+        <p class="section-subtitle" data-i18n="comp.sub">
           Afrijet Sahara est une compagnie charter marocaine fondée pour répondre aux exigences des voyageurs d'affaires et des institutionnels qui refusent les compromis. Basée à Dakhla, nous opérons à travers l'Afrique, le Moyen-Orient et l'Europe avec une rigueur opérationnelle sans faille.
         </p>
         
@@ -1578,9 +1611,9 @@ footer {
      ============================================================ -->
 <section id="flotte">
   <div class="container">
-    <p class="section-label reveal">Notre Flotte</p>
+    <p class="section-label reveal" data-i18n="flotte.label">Notre Flotte</p>
     <div class="divider reveal"></div>
-    <h2 class="section-title reveal">Chaque appareil, une <em>expérience unique</em></h2>
+    <h2 class="section-title reveal" data-i18n="flotte.title">Chaque appareil, une <em>expérience unique</em></h2>
 
     <!-- Sélecteur appareil custom -->
     <div class="flotte-dropdown" id="flotteDropdown">
@@ -1700,26 +1733,26 @@ footer {
      ============================================================ -->
 <section id="services">
   <div class="container">
-    <p class="section-label reveal">Nos Services</p>
+    <p class="section-label reveal" data-i18n="srv.label">Nos Services</p>
     
     <div class="divider reveal"></div>
-    <h2 class="section-title reveal">Chaque vol, <em>sur mesure</em></h2>
-    <p class="section-subtitle reveal">Nous adaptons chaque mission à vos exigences : horaires, départ, destination, configuration à bord.</p>
+    <h2 class="section-title reveal" data-i18n="srv.title">Chaque vol, <em>sur mesure</em></h2>
+    <p class="section-subtitle reveal" data-i18n="srv.sub">Nous adaptons chaque mission à vos exigences : horaires, départ, destination, configuration à bord.</p>
 
     <div class="services-grid">
       <div class="service-card reveal">
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
           <div class="service-icon">💼</div>
-          <div class="service-title">Vols d'Affaires</div>
+          <div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div>
         </div>
-        <p class="service-text">Maximisez votre productivité. Décollage à votre heure, de l'aéroport de votre choix. Nos appareils vous permettent d'accéder à des aéroports secondaires inaccessibles aux grandes compagnies, réduisant vos temps de transfert. Confidentialité absolue, service personnalisé et flexibilité totale pour vos équipes dirigeantes.</p>
+        <p class="service-text" data-i18n="srv.d1">Maximisez votre productivité. Décollage à votre heure, de l'aéroport de votre choix. Nos appareils vous permettent d'accéder à des aéroports secondaires inaccessibles aux grandes compagnies, réduisant vos temps de transfert. Confidentialité absolue, service personnalisé et flexibilité totale pour vos équipes dirigeantes.</p>
       </div>
       <div class="service-card reveal">
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
           <div class="service-icon">🏛️</div>
-          <div class="service-title">Vols Institutionnels</div>
+          <div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div>
         </div>
-        <p class="service-text">Afrijet Sahara accompagne les institutions, administrations et organisations internationales dans leurs déplacements officiels. Rigueur protocolaire, discrétion et fiabilité opérationnelle pour vos délégations, missions de terrain et visites officielles à travers l'Afrique, le Moyen-Orient et l'Europe.</p>
+        <p class="service-text" data-i18n="srv.d2">Afrijet Sahara accompagne les institutions, administrations et organisations internationales dans leurs déplacements officiels. Rigueur protocolaire, discrétion et fiabilité opérationnelle pour vos délégations, missions de terrain et visites officielles à travers l'Afrique, le Moyen-Orient et l'Europe.</p>
       </div>
     </div>
 
@@ -1849,9 +1882,9 @@ footer {
      ============================================================ -->
 <section id="securite">
   <div class="container">
-    <p class="section-label reveal">Sécurité & Qualité</p>
+    <p class="section-label reveal" data-i18n="sec.label">Sécurité & Qualité</p>
     <div class="divider reveal"></div>
-    <h2 class="section-title reveal">La sécurité, notre <em>engagement premier</em></h2>
+    <h2 class="section-title reveal" data-i18n="sec.title">La sécurité, notre <em>engagement premier</em></h2>
 
     <div class="securite-grid">
       <div class="sec-card reveal">
@@ -1943,15 +1976,15 @@ footer {
      ============================================================ -->
 <section id="contact">
   <div class="container">
-    <p class="section-label">Contact & Devis</p>
+    <p class="section-label" data-i18n="cta.label">Contact & Devis</p>
     
     <div class="divider"></div>
-    <h2 class="section-title">Planifions votre <em>prochain vol</em></h2>
+    <h2 class="section-title" data-i18n="cta.title">Planifions votre <em>prochain vol</em></h2>
     </h2>
 
     <div class="contact-grid">
       <div class="contact-info">
-        <p class="contact-info-sub">Notre équipe opérationnelle est disponible 24h/24 et 7j/7 pour répondre à vos demandes et confirmer votre vol dans les meilleurs délais.</p>
+        <p class="contact-info-sub" data-i18n="cta.sub">Notre équipe opérationnelle est disponible 24h/24 et 7j/7 pour répondre à vos demandes et confirmer votre vol dans les meilleurs délais.</p>
         
 
         <div class="contact-items">
@@ -2056,7 +2089,7 @@ footer {
             <textarea class="form-textarea" placeholder="—" id="formMsg"></textarea>
           </div>
 
-          <button class="btn-submit" id="btnSubmit">Envoyer la demande →</button>
+          <button class="btn-submit" id="btnSubmit" data-i18n="cta.btn">Envoyer la demande →</button>
           
         </div>
 
@@ -2077,11 +2110,11 @@ footer {
      ============================================================ -->
 <footer>
   <div class="footer-inner">
-    <p class="footer-copy">© 2026 Afrijet Sahara. <span>Tous droits réservés.</span></p>
+    <p class="footer-copy" data-i18n="footer.copy">© 2026 Afrijet Sahara. Tous droits réservés.</p>
     <div class="footer-links">
-      <a href="#" class="footer-link">Mentions légales</a>
+      <a href="#" class="footer-link" data-i18n="footer.legal">Mentions légales</a>
       
-      <a href="#" class="footer-link">Politique de confidentialité</a>
+      <a href="#" class="footer-link" data-i18n="footer.privacy">Politique de confidentialité</a>
       
     </div>
   </div>
@@ -2174,6 +2207,148 @@ function showSection(id) {
     initFlotteDropdown();
   }
 })();
+
+// ── Système i18n ──
+const translations = {
+  fr: {
+    'nav.accueil': 'Accueil',
+    'nav.compagnie': 'La Compagnie',
+    'nav.flotte': 'Notre Flotte',
+    'nav.services': 'Nos Services',
+    'nav.temps': 'Temps de Vol',
+    'nav.securite': 'Sécurité',
+    'nav.actualites': 'Actualités',
+    'nav.contact': 'Contact / Devis',
+    'nav.devis': 'Demander un devis',
+    'acc.label': "Aviation Charter d'Exception",
+    'acc.title': 'Volez à votre <em>rythme,</em><br>vers vos destinations.',
+    'acc.sub': "Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Discrétion, flexibilité et excellence opérationnelle.",
+    'acc.cta': 'Demander un devis →',
+    'acc.stat1': 'Sièges Full Business',
+    'acc.stat2': 'Vitesse de croisière',
+    'acc.stat3': 'Disponibilité',
+    'comp.label': 'La Compagnie',
+    'comp.title': 'Une compagnie au service de <em>votre ambition</em>',
+    'comp.sub': "Afrijet Sahara est une compagnie charter marocaine fondée pour répondre aux exigences des voyageurs d'affaires et des institutionnels qui refusent les compromis. Basée à Dakhla, nous opérons à travers l'Afrique, le Moyen-Orient et l'Europe avec une rigueur opérationnelle sans faille.",
+    'flotte.label': 'Notre Flotte',
+    'flotte.title': 'Chaque appareil, une <em>expérience unique</em>',
+    'srv.label': 'Nos Services',
+    'srv.title': 'Chaque vol, <em>sur mesure</em>',
+    'srv.sub': 'Nous adaptons chaque mission à vos exigences : horaires, départ, destination, configuration à bord.',
+    'srv.t1': "Vols d'Affaires",
+    'srv.d1': "Maximisez votre productivité. Décollage à votre heure, de l'aéroport de votre choix. Nos appareils vous permettent d'accéder à des aéroports secondaires inaccessibles aux grandes compagnies, réduisant vos temps de transfert. Confidentialité absolue, service personnalisé et flexibilité totale pour vos équipes dirigeantes.",
+    'srv.t2': 'Vols Institutionnels',
+    'srv.d2': "Afrijet Sahara accompagne les institutions, administrations et organisations internationales dans leurs déplacements officiels. Rigueur protocolaire, discrétion et fiabilité opérationnelle pour vos délégations, missions de terrain et visites officielles à travers l'Afrique, le Moyen-Orient et l'Europe.",
+    'sec.label': 'Sécurité & Qualité',
+    'sec.title': 'La sécurité, notre <em>engagement premier</em>',
+    'cta.label': 'Contact & Devis',
+    'cta.title': 'Planifions votre <em>prochain vol</em>',
+    'cta.sub': 'Notre équipe opérationnelle est disponible 24h/24 et 7j/7 pour répondre à vos demandes et confirmer votre vol dans les meilleurs délais.',
+    'cta.btn': 'Envoyer la demande →',
+    'footer.copy': '© 2026 Afrijet Sahara. Tous droits réservés.',
+    'footer.legal': 'Mentions légales',
+    'footer.privacy': 'Politique de confidentialité',
+  },
+  en: {
+    'nav.accueil': 'Home',
+    'nav.compagnie': 'About Us',
+    'nav.flotte': 'Our Fleet',
+    'nav.services': 'Services',
+    'nav.temps': 'Flight Time',
+    'nav.securite': 'Safety',
+    'nav.actualites': 'News',
+    'nav.contact': 'Contact / Devis',
+    'nav.devis': 'Request a Quote',
+    'acc.label': 'Charter Aviation Excellence',
+    'acc.title': 'Fly at your own <em>pace,</em><br>to your destinations.',
+    'acc.sub': 'Afrijet Sahara puts its EMB 135 and EMB 145 fleet at your disposal for on-demand flights to any destination. Discretion, flexibility and operational excellence.',
+    'acc.cta': 'Request a Quote →',
+    'acc.stat1': 'Full Business Seats',
+    'acc.stat2': 'Cruising Speed',
+    'acc.stat3': 'Availability',
+    'comp.label': 'About Us',
+    'comp.title': 'A company at the service of your <em>ambition</em>',
+    'comp.sub': 'Afrijet Sahara is a Moroccan charter airline founded to meet the demands of business travellers and institutions that refuse to compromise. Based in Dakhla, we operate across Africa, the Middle East and Europe with unwavering operational rigour.',
+    'flotte.label': 'Our Fleet',
+    'flotte.title': 'Each aircraft, a <em>unique experience</em>',
+    'srv.label': 'Our Services',
+    'srv.title': 'Every flight, <em>tailored</em>',
+    'srv.sub': 'We adapt every mission to your requirements: schedules, departure, destination, cabin configuration.',
+    'srv.t1': 'Business Flights',
+    'srv.d1': 'Maximise your productivity. Take off at your own time, from the airport of your choice. Our aircraft give you access to secondary airports unreachable by major airlines, reducing your transfer times. Absolute confidentiality, personalised service and total flexibility for your executive teams.',
+    'srv.t2': 'Institutional Flights',
+    'srv.d2': 'Afrijet Sahara supports institutions, administrations and international organisations in their official travel. Protocol rigour, discretion and operational reliability for your delegations, field missions and official visits across Africa, the Middle East and Europe.',
+    'sec.label': 'Safety & Quality',
+    'sec.title': 'Safety, our <em>first commitment</em>',
+    'cta.label': 'Contact & Quote',
+    'cta.title': 'Let\'s plan your next flight',
+    'cta.sub': 'Our operational team is available 24/7 to respond to your requests and confirm your flight as quickly as possible.',
+    'cta.btn': 'Send Request →',
+    'footer.copy': '© 2026 Afrijet Sahara. All rights reserved.',
+    'footer.legal': 'Legal Notice',
+    'footer.privacy': 'Privacy Policy',
+  },
+  es: {
+    'nav.accueil': 'Inicio',
+    'nav.compagnie': 'La Empresa',
+    'nav.flotte': 'Nuestra Flota',
+    'nav.services': 'Servicios',
+    'nav.temps': 'Tiempo de Vuelo',
+    'nav.securite': 'Seguridad',
+    'nav.actualites': 'Noticias',
+    'nav.contact': 'Contacto / Presupuesto',
+    'nav.devis': 'Solicitar Presupuesto',
+    'acc.label': 'Aviación Chárter de Excepción',
+    'acc.title': 'Vuele a su <em>ritmo,</em><br>hacia sus destinos.',
+    'acc.sub': 'Afrijet Sahara pone a su disposición su flota EMB 135 y EMB 145 para vuelos bajo demanda hacia cualquier destino. Discreción, flexibilidad y excelencia operacional.',
+    'acc.cta': 'Solicitar Presupuesto →',
+    'acc.stat1': 'Asientos Full Business',
+    'acc.stat2': 'Velocidad de Crucero',
+    'acc.stat3': 'Disponibilidad',
+    'comp.label': 'La Empresa',
+    'comp.title': 'Una empresa al servicio de su <em>ambición</em>',
+    'comp.sub': 'Afrijet Sahara es una compañía chárter marroquí fundada para satisfacer las exigencias de los viajeros de negocios e instituciones que se niegan a los compromisos. Con base en Dajla, operamos en África, Oriente Medio y Europa con un rigor operacional sin fisuras.',
+    'flotte.label': 'Nuestra Flota',
+    'flotte.title': 'Cada aeronave, una <em>experiencia única</em>',
+    'srv.label': 'Nuestros Servicios',
+    'srv.title': 'Cada vuelo, <em>a medida</em>',
+    'srv.sub': 'Adaptamos cada misión a sus exigencias: horarios, salida, destino, configuración a bordo.',
+    'srv.t1': 'Vuelos de Negocios',
+    'srv.d1': 'Maximice su productividad. Despegue a su hora, desde el aeropuerto de su elección. Nuestras aeronaves le permiten acceder a aeropuertos secundarios inaccesibles para las grandes compañías, reduciendo sus tiempos de conexión. Confidencialidad absoluta, servicio personalizado y total flexibilidad para sus equipos directivos.',
+    'srv.t2': 'Vuelos Institucionales',
+    'srv.d2': 'Afrijet Sahara acompaña a instituciones, administraciones y organizaciones internacionales en sus desplazamientos oficiales. Rigor protocolar, discreción y fiabilidad operacional para sus delegaciones, misiones de campo y visitas oficiales en África, Oriente Medio y Europa.',
+    'sec.label': 'Seguridad & Calidad',
+    'sec.title': 'La seguridad, nuestro <em>primer compromiso</em>',
+    'cta.label': 'Contacto & Presupuesto',
+    'cta.title': 'Planifiquemos su próximo vuelo',
+    'cta.sub': 'Nuestro equipo operacional está disponible 24h/24 y 7 días a la semana para responder a sus solicitudes y confirmar su vuelo en el menor tiempo posible.',
+    'cta.btn': 'Enviar Solicitud →',
+    'footer.copy': '© 2026 Afrijet Sahara. Todos los derechos reservados.',
+    'footer.legal': 'Aviso Legal',
+    'footer.privacy': 'Política de Privacidad',
+  }
+};
+
+let currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  // Mettre à jour tous les éléments data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+  // Mettre à jour boutons lang actifs
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes("'" + lang + "'"));
+  });
+  // Mettre à jour l'attribut lang du document
+  document.documentElement.lang = lang;
+}
+
 
 // Init : montrer accueil uniquement
 showSection('accueil');
