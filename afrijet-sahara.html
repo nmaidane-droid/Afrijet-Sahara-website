@@ -1410,12 +1410,12 @@ footer {
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
-  opacity: 0.5;
-  transition: opacity var(--transition), transform var(--transition);
+  opacity: 1;
+  transition: transform var(--transition);
   line-height: 1;
 }
-.lang-btn:hover { opacity: 0.9; transform: scale(1.15); }
-.lang-btn.active { opacity: 1; transform: scale(1.15); }
+.lang-btn:hover { transform: scale(1.15); }
+.lang-btn.active { transform: scale(1.15); }
 @media (max-width: 1024px) {
   .lang-switcher { margin-left: 0; }
   .lang-btn { font-size: 20px; }
