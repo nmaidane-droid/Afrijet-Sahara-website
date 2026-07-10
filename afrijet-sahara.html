@@ -623,8 +623,7 @@ section { padding: 96px 32px 80px; }
 .service-title {
   font-size: 16px;
   font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
+    font-weight: 600;
   color: var(--navy);
   margin-bottom: 0;
   text-align: left;
@@ -829,8 +828,7 @@ section { padding: 96px 32px 80px; }
 .sec-title {
   font-size: 16px;
   font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
+    font-weight: 600;
   color: var(--navy);
   margin-bottom: 0;
   text-align: left;
@@ -1976,6 +1974,138 @@ footer {
     </div>
   </div>
 
+</section>
+
+<!-- contact -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label" data-i18n="cta.label">Contact & Devis</p>
+    
+    <div class="divider"></div>
+    <h2 class="section-title" data-i18n="cta.title">Planifions votre <em>prochain vol</em></h2>
+    </h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="contact-info-sub" data-i18n="cta.sub">Notre équipe opérationnelle est disponible 24h/24 et 7j/7 pour répondre à vos demandes et confirmer votre vol dans les meilleurs délais.</p>
+        
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label" data-i18n="contact.phone">Téléphone</div>
+              
+              <div class="contact-item-val">+212 689 595 900</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label" data-i18n="contact.whatsapp">WhatsApp</div>
+              <div class="contact-item-val">+212 689 595 900</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label" data-i18n="contact.email">Email</div>
+              <div class="contact-item-val">info@afrijet.ma</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label" data-i18n="contact.address">Adresse</div>
+              
+              <div class="contact-item-val">Lotissement Khalij Al Walae, villa 86, BP 3021-73000, Dakhla, Morocco</div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div id="contactFormWrap">
+          <div class="form-title" data-i18n="form.title">Demande de vol</div>
+          
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.name">Nom complet</label>
+              
+              <input class="form-input" type="text" placeholder="—" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.org">Société / Organisation</label>
+              
+              <input class="form-input" type="text" placeholder="—" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.email">Email</label>
+              
+              <input class="form-input" type="email" placeholder="—" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.phone">Téléphone / WhatsApp</label>
+              
+              <input class="form-input" type="tel" placeholder="—" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.dep">Aéroport de départ</label>
+              <div class="autocomplete-wrap" id="formDepWrap">
+                <input class="form-input" id="formInputDep" data-i18n-placeholder="form.iata" placeholder="IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+                <div class="autocomplete-list" id="formListDep"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.arr">Aéroport d'arrivée</label>
+              <div class="autocomplete-wrap" id="formArrWrap">
+                <input class="form-input" id="formInputArr" data-i18n-placeholder="form.iata" placeholder="IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+                <div class="autocomplete-list" id="formListArr"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.date">Date souhaitée</label>
+              
+              <input class="form-input" type="date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.pax">Nombre de passagers (max. 18)</label>
+              
+              <input class="form-input" type="number" min="1" max="18" placeholder="1 – 18" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.info">Informations complémentaires</label>
+            
+            <textarea class="form-textarea" placeholder="—" id="formMsg"></textarea>
+          </div>
+
+          <button class="btn-submit" id="btnSubmit" data-i18n="cta.btn">Envoyer la demande →</button>
+          
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✓</div>
+          <div class="form-success-msg" data-i18n="form.sent">Demande envoyée</div>
+          
+          <p class="form-success-sub" data-i18n="form.sub">Notre équipe vous contactera sous 2 heures.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
