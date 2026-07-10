@@ -1451,6 +1451,19 @@ footer {
 .news-link:hover { opacity: 0.7; }
 
 
+
+/* ── Cadre icône + titre ── */
+.card-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #F0F2F5;
+  border: 1.5px solid #D8DDE5;
+  border-radius: 24px;
+  padding: 8px 18px 8px 12px;
+  margin-bottom: 14px;
+}
+
 </style>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
 </head>
@@ -1574,38 +1587,22 @@ footer {
 
         <div class="values-grid">
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">🎯</div>
-              <div class="value-title" data-i18n="comp.v1">Excellence</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🎯</div><div class="value-title" data-i18n="comp.v1">Excellence</div></div></div>
             <p class="value-text" data-i18n="comp.v1t">Des standards opérationnels de niveau international, à chaque vol.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">🤝</div>
-              <div class="value-title" data-i18n="comp.v2">Confiance</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🤝</div><div class="value-title" data-i18n="comp.v2">Confiance</div></div></div>
             <p class="value-text" data-i18n="comp.v2t">Transparence totale et engagement contractuel clair.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">⚡</div>
-              <div class="value-title" data-i18n="comp.v3">Réactivité</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">⚡</div><div class="value-title" data-i18n="comp.v3">Réactivité</div></div></div>
             <p class="value-text" data-i18n="comp.v3t">Disponibles 24h/24 pour confirmer votre vol en quelques heures.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">🛡️</div>
-              <div class="value-title" data-i18n="comp.v4">Sécurité</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🛡️</div><div class="value-title" data-i18n="comp.v4">Sécurité</div></div></div>
             <p class="value-text" data-i18n="comp.v4t">La sécurité est notre priorité absolue et non négociable.</p>
             
           </div>
@@ -1779,17 +1776,11 @@ footer {
 
     <div class="services-grid">
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">💼</div>
-          <div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">💼</div><div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div></div></div>
         <p class="service-text" data-i18n="srv.d1">Maximisez votre productivité. Décollage à votre heure, de l'aéroport de votre choix. Nos appareils vous permettent d'accéder à des aéroports secondaires inaccessibles aux grandes compagnies, réduisant vos temps de transfert. Confidentialité absolue, service personnalisé et flexibilité totale pour vos équipes dirigeantes.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">🏛️</div>
-          <div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">🏛️</div><div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div></div></div>
         <p class="service-text" data-i18n="srv.d2">Afrijet Sahara accompagne les institutions, administrations et organisations internationales dans leurs déplacements officiels. Rigueur protocolaire, discrétion et fiabilité opérationnelle pour vos délégations, missions de terrain et visites officielles à travers l'Afrique, le Moyen-Orient et l'Europe.</p>
       </div>
     </div>
@@ -1799,24 +1790,15 @@ footer {
     <h3 class="section-title reveal" style="font-size:22px;margin-bottom:32px;" data-i18n="srv.aboard">Services <em>à bord</em></h3>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">📶</div>
-          <div class="service-title" data-i18n="srv.t3">Connectivité</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">📶</div><div class="service-title" data-i18n="srv.t3">Connectivité</div></div></div>
         <p class="service-text" data-i18n="srv.d3">Accès WiFi satellite Starlink à bord pour rester connecté tout au long de votre vol. Travaillez, communiquez ou suivez vos dossiers sans interruption.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">🍽️</div>
-          <div class="service-title" data-i18n="srv.t4">Restauration</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">🍽️</div><div class="service-title" data-i18n="srv.t4">Restauration</div></div></div>
         <p class="service-text" data-i18n="srv.d4">Service de restauration personnalisé selon vos préférences : plats chauds et froids, boissons sélectionnées. Chaque repas est préparé avec soin pour répondre à vos exigences.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">💺</div>
-          <div class="service-title" data-i18n="srv.t5">Confort & Espace</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">💺</div><div class="service-title" data-i18n="srv.t5">Confort & Espace</div></div></div>
         <p class="service-text" data-i18n="srv.d5">Sièges business inclinables avec espace généreux entre les rangées. Cabine calme et intimiste, conçue pour votre repos et votre productivité.</p>
       </div>
       <div class="service-card reveal">
@@ -1926,31 +1908,19 @@ footer {
 
     <div class="securite-grid">
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🛡️</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t1">SMS Certifié</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">🛡️</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t1">SMS Certifié</div></div></div>
         <p class="sec-text" data-i18n="sec.d1">Notre Système de Gestion de la Sécurité est pleinement opérationnel et audité régulièrement. Il couvre l'identification proactive des dangers, l'évaluation des risques, le suivi des actions correctives et la culture sécurité au sein de toute l'organisation.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">📋</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t2">Certification DGAC</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">📋</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t2">Certification DGAC</div></div></div>
         <p class="sec-text" data-i18n="sec.d2">Afrijet Sahara opère sous Certificat Technique d'Exploitation (CTE) délivré par la DGAC du Maroc. Nos opérations sont conduites en conformité stricte avec la réglementation marocaine et les standards OACI, garantissant un niveau de sécurité homologué à l'échelle internationale.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">👨‍✈️</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t3">Équipage Qualifié</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">👨‍✈️</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t3">Équipage Qualifié</div></div></div>
         <p class="sec-text" data-i18n="sec.d3">Nos pilotes, très expérimentés, sont certifiés selon les standards les plus exigeants, avec des programmes de formation récurrente sur simulateur. Chaque membre d'équipage maintient ses qualifications à jour et suit un programme de contrôle en ligne rigoureux.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🔧</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t4">Maintenance Rigoureuse</div>
-        </div>
+        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">🔧</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t4">Maintenance Rigoureuse</div></div></div>
         <p class="sec-text" data-i18n="sec.d4">Nos appareils sont maintenus selon les programmes de maintenance constructeur approuvés par la DGAC. Chaque vol est précédé d'une inspection complète garantissant la navigabilité de l'aéronef.</p>
       </div>
     </div>
