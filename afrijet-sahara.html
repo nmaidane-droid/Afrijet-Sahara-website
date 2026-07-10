@@ -41,6 +41,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
+  overflow-x: hidden;
   padding-bottom: 80px;
   font-family: var(--font-body);
   color: var(--text);
@@ -260,6 +261,7 @@ section { padding: 96px 32px 80px; }
   flex-direction: column;
   justify-content: space-between;
   padding: 0 !important;
+  overflow-x: hidden;
 }
 
 .hero-photo-placeholder {
@@ -1133,7 +1135,7 @@ footer {
 }
 @media (max-width: 768px) {
   .nav-inner { padding: 0 12px; }
-  .nav-logo-img { height: 28px; }
+  .nav-logo-img { height: 44px; }
   .lang-btn { font-size: 13px; padding: 1px; }
   .lang-switcher { gap: 0px; margin-left: 2px; }
   .nav-actions { gap: 6px; flex-shrink: 0; }
