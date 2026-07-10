@@ -108,18 +108,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   gap: 0;
+  width: 680px;
+  flex-shrink: 0;
 }
 .nav-link {
-  text-align: left;
+  text-align: center;
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 8px 14px;
+  padding: 8px 10px;
   border-radius: var(--radius);
   transition: opacity var(--transition);
   white-space: nowrap;
   color: #fff;
+  min-width: 80px;
 }
 .nav-link:hover, .nav-link.active {
   opacity: 0.75;
@@ -1487,7 +1490,7 @@ footer {
   
   <a href="#actualites" class="nav-link" onclick="closeMobile()" data-i18n="nav.actualites">Actualités</a>
   
-  <a href="#contact" class="nav-link" onclick="closeMobile()" data-i18n="nav.contact">Contact / Devis</a>
+  <a href="#contact" class="nav-link" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
   
 </div>
 
@@ -2073,7 +2076,7 @@ const translations = {
     'nav.temps': 'Temps de Vol',
     'nav.securite': 'Sécurité',
     'nav.actualites': 'Actualités',
-    'nav.contact': 'Contact / Devis',
+    'nav.contact': 'Contact',
     'nav.devis': 'Demander un devis',
     'acc.label': "Aviation Charter d'Exception",
     'acc.title': 'Volez à votre <em>rythme,</em><br>vers vos destinations.',
@@ -2171,7 +2174,7 @@ const translations = {
     'nav.temps': 'Flight Time',
     'nav.securite': 'Safety',
     'nav.actualites': 'News',
-    'nav.contact': 'Contact / Devis',
+    'nav.contact': 'Contact',
     'nav.devis': 'Request a Quote',
     'acc.label': 'Charter Aviation Excellence',
     'acc.title': 'Fly at your own <em>pace,</em><br>to your destinations.',
@@ -2270,7 +2273,7 @@ const translations = {
     'nav.temps': 'Tiempo de Vuelo',
     'nav.securite': 'Seguridad',
     'nav.actualites': 'Noticias',
-    'nav.contact': 'Contacto / Presupuesto',
+    'nav.contact': 'Contacto',
     'nav.devis': 'Solicitar Presupuesto',
     'acc.label': 'Aviación Chárter de Excepción',
     'acc.title': 'Vuele a su <em>ritmo,</em><br>hacia sus destinos.',
