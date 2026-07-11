@@ -1402,9 +1402,12 @@ footer {
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
-  opacity: 0.5;
-  transition: opacity var(--transition), transform var(--transition);
+  opacity: 1;
+  transition: transform var(--transition);
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .lang-btn:hover { opacity: 0.9; transform: scale(1.15); }
 .lang-btn.active { opacity: 1; transform: scale(1.15); }
@@ -1542,8 +1545,9 @@ footer {
         </button>
         <button class="lang-btn" onclick="setLang('es')" title="Español">
           <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;">
-            <rect width="26" height="18" fill="#AA151B"/>
+            <rect width="26" height="4.5" fill="#AA151B"/>
             <rect y="4.5" width="26" height="9" fill="#F1BF00"/>
+            <rect y="13.5" width="26" height="4.5" fill="#AA151B"/>
           </svg>
         </button>
       </div>
@@ -2175,6 +2179,13 @@ function showSection(id) {
   allSections.forEach(s => {
     s.style.display = (s.id === id) ? '' : 'none';
   });
+  // Cacher les panneaux compagnie par défaut
+  if (id === 'compagnie') {
+    var pc = document.getElementById('panel-compagnie');
+    var pp = document.getElementById('panel-president');
+    if (pc) pc.style.display = 'none';
+    if (pp) pp.style.display = 'none';
+  }
 
   // Marquer lien actif
   navLinks.forEach(l => {
