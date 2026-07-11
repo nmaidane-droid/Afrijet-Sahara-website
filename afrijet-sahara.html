@@ -572,7 +572,8 @@ section { padding: 96px 32px 80px; }
   margin-bottom: 32px;
 }
 .specs-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
-.spec-label { width: 50%; color: var(--text-light); font-size: 16px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; padding: 12px 8px 12px 0; vertical-align: middle; }
+.spec-label { width: 50%; color: var(--text-light); font-size: 16px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; padding: 12px 8px 12px 0; vertical-align: middle;   white-space: nowrap;
+}
 .spec-val { color: var(--navy); font-weight: 600; font-size: 16px; padding: 12px 0; vertical-align: middle; }
 .specs-table tr { border-bottom: 1px solid var(--border); }
 .cabin-features {
@@ -1474,6 +1475,19 @@ footer {
   .president-quote { font-size: 15px; }
 }
 
+
+/* ── Cadre icône + titre ── */
+.card-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #F0F2F5;
+  border: 1.5px solid #D8DDE5;
+  border-radius: 24px;
+  padding: 8px 18px 8px 12px;
+  margin-bottom: 4px;
+}
+
 </style>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
 </head>
@@ -1594,38 +1608,22 @@ footer {
 
         <div class="values-grid">
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">🎯</div>
-              <div class="value-title" data-i18n="comp.v1">Excellence</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🎯</div><div class="value-title" data-i18n="comp.v1">Excellence</div></div></div>
             <p class="value-text" data-i18n="comp.v1t">Des standards opérationnels de niveau international, à chaque vol.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">🤝</div>
-              <div class="value-title" data-i18n="comp.v2">Confiance</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🤝</div><div class="value-title" data-i18n="comp.v2">Confiance</div></div></div>
             <p class="value-text" data-i18n="comp.v2t">Transparence totale et engagement contractuel clair.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">⚡</div>
-              <div class="value-title" data-i18n="comp.v3">Réactivité</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">⚡</div><div class="value-title" data-i18n="comp.v3">Réactivité</div></div></div>
             <p class="value-text" data-i18n="comp.v3t">Disponibles 24h/24 pour confirmer votre vol en quelques heures.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header">
-              <div class="value-icon">🛡️</div>
-              <div class="value-title" data-i18n="comp.v4">Sécurité</div>
-              
-            </div>
+            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🛡️</div><div class="value-title" data-i18n="comp.v4">Sécurité</div></div></div>
             <p class="value-text" data-i18n="comp.v4t">La sécurité est notre priorité absolue et non négociable.</p>
             
           </div>
@@ -1744,11 +1742,11 @@ footer {
           <div class="aircraft-reg">CN-KTA</div>
           <table class="specs-table">
             <tr><td class="spec-label" data-i18n="fleet.config">Configuration</td><td class="spec-val" data-i18n="fleet.kta.config">18 sièges Full Business</td></tr>
-            <tr><td class="spec-label" data-i18n="fleet.speed">Vitesse de croisière</td><td class="spec-val">Mach 0.78 (~850 km/h)</td></tr>
-            <tr><td class="spec-label" data-i18n="fleet.alt">Altitude de croisière</td><td class="spec-val">FL 370 — 41 000 ft</td></tr>
+            <tr><td class="spec-label" data-i18n="fleet.speed">Vitesse</td><td class="spec-val">Mach 0.78 (~850 km/h)</td></tr>
+            <tr><td class="spec-label" data-i18n="fleet.alt">Altitude</td><td class="spec-val">FL 370 — 41 000 ft</td></tr>
             <tr><td class="spec-label" data-i18n="fleet.range">Rayon d'action</td><td class="spec-val">3 241 km (1 750 nm)</td></tr>
             <tr><td class="spec-label" data-i18n="fleet.endur">Autonomie</td><td class="spec-val" data-i18n="fleet.kta.endur">~3h 50 sans escale</td></tr>
-            <tr><td class="spec-label" data-i18n="fleet.cabin">Longueur cabine</td><td class="spec-val">12.16 m</td></tr>
+            <tr><td class="spec-label" data-i18n="fleet.cabin">Cabine</td><td class="spec-val">12.16 m</td></tr>
             <tr><td class="spec-label" data-i18n="fleet.engine">Motorisation</td><td class="spec-val">2 × AE 3007 (Rolls-Royce)</td></tr>
           </table>
           <div class="cabin-features">
@@ -1780,11 +1778,11 @@ footer {
           <div class="aircraft-reg">CN-KTB</div>
           <table class="specs-table">
             <tr><td class="spec-label" data-i18n="fleet.config">Configuration</td><td class="spec-val" data-i18n="fleet.ktb.config">8 sièges Full Business</td></tr>
-            <tr><td class="spec-label" data-i18n="fleet.speed">Vitesse de croisière</td><td class="spec-val">Mach 0.78 (~850 km/h)</td></tr>
-            <tr><td class="spec-label" data-i18n="fleet.alt">Altitude de croisière</td><td class="spec-val">FL 370 — 37 000 ft</td></tr>
+            <tr><td class="spec-label" data-i18n="fleet.speed">Vitesse</td><td class="spec-val">Mach 0.78 (~850 km/h)</td></tr>
+            <tr><td class="spec-label" data-i18n="fleet.alt">Altitude</td><td class="spec-val">FL 370 — 37 000 ft</td></tr>
             <tr><td class="spec-label" data-i18n="fleet.range">Rayon d'action</td><td class="spec-val">2 873 km (1 550 nm)</td></tr>
             <tr><td class="spec-label" data-i18n="fleet.endur">Autonomie</td><td class="spec-val" data-i18n="fleet.ktb.endur">~3h 20 sans escale</td></tr>
-            <tr><td class="spec-label" data-i18n="fleet.cabin">Longueur cabine</td><td class="spec-val">14.17 m</td></tr>
+            <tr><td class="spec-label" data-i18n="fleet.cabin">Cabine</td><td class="spec-val">14.17 m</td></tr>
             <tr><td class="spec-label" data-i18n="fleet.engine">Motorisation</td><td class="spec-val">2 × AE 3007 (Rolls-Royce)</td></tr>
           </table>
           <div class="cabin-features">
@@ -1823,17 +1821,11 @@ footer {
 
     <div class="services-grid">
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">💼</div>
-          <div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="service-icon">💼</div><div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div></div></div>
         <p class="service-text" data-i18n="srv.d1">Maximisez votre productivité. Décollage à votre heure, de l'aéroport de votre choix. Nos appareils vous permettent d'accéder à des aéroports secondaires inaccessibles aux grandes compagnies, réduisant vos temps de transfert. Confidentialité absolue, service personnalisé et flexibilité totale pour vos équipes dirigeantes.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">🏛️</div>
-          <div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="service-icon">🏛️</div><div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div></div></div>
         <p class="service-text" data-i18n="srv.d2">Afrijet Sahara accompagne les institutions, administrations et organisations internationales dans leurs déplacements officiels. Rigueur protocolaire, discrétion et fiabilité opérationnelle pour vos délégations, missions de terrain et visites officielles à travers l'Afrique, le Moyen-Orient et l'Europe.</p>
       </div>
     </div>
@@ -1843,30 +1835,19 @@ footer {
     <h3 class="section-title reveal" style="font-size:22px;margin-bottom:32px;" data-i18n="srv.aboard">Services <em>à bord</em></h3>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">📶</div>
-          <div class="service-title" data-i18n="srv.t3">Connectivité</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="service-icon">📶</div><div class="service-title" data-i18n="srv.t3">Connectivité</div></div></div>
         <p class="service-text" data-i18n="srv.d3">Accès WiFi satellite Starlink à bord pour rester connecté tout au long de votre vol. Travaillez, communiquez ou suivez vos dossiers sans interruption.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">🍽️</div>
-          <div class="service-title" data-i18n="srv.t4">Restauration</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="service-icon">🍽️</div><div class="service-title" data-i18n="srv.t4">Restauration</div></div></div>
         <p class="service-text" data-i18n="srv.d4">Service de restauration personnalisé selon vos préférences : plats chauds et froids, boissons sélectionnées. Chaque repas est préparé avec soin pour répondre à vos exigences.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon">💺</div>
-          <div class="service-title" data-i18n="srv.t5">Confort & Espace</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="service-icon">💺</div><div class="service-title" data-i18n="srv.t5">Confort & Espace</div></div></div>
         <p class="service-text" data-i18n="srv.d5">Sièges business inclinables avec espace généreux entre les rangées. Cabine calme et intimiste, conçue pour votre repos et votre productivité.</p>
       </div>
       <div class="service-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="service-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="20" height="13" rx="2" stroke="#E8001C" stroke-width="1.8"/><path d="M10 10V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#E8001C" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="15" x2="24" y2="15" stroke="#E8001C" stroke-width="1.5"/><circle cx="9" cy="24" r="1.2" fill="#E8001C"/><circle cx="19" cy="24" r="1.2" fill="#E8001C"/></svg></div>
-          <div class="service-title" data-i18n="srv.t6">Bagages</div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="service-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="20" height="13" rx="2" stroke="#E8001C" stroke-width="1.8"/><path d="M10 10V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#E8001C" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="15" x2="24" y2="15" stroke="#E8001C" stroke-width="1.5"/><circle cx="9" cy="24" r="1.2" fill="#E8001C"/><circle cx="19" cy="24" r="1.2" fill="#E8001C"/></svg></div><div class="service-title" data-i18n="srv.t6">Bagages</div></div></div>
         </div>
         <p class="service-text" data-i18n="srv.d6">Soute généreuse adaptée à vos besoins, sans les contraintes des compagnies régulières. Embarquez vos équipements professionnels en toute liberté.</p>
       </div>
@@ -1970,31 +1951,19 @@ footer {
 
     <div class="securite-grid">
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🛡️</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t1">SMS Certifié</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">🛡️</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t1">SMS Certifié</div></div></div>
         <p class="sec-text" data-i18n="sec.d1">Notre Système de Gestion de la Sécurité est pleinement opérationnel et audité régulièrement. Il couvre l'identification proactive des dangers, l'évaluation des risques, le suivi des actions correctives et la culture sécurité au sein de toute l'organisation.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">📋</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t2">Certification DGAC</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">📋</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t2">Certification DGAC</div></div></div>
         <p class="sec-text" data-i18n="sec.d2">Afrijet Sahara opère sous Certificat Technique d'Exploitation (CTE) délivré par la DGAC du Maroc. Nos opérations sont conduites en conformité stricte avec la réglementation marocaine et les standards OACI, garantissant un niveau de sécurité homologué à l'échelle internationale.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">👨‍✈️</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t3">Équipage Qualifié</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">👨‍✈️</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t3">Équipage Qualifié</div></div></div>
         <p class="sec-text" data-i18n="sec.d3">Nos pilotes, très expérimentés, sont certifiés selon les standards les plus exigeants, avec des programmes de formation récurrente sur simulateur. Chaque membre d'équipage maintient ses qualifications à jour et suit un programme de contrôle en ligne rigoureux.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🔧</div>
-          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t4">Maintenance Rigoureuse</div>
-        </div>
+        <div style="margin-bottom:6px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">🔧</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t4">Maintenance Rigoureuse</div></div></div>
         <p class="sec-text" data-i18n="sec.d4">Nos appareils sont maintenus selon les programmes de maintenance constructeur approuvés par la DGAC. Chaque vol est précédé d'une inspection complète garantissant la navigabilité de l'aéronef.</p>
       </div>
     </div>
@@ -2278,7 +2247,7 @@ const translations = {
     'acc.sub': "Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Basée à Dakhla, au sud du Maroc, notre compagnie vous offre une liberté de vol totale : décollage à l'heure qui vous convient, depuis l'aéroport de votre choix, sans escales inutiles. Discrétion absolue, service personnalisé et excellence opérationnelle à chaque vol.",
     'acc.cta': 'Demander un devis →',
     'acc.stat1': 'Sièges Full Business',
-    'acc.stat2': 'Vitesse de croisière',
+    'acc.stat2': 'Vitesse',
     'acc.stat3': 'Disponibilité',
     'comp.label': 'La Compagnie',
     'comp.title': 'Une compagnie au service de <em>votre ambition</em>',
@@ -2329,9 +2298,9 @@ const translations = {
     
     
     'news.label': 'Actualités', 'news.photo': 'Challenge.ma', 'news.d1': '25 mai 2025', 'news.t1': "Anas Bennani parie sur l'aérien à Dakhla avec Sahara Aviation Holding", 'news.e1': "Fort d'une carrière internationale dans le financement aéronautique, Anas Bennani crée Sahara Aviation Holding, basée à Dakhla, pour structurer un écosystème d'investissement aérien dans le sud du Maroc. Source : Challenge.ma", 'news.read': 'Lire l\'article →', 'news.title': 'Les dernières <em>nouvelles</em>',
-    'fleet.config': 'Configuration', 'fleet.speed': 'Vitesse de croisière',
-    'fleet.alt': 'Altitude de croisière', 'fleet.range': "Rayon d'action",
-    'fleet.endur': 'Autonomie', 'fleet.cabin': 'Longueur cabine', 'fleet.engine': 'Motorisation',
+    'fleet.config': 'Configuration', 'fleet.speed': 'Vitesse',
+    'fleet.alt': 'Altitude', 'fleet.range': "Rayon d'action",
+    'fleet.endur': 'Autonomie', 'fleet.cabin': 'Cabine', 'fleet.engine': 'Motorisation',
     'fleet.kta.config': '18 sièges Full Business', 'fleet.kta.endur': '~3h 50 sans escale',
     'fleet.ktb.config': '8 sièges Full Business', 'fleet.ktb.endur': '~3h 20 sans escale',
     'fleet.f1': 'Sièges business inclinables', 'fleet.f2': 'Restauration à bord',
@@ -2432,9 +2401,9 @@ const translations = {
     
     'news.label': 'Actualités', 'news.photo': 'Challenge.ma', 'news.d1': '25 mai 2025', 'news.t1': "Anas Bennani parie sur l'aérien à Dakhla avec Sahara Aviation Holding", 'news.e1': "Fort d'une carrière internationale dans le financement aéronautique, Anas Bennani crée Sahara Aviation Holding, basée à Dakhla, pour structurer un écosystème d'investissement aérien dans le sud du Maroc. Source : Challenge.ma", 'news.read': 'Lire l\'article →', 'news.title': 'Les dernières <em>nouvelles</em>',
     'news.label': 'News', 'news.photo': 'Challenge.ma', 'news.d1': '25 May 2025', 'news.t1': 'Anas Bennani bets on aviation in Dakhla with Sahara Aviation Holding', 'news.e1': 'Drawing on an international career in aeronautical financing, Anas Bennani creates Sahara Aviation Holding, based in Dakhla, to structure an aviation investment ecosystem in southern Morocco. Source: Challenge.ma', 'news.read': 'Read the article →', 'news.title': 'Latest <em>News</em>',
-    'fleet.config': 'Configuration', 'fleet.speed': 'Cruising Speed',
-    'fleet.alt': 'Cruising Altitude', 'fleet.range': 'Range',
-    'fleet.endur': 'Endurance', 'fleet.cabin': 'Cabin Length', 'fleet.engine': 'Engines',
+    'fleet.config': 'Configuration', 'fleet.speed': 'Speed',
+    'fleet.alt': 'Altitude', 'fleet.range': 'Range',
+    'fleet.endur': 'Endurance', 'fleet.cabin': 'Cabin', 'fleet.engine': 'Engines',
     'fleet.kta.config': '18 Full Business Seats', 'fleet.kta.endur': '~3h 50 non-stop',
     'fleet.ktb.config': '8 Full Business Seats', 'fleet.ktb.endur': '~3h 20 non-stop',
     'fleet.f1': 'Reclining business seats', 'fleet.f2': 'In-flight catering',
@@ -2534,9 +2503,9 @@ const translations = {
     
     
     'news.label': 'Noticias', 'news.photo': 'Challenge.ma', 'news.d1': '25 de mayo de 2025', 'news.t1': 'Anas Bennani apuesta por la aviación en Dakhla con Sahara Aviation Holding', 'news.e1': 'Con una carrera internacional en financiación aeronáutica, Anas Bennani crea Sahara Aviation Holding, con sede en Dakhla, para estructurar un ecosistema de inversión aérea en el sur de Marruecos. Fuente: Challenge.ma', 'news.read': 'Leer el artículo →', 'news.title': 'Últimas <em>noticias</em>',
-    'fleet.config': 'Configuración', 'fleet.speed': 'Velocidad de Crucero',
-    'fleet.alt': 'Altitud de Crucero', 'fleet.range': 'Radio de Acción',
-    'fleet.endur': 'Autonomía', 'fleet.cabin': 'Longitud de Cabina', 'fleet.engine': 'Motorización',
+    'fleet.config': 'Configuración', 'fleet.speed': 'Velocidad',
+    'fleet.alt': 'Altitud', 'fleet.range': 'Radio de Acción',
+    'fleet.endur': 'Autonomía', 'fleet.cabin': 'Cabina', 'fleet.engine': 'Motorización',
     'fleet.kta.config': '18 asientos Full Business', 'fleet.kta.endur': '~3h 50 sin escala',
     'fleet.ktb.config': '8 asientos Full Business', 'fleet.ktb.endur': '~3h 20 sin escala',
     'fleet.f1': 'Asientos business reclinables', 'fleet.f2': 'Restauración a bordo',
