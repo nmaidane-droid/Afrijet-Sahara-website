@@ -1123,6 +1123,8 @@ footer {
   .lang-btn { font-size: 26px; padding: 4px; }
   .lang-switcher { gap: 4px; margin-left: 12px; }
   .nav-actions { gap: 12px; }
+  #accueil { min-height: auto; }
+  .hero-content { padding-top: 64px; }
 }
 
 
@@ -1496,9 +1498,15 @@ footer {
 
       <!-- Sélecteur langue -->
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('fr')" title="Français">🇫🇷</button>
-        <button class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
-        <button class="lang-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button class="lang-btn active" onclick="setLang('fr')" title="Français">
+          <svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="18" fill="#002395"/><rect x="8" width="8" height="18" fill="#fff"/><rect x="16" width="8" height="18" fill="#ED2939"/></svg>
+        </button>
+        <button class="lang-btn" onclick="setLang('en')" title="English">
+          <svg width="24" height="18" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V36 M0,18 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V36 M0,18 H60" stroke="#C8102E" stroke-width="6"/></svg>
+        </button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">
+          <svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#c60b1e"/><rect y="4" width="24" height="10" fill="#ffc400"/></svg>
+        </button>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Menu">
