@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="fr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,7 +40,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  overflow-x: hidden;
   padding-bottom: 80px;
   font-family: var(--font-body);
   color: var(--text);
@@ -109,7 +107,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   gap: 0;
-  flex: 1;
 }
 .nav-link {
   text-align: left;
@@ -117,12 +114,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 8px 10px;
+  padding: 8px 14px;
   border-radius: var(--radius);
   transition: opacity var(--transition);
   white-space: nowrap;
   color: #fff;
-  min-width: 80px;
 }
 .nav-link:hover, .nav-link.active {
   opacity: 0.75;
@@ -196,12 +192,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu .nav-link {
   display: block;
   padding: 12px 8px;
-  font-size: 16px;
+  font-size: 14px;
   border-bottom: 1px solid var(--border);
   color: var(--navy);
   background: none;
   -webkit-text-fill-color: var(--navy);
-  text-align: left;
 }
 .mobile-menu .nav-link:last-child { border-bottom: none; }
 .mobile-actions {
@@ -216,7 +211,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 section { padding: 96px 32px 80px; }
 .container { max-width: 1280px; margin: 0 auto; background: transparent; }
 .section-label {
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -239,7 +234,6 @@ section { padding: 96px 32px 80px; }
 }
 .section-subtitle {
   font-size: 16px;
-  font-size: 16px;
   line-height: 1.75;
   color: var(--text-mid);
   text-align: justify;
@@ -261,7 +255,6 @@ section { padding: 96px 32px 80px; }
   flex-direction: column;
   justify-content: space-between;
   padding: 0 !important;
-  overflow-x: hidden;
 }
 
 .hero-photo-placeholder {
@@ -286,7 +279,7 @@ section { padding: 96px 32px 80px; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -331,7 +324,7 @@ section { padding: 96px 32px 80px; }
 .btn-primary {
   background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
   color: var(--white);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -350,7 +343,7 @@ section { padding: 96px 32px 80px; }
 .btn-outline {
   background: transparent;
   color: var(--white);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -369,15 +362,14 @@ section { padding: 96px 32px 80px; }
   gap: 12px;
   padding: 24px 32px;
   width: 100%;
-  justify-content: center;
 }
 .hero-stat {
-  flex: 0 1 auto;
+  flex: 1;
   text-align: center;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 24px;
+  padding: 16px 12px;
 }
 .hero-stat-num {
   font-family: var(--font-display);
@@ -385,10 +377,9 @@ section { padding: 96px 32px 80px; }
   font-weight: 300;
   color: var(--navy);
   line-height: 1;
-  text-align: center;
 }
 .hero-stat-label {
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -423,7 +414,7 @@ section { padding: 96px 32px 80px; }
 }
 .value-card {
   background: transparent;
-  padding: 12px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -442,18 +433,18 @@ section { padding: 96px 32px 80px; }
 }
 .value-title {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--navy);
   margin-bottom: 0;
   text-align: left;
 }
 .value-text {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.65;
   color: var(--text-mid);
   text-align: justify;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 .compagnie-visual {
   margin-top: 40px;
@@ -494,7 +485,7 @@ section { padding: 96px 32px 80px; }
   white-space: nowrap;
 }
 .cert-desc {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.6;
   color: var(--text-mid);
   text-align: left;
@@ -574,15 +565,15 @@ section { padding: 96px 32px 80px; }
   text-align: left;
 }
 .aircraft-reg {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.12em;
   color: #E8001C;
   margin-bottom: 32px;
 }
 .specs-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
-.spec-label { width: 50%; color: var(--text-light); font-size: 16px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; padding: 12px 8px 12px 0; vertical-align: middle; }
-.spec-val { color: var(--navy); font-weight: 600; font-size: 16px; padding: 12px 0; vertical-align: middle; }
+.spec-label { width: 50%; color: var(--text-light); font-size: 11px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; padding: 12px 8px 12px 0; vertical-align: middle; }
+.spec-val { color: var(--navy); font-weight: 600; font-size: 13px; padding: 12px 0; vertical-align: middle; }
 .specs-table tr { border-bottom: 1px solid var(--border); }
 .cabin-features {
   display: grid;
@@ -593,7 +584,7 @@ section { padding: 96px 32px 80px; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: 13px;
   color: var(--text-mid);
 }
 .cabin-feat::before {
@@ -615,7 +606,7 @@ section { padding: 96px 32px 80px; }
   margin-top: 32px;
 }
 .service-card {
-  padding: 12px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -626,18 +617,17 @@ section { padding: 96px 32px 80px; }
 }
 .service-title {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--navy);
   margin-bottom: 0;
   text-align: left;
 }
 .service-text {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.65;
   color: var(--text-mid);
   text-align: justify;
-  margin-top: 2px;
 }
 
 /* ============================================================
@@ -665,12 +655,12 @@ section { padding: 96px 32px 80px; }
 }
 .calc-label {
   display: block;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-light);
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 .calc-input {
   width: 100%;
@@ -679,7 +669,7 @@ section { padding: 96px 32px 80px; }
   border-radius: var(--radius);
   color: var(--navy);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -712,7 +702,7 @@ section { padding: 96px 32px 80px; }
   background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
   color: #FFFFFF;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -757,7 +747,7 @@ section { padding: 96px 32px 80px; }
   line-height: 1;
 }
 .result-name {
-  font-size: 16px;
+  font-size: 11px;
   color: var(--text-light);
   margin-top: 4px;
   white-space: nowrap;
@@ -782,13 +772,13 @@ section { padding: 96px 32px 80px; }
 }
 .result-stat-val {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   color: #E8001C;
   line-height: 1;
 }
 .result-stat-lbl {
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -798,7 +788,7 @@ section { padding: 96px 32px 80px; }
 .calc-error {
   display: none;
   margin-top: 12px;
-  font-size: 16px;
+  font-size: 13px;
   color: #cc0000;
 }
 .calc-error.visible { display: block; }
@@ -814,7 +804,7 @@ section { padding: 96px 32px 80px; }
   margin-top: 32px;
 }
 .sec-card {
-  padding: 12px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border);
 }
 .sec-icon {
@@ -832,18 +822,17 @@ section { padding: 96px 32px 80px; }
 }
 .sec-title {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--navy);
   margin-bottom: 0;
   text-align: left;
 }
 .sec-text {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.65;
   color: var(--text-mid);
   text-align: justify;
-  margin-top: 2px;
 }
 
 /* ============================================================
@@ -880,7 +869,7 @@ section { padding: 96px 32px 80px; }
 }
 .news-body { padding: 24px; }
 .news-date {
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -890,7 +879,7 @@ section { padding: 96px 32px 80px; }
 }
 .news-title {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--navy);
   line-height: 1.3;
@@ -898,7 +887,7 @@ section { padding: 96px 32px 80px; }
   text-align: left;
 }
 .news-excerpt {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.65;
   color: var(--text-mid);
 }
@@ -916,7 +905,7 @@ section { padding: 96px 32px 80px; }
 }
 .contact-info { margin-bottom: 40px; }
 .contact-info-sub {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.75;
   color: var(--text-mid);
   margin-bottom: 40px;
@@ -940,15 +929,15 @@ section { padding: 96px 32px 80px; }
   flex-shrink: 0;
 }
 .contact-item-label {
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #E8001C;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 .contact-item-val {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-mid);
   line-height: 1.5;
 }
@@ -972,12 +961,12 @@ section { padding: 96px 32px 80px; }
 .form-group { margin-bottom: 16px; }
 .form-label {
   display: block;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-light);
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 .form-input,
 .form-select,
@@ -988,7 +977,7 @@ section { padding: 96px 32px 80px; }
   border-radius: var(--radius);
   color: var(--navy);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 14px;
   padding: 12px 16px;
   outline: none;
   transition: border-color var(--transition);
@@ -1016,7 +1005,7 @@ section { padding: 96px 32px 80px; }
   background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
   color: #FFFFFF;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1042,10 +1031,10 @@ section { padding: 96px 32px 80px; }
   font-family: var(--font-display);
   font-size: 22px;
   color: #E8001C;
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 .form-success-sub {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-mid);
 }
 
@@ -1078,7 +1067,7 @@ footer {
   }
 }
 .footer-copy {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-light);
   letter-spacing: 0.05em;
 }
@@ -1087,7 +1076,7 @@ footer {
   gap: 24px;
 }
 .footer-link {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-light);
   transition: color var(--transition);
 }
@@ -1102,9 +1091,9 @@ footer {
    ============================================================ */
 /* Mobile : hamburger visible, menu caché */
 @media (max-width: 1024px) {
-  .nav-inner { padding: 0 16px; }
   .nav-menu { display: none; }
   .hamburger { display: flex !important; }
+  .btn-devis { display: none; }
   .nav-link.btn-devis-nav { display: none; }
   .lang-switcher { display: flex !important; }
   body { padding-bottom: 90px; }
@@ -1114,75 +1103,22 @@ footer {
 @media (min-width: 1025px) {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
-  .nav-link { font-size: 11px; padding: 8px 6px; min-width: unset; letter-spacing: 0.04em; }
-  .lang-btn { font-size: 17px; padding: 2px; }
-  .lang-switcher { gap: 2px; margin-left: 4px; }
-  .nav-actions { gap: 4px; }
+  .btn-devis { display: flex !important; }
 }
-
-@media (min-width: 1280px) {
-  .nav-link { font-size: 14px; padding: 8px 12px; letter-spacing: 0.06em; }
-  .lang-btn { font-size: 26px; padding: 4px; }
-  .lang-switcher { gap: 4px; margin-left: 12px; }
-  .nav-actions { gap: 12px; }
-  #accueil { min-height: calc(100vh - 72px); }
-  .hero-content { padding-top: 96px; }
-}
-
-
 
 @media (max-width: 1400px) {
-  .hero-stats {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  padding: 24px 32px;
-  width: 100%;
-  justify-content: center;
-}
-  .hero-stat {
-  flex: 0 1 auto;
-  text-align: center;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 24px;
-}
-  .hero-stat-num { font-size: 26px;   text-align: center;
-}
+  .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 40px; gap: 12px; }
+  .hero-stat { padding: 10px 12px; flex: 1; }
+  .hero-stat-num { font-size: 26px; }
   footer { padding: 12px 32px; }
   #accueil .hero-content { padding-bottom: 8px; flex: 1; }
   #accueil { min-height: calc(100vh - 72px - 52px); }
 }
 @media (max-width: 768px) {
-  .nav-inner { padding: 0 12px; }
-  .nav-logo-img { height: 44px; }
-  .lang-btn { font-size: 13px; padding: 1px; }
-  .lang-switcher { gap: 0px; margin-left: 2px; }
-  .nav-actions { gap: 6px; flex-shrink: 0; }
-  .hero-stat-label { font-size: 9px; }
-  .hero-stats { padding: 16px 8px; gap: 6px; justify-content: center; }
-  .hero-stat { flex: 1; min-width: 0; padding: 16px 4px; }
-  .hero-stat-label { font-size: 9px; white-space: nowrap; text-align: center; overflow: hidden; text-overflow: ellipsis; }
   .hero-title { font-size: 28px; line-height: 1.15; }
-  .hero-stats {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  padding: 24px 32px;
-  width: 100%;
-  justify-content: center;
-}
-  .hero-stat {
-  flex: 0 1 auto;
-  text-align: center;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 24px;
-}
-  .hero-stat-num { font-size: 22px;   text-align: center;
-}
+  .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
+  .hero-stat { padding: 10px 6px; }
+  .hero-stat-num { font-size: 22px; }
   section { padding: 88px 20px 24px; }
   #temps-de-vol { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
@@ -1236,7 +1172,7 @@ footer {
 .autocomplete-item {
   padding: 10px 14px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 13px;
   color: var(--navy);
   border-bottom: 1px solid var(--border);
   text-align: left;
@@ -1248,12 +1184,12 @@ footer {
 }
 .autocomplete-item .ac-code {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
   color: #E8001C;
   margin-right: 6px;
 }
 .autocomplete-item .ac-country {
-  font-size: 16px;
+  font-size: 11px;
   color: var(--text-light);
   float: right;
 }
@@ -1346,14 +1282,14 @@ footer {
 }
 .flotte-dropdown-reg {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--red);
   text-transform: uppercase;
 }
 .flotte-dropdown-type {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-light);
   flex: 1;
@@ -1405,14 +1341,14 @@ footer {
   border-left-color: var(--red);
 }
 .flotte-item-reg {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--red);
   text-transform: uppercase;
 }
 .flotte-item-type {
-  font-size: 16px;
+  font-size: 12px;
   color: var(--text-light);
 }
 .flotte-dropdown-divider {
@@ -1444,7 +1380,7 @@ footer {
   margin-bottom: 12px;
 }
 .flotte-soon p {
-  font-size: 16px;
+  font-size: 15px;
   max-width: 480px;
   margin: 0 auto;
   line-height: 1.7;
@@ -1465,16 +1401,12 @@ footer {
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
-  opacity: 1;
-  transition: transform var(--transition);
+  opacity: 0.5;
+  transition: opacity var(--transition), transform var(--transition);
   line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
 }
-.lang-btn:hover { transform: scale(1.15); }
-.lang-btn.active { transform: scale(1.15); }
+.lang-btn:hover { opacity: 0.9; transform: scale(1.15); }
+.lang-btn.active { opacity: 1; transform: scale(1.15); }
 @media (max-width: 1024px) {
   .lang-switcher { margin-left: 0; }
   .lang-btn { font-size: 20px; }
@@ -1484,7 +1416,7 @@ footer {
 .news-link {
   display: inline-block;
   margin-top: 12px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1496,16 +1428,50 @@ footer {
 
 
 
-/* ── Cadre icône + titre ── */
-.card-header-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #F0F2F5;
-  border: 1.5px solid #D8DDE5;
-  border-radius: 24px;
-  padding: 8px 18px 8px 12px;
-  margin-bottom: 2px;
+/* ── Sous-menu À propos ── */
+.nav-dropdown-parent { position: relative; list-style: none; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown-menu {
+  position: fixed;
+  background: #fff;
+  border: 1.5px solid #E0E5EB;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(10,22,40,0.12);
+  z-index: 9999;
+  min-width: 220px;
+  display: none;
+}
+.nav-dropdown-menu.open { display: block; }
+.nav-dropdown-item {
+  display: block;
+  padding: 14px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0A1628 !important;
+  -webkit-text-fill-color: #0A1628 !important;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+.nav-dropdown-item:hover {
+  background: #F5F7FA;
+  border-left-color: #E8001C;
+  color: #E8001C !important;
+  -webkit-text-fill-color: #E8001C !important;
+}
+/* ── Mot du Président ── */
+.president-grid { display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: start; margin-top: 24px; }
+.president-name { font-family: var(--font-head); font-size: 20px; font-weight: 600; color: var(--navy); margin-top: 12px; }
+.president-title { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+.president-quote { font-family: var(--font-head); font-size: 17px; font-style: italic; line-height: 1.8; color: var(--text); text-align: justify; }
+.president-quote p { margin-bottom: 14px; }
+.president-quote p:last-child { margin-bottom: 0; }
+.quote-mark { font-size: 50px; color: var(--red); line-height: 0.5; vertical-align: -16px; margin-right: 2px; font-family: Georgia, serif; }
+@media (max-width: 768px) {
+  .president-grid { grid-template-columns: 1fr; }
+  .president-quote { font-size: 15px; }
 }
 
 </style>
@@ -1524,7 +1490,13 @@ footer {
 
     <ul class="nav-menu" id="navMenu">
       <li><a href="#accueil" class="nav-link" data-i18n="nav.accueil">Accueil</a></li>
-      <li><a href="#compagnie" class="nav-link" data-i18n="nav.compagnie">La Compagnie</a></li>
+      <li class="nav-dropdown-parent">
+        <a class="nav-link nav-dropdown-trigger" data-i18n="nav.apropos" onclick="toggleNavDropdown(event)">À propos ▾</a>
+        <div class="nav-dropdown-menu" id="navDropdownMenu">
+          <a class="nav-dropdown-item" data-i18n="nav.compagnie" onclick="selectApropos('compagnie')">La Compagnie</a>
+          <a class="nav-dropdown-item" data-i18n="nav.president" onclick="selectApropos('president')">Mot du Président</a>
+        </div>
+      </li>
       <li><a href="#flotte" class="nav-link" data-i18n="nav.flotte">Notre Flotte</a></li>
       <li><a href="#services" class="nav-link" data-i18n="nav.services">Nos Services</a></li>
       <li><a href="#temps-de-vol" class="nav-link" data-i18n="nav.temps">Temps de Vol</a></li>
@@ -1534,18 +1506,14 @@ footer {
     </ul>
 
     <div class="nav-actions">
+      
+      <a href="#contact" class="btn-devis" data-i18n="nav.devis">Demander un devis</a>
 
       <!-- Sélecteur langue -->
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('fr')" title="Français">
-          <svg width="24" height="18" viewBox="0 0 24 18" style="display:block;" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="18" fill="#002395"/><rect x="8" width="8" height="18" fill="#fff"/><rect x="16" width="8" height="18" fill="#ED2939"/></svg>
-        </button>
-        <button class="lang-btn" onclick="setLang('en')" title="English">
-          <svg width="24" height="18" viewBox="0 0 60 36" style="display:block;" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V36 M0,18 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V36 M0,18 H60" stroke="#C8102E" stroke-width="6"/></svg>
-        </button>
-        <button class="lang-btn" onclick="setLang('es')" title="Español">
-          <svg width="24" height="18" viewBox="0 0 24 18" style="display:block;" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#c60b1e"/><rect y="4" width="24" height="10" fill="#ffc400"/></svg>
-        </button>
+        <button class="lang-btn active" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lang-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1559,7 +1527,11 @@ footer {
 <div class="mobile-menu" id="mobileMenu">
   <a href="#accueil" class="nav-link" onclick="closeMobile()" data-i18n="nav.accueil">Accueil</a>
   
-  <a href="#compagnie" class="nav-link" onclick="closeMobile()" data-i18n="nav.compagnie">La Compagnie</a>
+  <a class="nav-link" onclick="toggleMobileApropos(event)" data-i18n="nav.apropos">À propos ▾</a>
+  <div id="mobileAproposMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
+    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('compagnie')" data-i18n="nav.compagnie">La Compagnie</a>
+    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('president')" data-i18n="nav.president">Mot du Président</a>
+  </div>
   
   <a href="#flotte" class="nav-link" onclick="closeMobile()" data-i18n="nav.flotte">Notre Flotte</a>
   
@@ -1571,7 +1543,7 @@ footer {
   
   <a href="#actualites" class="nav-link" onclick="closeMobile()" data-i18n="nav.actualites">Actualités</a>
   
-  <a href="#contact" class="nav-link" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
+  <a href="#contact" class="nav-link" onclick="closeMobile()" data-i18n="nav.contact">Contact / Devis</a>
   
 </div>
 
@@ -1585,13 +1557,11 @@ footer {
     <div class="divider"></div>
     <h1 class="section-title" data-i18n="acc.title">Volez à votre <em>rythme,</em><br>vers vos destinations.</h1>
     <p class="section-subtitle" data-i18n="acc.sub">
-      Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Basée à Dakhla, au sud du Maroc, notre compagnie vous offre une liberté de vol totale : décollage à l'heure qui vous convient, depuis l'aéroport de votre choix, sans escales inutiles. Que ce soit pour une mission institutionnelle, un déplacement d'affaires ou un voyage privé, nous adaptons chaque vol à vos exigences. Discrétion absolue, service personnalisé et excellence opérationnelle à chaque vol.
+      Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Basée à Dakhla, au sud du Maroc, notre compagnie vous offre une liberté de vol totale : décollage à l'heure qui vous convient, depuis l'aéroport de votre choix, sans escales inutiles. Discrétion absolue, service personnalisé et excellence opérationnelle à chaque vol.
     </p>
     
 
-    
-
-  <div class="hero-cta">
+    <div class="hero-cta">
       <a href="#contact" class="btn-primary" data-i18n="acc.cta">Demander un devis →</a>
       
       
@@ -1599,8 +1569,23 @@ footer {
 
   </div>
 
-  
-
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">18</div>
+      <div class="hero-stat-label" data-i18n="acc.stat1">Sièges Full Business</div>
+      
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">M.78</div>
+      <div class="hero-stat-label" data-i18n="acc.stat2">Vitesse de croisière</div>
+      
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">24/7</div>
+      <div class="hero-stat-label" data-i18n="acc.stat3">Disponibilité</div>
+      
+    </div>
+  </div>
 
   
 </section>
@@ -1610,7 +1595,10 @@ footer {
      ============================================================ -->
 <section id="compagnie">
   <div class="container">
-    <div class="compagnie-grid">
+
+    <!-- PANEL : La Compagnie -->
+    <div id="panel-compagnie" style="display:none;">
+<div class="compagnie-grid">
       <div class="compagnie-text reveal">
         <p class="section-label" data-i18n="comp.label">La Compagnie</p>
         
@@ -1624,22 +1612,38 @@ footer {
 
         <div class="values-grid">
           <div class="value-card">
-            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🎯</div><div class="value-title" data-i18n="comp.v1">Excellence</div></div></div>
+            <div class="value-card-header">
+              <div class="value-icon">🎯</div>
+              <div class="value-title" data-i18n="comp.v1">Excellence</div>
+              
+            </div>
             <p class="value-text" data-i18n="comp.v1t">Des standards opérationnels de niveau international, à chaque vol.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🤝</div><div class="value-title" data-i18n="comp.v2">Confiance</div></div></div>
+            <div class="value-card-header">
+              <div class="value-icon">🤝</div>
+              <div class="value-title" data-i18n="comp.v2">Confiance</div>
+              
+            </div>
             <p class="value-text" data-i18n="comp.v2t">Transparence totale et engagement contractuel clair.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">⚡</div><div class="value-title" data-i18n="comp.v3">Réactivité</div></div></div>
+            <div class="value-card-header">
+              <div class="value-icon">⚡</div>
+              <div class="value-title" data-i18n="comp.v3">Réactivité</div>
+              
+            </div>
             <p class="value-text" data-i18n="comp.v3t">Disponibles 24h/24 pour confirmer votre vol en quelques heures.</p>
             
           </div>
           <div class="value-card">
-            <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🛡️</div><div class="value-title" data-i18n="comp.v4">Sécurité</div></div></div>
+            <div class="value-card-header">
+              <div class="value-icon">🛡️</div>
+              <div class="value-title" data-i18n="comp.v4">Sécurité</div>
+              
+            </div>
             <p class="value-text" data-i18n="comp.v4t">La sécurité est notre priorité absolue et non négociable.</p>
             
           </div>
@@ -1675,6 +1679,30 @@ footer {
         </div>
       </div>
     </div>
+  
+    </div>
+
+    <!-- PANEL : Mot du Président -->
+    <div id="panel-president" style="display:none;">
+      <p class="section-label" data-i18n="pres.label">Mot du Président</p>
+      <div class="divider"></div>
+      <div class="president-grid">
+        <div>
+          <div class="president-photo">
+            <img src="data:image/jpeg;base64,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" alt="Anas Bennani" style="width:100%;height:auto;display:block;border-radius:6px;" />
+          </div>
+          <div class="president-name">Anas Bennani</div>
+          <div class="president-title" data-i18n="pres.title">Président — Sahara Aviation Holding</div>
+        </div>
+        <div class="president-quote" data-i18n="pres.quote">
+          <p><span class="quote-mark">"</span>Afrijet Sahara est née d'une conviction profonde : le transport aérien à la demande doit être accessible aux institutionnels et aux entreprises qui opèrent dans des régions où la connectivité aérienne fait défaut.</p>
+          <p>Basée à Dakhla, au cœur d'une région en plein essor, notre compagnie a été fondée pour répondre à un besoin réel : offrir une solution de mobilité aérienne fiable, discrète et sur mesure, sans les contraintes des compagnies régulières.</p>
+          <p>Notre flotte EMB 135 et EMB 145, opérée selon les standards les plus exigeants, est mise à votre disposition avec un engagement absolu de ponctualité, de sécurité et de service. Chaque vol est une mission que nous prenons à cœur.</p>
+          <p>Bienvenue à bord d'Afrijet Sahara."</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1761,8 +1789,8 @@ footer {
             <div class="photo-main-label">CN-KTB · EMB 145</div>
           </div>
           <div class="photo-row">
-            <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;background:#e8edf2;color:#8a9ab0;font-size:13px;">Cockpit</div>
-            <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;background:#e8edf2;color:#8a9ab0;font-size:13px;">Cabine</div>
+            <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;background:#e8edf2;color:#8a9ab0;font-size:12px;">Cockpit</div>
+            <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;background:#e8edf2;color:#8a9ab0;font-size:12px;">Cabine</div>
           </div>
         </div>
         <div class="flotte-specs reveal">
@@ -1813,11 +1841,17 @@ footer {
 
     <div class="services-grid">
       <div class="service-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">💼</div><div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="service-icon">💼</div>
+          <div class="service-title" data-i18n="srv.t1">Vols d'Affaires</div>
+        </div>
         <p class="service-text" data-i18n="srv.d1">Maximisez votre productivité. Décollage à votre heure, de l'aéroport de votre choix. Nos appareils vous permettent d'accéder à des aéroports secondaires inaccessibles aux grandes compagnies, réduisant vos temps de transfert. Confidentialité absolue, service personnalisé et flexibilité totale pour vos équipes dirigeantes.</p>
       </div>
       <div class="service-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">🏛️</div><div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="service-icon">🏛️</div>
+          <div class="service-title" data-i18n="srv.t2">Vols Institutionnels</div>
+        </div>
         <p class="service-text" data-i18n="srv.d2">Afrijet Sahara accompagne les institutions, administrations et organisations internationales dans leurs déplacements officiels. Rigueur protocolaire, discrétion et fiabilité opérationnelle pour vos délégations, missions de terrain et visites officielles à travers l'Afrique, le Moyen-Orient et l'Europe.</p>
       </div>
     </div>
@@ -1827,19 +1861,30 @@ footer {
     <h3 class="section-title reveal" style="font-size:22px;margin-bottom:32px;" data-i18n="srv.aboard">Services <em>à bord</em></h3>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">📶</div><div class="service-title" data-i18n="srv.t3">Connectivité</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="service-icon">📶</div>
+          <div class="service-title" data-i18n="srv.t3">Connectivité</div>
+        </div>
         <p class="service-text" data-i18n="srv.d3">Accès WiFi satellite Starlink à bord pour rester connecté tout au long de votre vol. Travaillez, communiquez ou suivez vos dossiers sans interruption.</p>
       </div>
       <div class="service-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">🍽️</div><div class="service-title" data-i18n="srv.t4">Restauration</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="service-icon">🍽️</div>
+          <div class="service-title" data-i18n="srv.t4">Restauration</div>
+        </div>
         <p class="service-text" data-i18n="srv.d4">Service de restauration personnalisé selon vos préférences : plats chauds et froids, boissons sélectionnées. Chaque repas est préparé avec soin pour répondre à vos exigences.</p>
       </div>
       <div class="service-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon">💺</div><div class="service-title" data-i18n="srv.t5">Confort & Espace</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="service-icon">💺</div>
+          <div class="service-title" data-i18n="srv.t5">Confort & Espace</div>
+        </div>
         <p class="service-text" data-i18n="srv.d5">Sièges business inclinables avec espace généreux entre les rangées. Cabine calme et intimiste, conçue pour votre repos et votre productivité.</p>
       </div>
       <div class="service-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="service-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="20" height="13" rx="2" stroke="#E8001C" stroke-width="1.8"/><path d="M10 10V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#E8001C" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="15" x2="24" y2="15" stroke="#E8001C" stroke-width="1.5"/><circle cx="9" cy="24" r="1.2" fill="#E8001C"/><circle cx="19" cy="24" r="1.2" fill="#E8001C"/></svg></div><div class="service-title" data-i18n="srv.t6">Bagages</div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="service-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="10" width="20" height="13" rx="2" stroke="#E8001C" stroke-width="1.8"/><path d="M10 10V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#E8001C" stroke-width="1.8" stroke-linecap="round"/><line x1="4" y1="15" x2="24" y2="15" stroke="#E8001C" stroke-width="1.5"/><circle cx="9" cy="24" r="1.2" fill="#E8001C"/><circle cx="19" cy="24" r="1.2" fill="#E8001C"/></svg></div>
+          <div class="service-title" data-i18n="srv.t6">Bagages</div>
         </div>
         <p class="service-text" data-i18n="srv.d6">Soute généreuse adaptée à vos besoins, sans les contraintes des compagnies régulières. Embarquez vos équipements professionnels en toute liberté.</p>
       </div>
@@ -1925,7 +1970,7 @@ footer {
         <div id="map" style="width:100%;height:100%;"></div>
         
       </div>
-      <p style="margin-top:14px;font-size:16px;color:var(--text-light);line-height:1.7;text-align:justify;font-style:italic;" data-i18n="tdv.disclaimer">
+      <p style="margin-top:14px;font-size:11px;color:var(--text-light);line-height:1.7;text-align:justify;font-style:italic;" data-i18n="tdv.disclaimer">
         Ce temps de vol est une simple estimation. Il peut changer en fonction des autorisations de survol. Afrijet Sahara ne peut être tenue responsable si la route est plus longue. Un temps de vol plus précis sera calculé lors de l'établissement de votre devis.
       </p>
     </div>
@@ -1943,19 +1988,31 @@ footer {
 
     <div class="securite-grid">
       <div class="sec-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">🛡️</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t1">SMS Certifié</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🛡️</div>
+          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t1">SMS Certifié</div>
+        </div>
         <p class="sec-text" data-i18n="sec.d1">Notre Système de Gestion de la Sécurité est pleinement opérationnel et audité régulièrement. Il couvre l'identification proactive des dangers, l'évaluation des risques, le suivi des actions correctives et la culture sécurité au sein de toute l'organisation.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">📋</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t2">Certification DGAC</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">📋</div>
+          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t2">Certification DGAC</div>
+        </div>
         <p class="sec-text" data-i18n="sec.d2">Afrijet Sahara opère sous Certificat Technique d'Exploitation (CTE) délivré par la DGAC du Maroc. Nos opérations sont conduites en conformité stricte avec la réglementation marocaine et les standards OACI, garantissant un niveau de sécurité homologué à l'échelle internationale.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">👨‍✈️</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t3">Équipage Qualifié</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">👨‍✈️</div>
+          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t3">Équipage Qualifié</div>
+        </div>
         <p class="sec-text" data-i18n="sec.d3">Nos pilotes, très expérimentés, sont certifiés selon les standards les plus exigeants, avec des programmes de formation récurrente sur simulateur. Chaque membre d'équipage maintient ses qualifications à jour et suit un programme de contrôle en ligne rigoureux.</p>
       </div>
       <div class="sec-card reveal">
-        <div style="margin-bottom:14px;"><div class="card-header-badge"><div class="sec-icon" style="background:none;border:none;width:auto;height:auto;">🔧</div><div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t4">Maintenance Rigoureuse</div></div></div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <div class="sec-icon" style="display:flex;align-items:center;justify-content:center;line-height:1;">🔧</div>
+          <div class="sec-title" style="line-height:1;margin:0;" data-i18n="sec.t4">Maintenance Rigoureuse</div>
+        </div>
         <p class="sec-text" data-i18n="sec.d4">Nos appareils sont maintenus selon les programmes de maintenance constructeur approuvés par la DGAC. Chaque vol est précédé d'une inspection complète garantissant la navigabilité de l'aéronef.</p>
       </div>
     </div>
@@ -1987,9 +2044,6 @@ footer {
     </div>
   </div>
 
-</section>
-
-<!-- contact -->
 <section id="contact">
   <div class="container">
     <p class="section-label" data-i18n="cta.label">Contact & Devis</p>
@@ -2225,17 +2279,21 @@ function showSection(id) {
 const translations = {
   fr: {
     'nav.accueil': 'Accueil',
+    'nav.apropos': 'À propos',
+    'nav.president': 'Mot du Président',
     'nav.compagnie': 'La Compagnie',
+    'pres.label': 'Mot du Président',
+    'pres.title': 'Président — Sahara Aviation Holding',
     'nav.flotte': 'Notre Flotte',
     'nav.services': 'Nos Services',
     'nav.temps': 'Temps de Vol',
     'nav.securite': 'Sécurité',
     'nav.actualites': 'Actualités',
-    'nav.contact': 'Contact',
+    'nav.contact': 'Contact / Devis',
     'nav.devis': 'Demander un devis',
     'acc.label': "Aviation Charter d'Exception",
     'acc.title': 'Volez à votre <em>rythme,</em><br>vers vos destinations.',
-    'acc.sub': "Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Basée à Dakhla, au sud du Maroc, notre compagnie vous offre une liberté de vol totale : décollage à l'heure qui vous convient, depuis l'aéroport de votre choix, sans escales inutiles. Que ce soit pour une mission institutionnelle, un déplacement d'affaires ou un voyage privé, nous adaptons chaque vol à vos exigences. Discrétion absolue, service personnalisé et excellence opérationnelle à chaque vol.",
+    'acc.sub': "Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Basée à Dakhla, au sud du Maroc, notre compagnie vous offre une liberté de vol totale : décollage à l'heure qui vous convient, depuis l'aéroport de votre choix, sans escales inutiles. Discrétion absolue, service personnalisé et excellence opérationnelle à chaque vol.",
     'acc.cta': 'Demander un devis →',
     'acc.stat1': 'Sièges Full Business',
     'acc.stat2': 'Vitesse de croisière',
@@ -2323,17 +2381,21 @@ const translations = {
   },
   en: {
     'nav.accueil': 'Home',
+    'nav.apropos': 'About',
+    'nav.president': 'Message from the President',
     'nav.compagnie': 'About Us',
+    'pres.label': 'Message from the President',
+    'pres.title': 'President — Sahara Aviation Holding',
     'nav.flotte': 'Our Fleet',
     'nav.services': 'Services',
     'nav.temps': 'Flight Time',
     'nav.securite': 'Safety',
     'nav.actualites': 'News',
-    'nav.contact': 'Contact',
+    'nav.contact': 'Contact / Devis',
     'nav.devis': 'Request a Quote',
     'acc.label': 'Charter Aviation Excellence',
     'acc.title': 'Fly at your own <em>pace,</em><br>to your destinations.',
-    'acc.sub': 'Afrijet Sahara puts its EMB 135 and EMB 145 fleet at your disposal for on-demand flights to any destination. Based in Dakhla, in southern Morocco, our company offers you total freedom of flight: take off at the time that suits you, from the airport of your choice, with no unnecessary stopovers. Whether for an institutional mission, a business trip or a private journey, we tailor every flight to your requirements. Absolute discretion, personalised service and operational excellence on every flight.',
+    'acc.sub': 'Afrijet Sahara puts its EMB 135 and EMB 145 fleet at your disposal for on-demand flights to any destination. Based in Dakhla, in southern Morocco, our company offers you total freedom of flight: take off at the time that suits you, from the airport of your choice, with no unnecessary stopovers. Absolute discretion, personalised service and operational excellence on every flight.',
     'acc.cta': 'Request a Quote →',
     'acc.stat1': 'Full Business Seats',
     'acc.stat2': 'Cruising Speed',
@@ -2422,17 +2484,21 @@ const translations = {
   },
   es: {
     'nav.accueil': 'Inicio',
+    'nav.apropos': 'Acerca de',
+    'nav.president': 'Mensaje del Presidente',
     'nav.compagnie': 'La Empresa',
+    'pres.label': 'Mensaje del Presidente',
+    'pres.title': 'Presidente — Sahara Aviation Holding',
     'nav.flotte': 'Nuestra Flota',
     'nav.services': 'Servicios',
     'nav.temps': 'Tiempo de Vuelo',
     'nav.securite': 'Seguridad',
     'nav.actualites': 'Noticias',
-    'nav.contact': 'Contacto',
+    'nav.contact': 'Contacto / Presupuesto',
     'nav.devis': 'Solicitar Presupuesto',
     'acc.label': 'Aviación Chárter de Excepción',
     'acc.title': 'Vuele a su <em>ritmo,</em><br>hacia sus destinos.',
-    'acc.sub': 'Afrijet Sahara pone a su disposición su flota EMB 135 y EMB 145 para vuelos bajo demanda hacia cualquier destino. Con sede en Dakhla, en el sur de Marruecos, nuestra compañía le ofrece una libertad de vuelo total: despegue a la hora que le convenga, desde el aeropuerto de su elección, sin escalas innecesarias. Ya sea para una misión institucional, un desplazamiento de negocios o un viaje privado, adaptamos cada vuelo a sus exigencias. Discreción absoluta, servicio personalizado y excelencia operacional en cada vuelo.',
+    'acc.sub': 'Afrijet Sahara pone a su disposición su flota EMB 135 y EMB 145 para vuelos bajo demanda hacia cualquier destino. Con sede en Dakhla, en el sur de Marruecos, nuestra compañía le ofrece una libertad de vuelo total: despegue a la hora que le convenga, desde el aeropuerto de su elección, sin escalas innecesarias. Discreción absoluta, servicio personalizado y excelencia operacional en cada vuelo.',
     'acc.cta': 'Solicitar Presupuesto →',
     'acc.stat1': 'Asientos Full Business',
     'acc.stat2': 'Velocidad de Crucero',
@@ -2545,6 +2611,40 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 }
 
+
+
+function selectApropos(panel) {
+  showSection('compagnie');
+  document.getElementById('panel-compagnie').style.display = panel === 'compagnie' ? 'block' : 'none';
+  document.getElementById('panel-president').style.display = panel === 'president' ? 'block' : 'none';
+  // Fermer dropdowns
+  var m = document.getElementById('navDropdownMenu');
+  if (m) m.classList.remove('open');
+  var mob = document.getElementById('mobileAproposMenu');
+  if (mob) mob.style.display = 'none';
+}
+
+function toggleNavDropdown(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  var menu = document.getElementById('navDropdownMenu');
+  var rect = e.currentTarget.getBoundingClientRect();
+  menu.style.left = rect.left + 'px';
+  menu.classList.toggle('open');
+}
+
+function toggleMobileApropos(e) {
+  e.preventDefault();
+  var mob = document.getElementById('mobileAproposMenu');
+  mob.style.display = mob.style.display === 'none' ? 'block' : 'none';
+}
+
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('navDropdownMenu');
+  if (menu && !menu.contains(e.target) && !e.target.classList.contains('nav-dropdown-trigger')) {
+    menu.classList.remove('open');
+  }
+});
 
 // Init : montrer accueil uniquement
 showSection('accueil');
@@ -2937,5 +3037,10 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLightbox();
 });
 </script>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
 </body>
 </html>
