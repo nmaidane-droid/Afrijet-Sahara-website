@@ -1527,14 +1527,14 @@ footer {
 
       <!-- Sélecteur langue -->
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('fr')" title="Français">
+        <button class="lang-btn active" onclick="setLang('fr', event)" title="Français">
           <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;">
             <rect width="9" height="18" fill="#002395"/>
             <rect x="9" width="8" height="18" fill="#FFFFFF"/>
             <rect x="17" width="9" height="18" fill="#ED2939"/>
           </svg>
         </button>
-        <button class="lang-btn" onclick="setLang('en')" title="English">
+        <button class="lang-btn" onclick="setLang('en', event)" title="English">
           <svg width="26" height="18" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;">
             <rect width="60" height="40" fill="#012169"/>
             <path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/>
@@ -1543,7 +1543,7 @@ footer {
             <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/>
           </svg>
         </button>
-        <button class="lang-btn" onclick="setLang('es')" title="Español">
+        <button class="lang-btn" onclick="setLang('es', event)" title="Español">
           <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;">
             <rect width="26" height="4.5" fill="#AA151B"/>
             <rect y="4.5" width="26" height="9" fill="#F1BF00"/>
@@ -2245,8 +2245,8 @@ function showSection(id) {
     });
 
     // Fermer au clic extérieur
-    document.addEventListener('click', function() {
-      dd.classList.remove('open');
+    document.addEventListener('click', function(e) {
+      if (dd && !dd.contains(e.target)) dd.classList.remove('open');
     });
   }
 
@@ -2570,7 +2570,8 @@ const translations = {
 
 let currentLang = 'fr';
 
-function setLang(lang) {
+function setLang(lang, e) {
+  if (e) e.stopPropagation();
   currentLang = lang;
   const t = translations[lang];
   // Mettre à jour tous les éléments data-i18n
