@@ -1116,6 +1116,9 @@ footer {
   #accueil { min-height: calc(100vh - 72px - 52px); }
 }
 @media (max-width: 768px) {
+  .btn-calc { font-size: 12px !important; white-space: nowrap; }
+  .btn-primary { font-size: 12px !important; white-space: nowrap; }
+  .btn-submit { font-size: 12px !important; white-space: nowrap; }
   .hero-title { font-size: 28px; line-height: 1.15; }
   .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
   .hero-stat { padding: 10px 6px; }
@@ -2624,7 +2627,8 @@ function toggleMobileApropos(e) {
 
 document.addEventListener('click', function(e) {
   var menu = document.getElementById('navDropdownMenu');
-  if (menu && !menu.contains(e.target) && !e.target.classList.contains('nav-dropdown-trigger')) {
+  var isLang = e.target.closest ? e.target.closest('.lang-switcher') : false;
+  if (menu && !menu.contains(e.target) && !e.target.classList.contains('nav-dropdown-trigger') && !isLang) {
     menu.classList.remove('open');
   }
 });
