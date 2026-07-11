@@ -369,14 +369,15 @@ section { padding: 96px 32px 80px; }
   gap: 12px;
   padding: 24px 32px;
   width: 100%;
+  justify-content: center;
 }
 .hero-stat {
-  flex: 1;
+  flex: 0 1 auto;
   text-align: center;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 12px;
+  padding: 16px 24px;
 }
 .hero-stat-num {
   font-family: var(--font-display);
@@ -384,6 +385,7 @@ section { padding: 96px 32px 80px; }
   font-weight: 300;
   color: var(--navy);
   line-height: 1;
+  text-align: center;
 }
 .hero-stat-label {
   font-size: 16px;
@@ -1130,9 +1132,24 @@ footer {
 
 
 @media (max-width: 1400px) {
-  .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 40px; gap: 12px; }
-  .hero-stat { padding: 10px 12px; flex: 1; }
-  .hero-stat-num { font-size: 26px; }
+  .hero-stats {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 24px 32px;
+  width: 100%;
+  justify-content: center;
+}
+  .hero-stat {
+  flex: 0 1 auto;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+}
+  .hero-stat-num { font-size: 26px;   text-align: center;
+}
   footer { padding: 12px 32px; }
   #accueil .hero-content { padding-bottom: 8px; flex: 1; }
   #accueil { min-height: calc(100vh - 72px - 52px); }
@@ -1144,10 +1161,28 @@ footer {
   .lang-switcher { gap: 0px; margin-left: 2px; }
   .nav-actions { gap: 6px; flex-shrink: 0; }
   .hero-stat-label { font-size: 9px; }
+  .hero-stats { padding: 16px 8px; gap: 6px; justify-content: center; }
+  .hero-stat { flex: 1; min-width: 0; padding: 16px 4px; }
+  .hero-stat-label { font-size: 9px; white-space: nowrap; text-align: center; overflow: hidden; text-overflow: ellipsis; }
   .hero-title { font-size: 28px; line-height: 1.15; }
-  .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
-  .hero-stat { padding: 10px 6px; }
-  .hero-stat-num { font-size: 22px; }
+  .hero-stats {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 24px 32px;
+  width: 100%;
+  justify-content: center;
+}
+  .hero-stat {
+  flex: 0 1 auto;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+}
+  .hero-stat-num { font-size: 22px;   text-align: center;
+}
   section { padding: 88px 20px 24px; }
   #temps-de-vol { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
@@ -1433,6 +1468,10 @@ footer {
   opacity: 1;
   transition: transform var(--transition);
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 }
 .lang-btn:hover { transform: scale(1.15); }
 .lang-btn.active { transform: scale(1.15); }
@@ -1499,13 +1538,13 @@ footer {
       <!-- Sélecteur langue -->
       <div class="lang-switcher">
         <button class="lang-btn active" onclick="setLang('fr')" title="Français">
-          <svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="18" fill="#002395"/><rect x="8" width="8" height="18" fill="#fff"/><rect x="16" width="8" height="18" fill="#ED2939"/></svg>
+          <svg width="24" height="18" viewBox="0 0 24 18" style="display:block;" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="18" fill="#002395"/><rect x="8" width="8" height="18" fill="#fff"/><rect x="16" width="8" height="18" fill="#ED2939"/></svg>
         </button>
         <button class="lang-btn" onclick="setLang('en')" title="English">
-          <svg width="24" height="18" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V36 M0,18 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V36 M0,18 H60" stroke="#C8102E" stroke-width="6"/></svg>
+          <svg width="24" height="18" viewBox="0 0 60 36" style="display:block;" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V36 M0,18 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V36 M0,18 H60" stroke="#C8102E" stroke-width="6"/></svg>
         </button>
         <button class="lang-btn" onclick="setLang('es')" title="Español">
-          <svg width="24" height="18" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#c60b1e"/><rect y="4" width="24" height="10" fill="#ffc400"/></svg>
+          <svg width="24" height="18" viewBox="0 0 24 18" style="display:block;" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#c60b1e"/><rect y="4" width="24" height="10" fill="#ffc400"/></svg>
         </button>
       </div>
 
@@ -1550,7 +1589,9 @@ footer {
     </p>
     
 
-    <div class="hero-cta">
+    
+
+  <div class="hero-cta">
       <a href="#contact" class="btn-primary" data-i18n="acc.cta">Demander un devis →</a>
       
       
@@ -1558,23 +1599,8 @@ footer {
 
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">18</div>
-      <div class="hero-stat-label" data-i18n="acc.stat1">Sièges Full Business</div>
-      
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">M.78</div>
-      <div class="hero-stat-label" data-i18n="acc.stat2">Vitesse de croisière</div>
-      
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">24/7</div>
-      <div class="hero-stat-label" data-i18n="acc.stat3">Disponibilité</div>
-      
-    </div>
-  </div>
+  
+
 
   
 </section>
