@@ -2179,7 +2179,7 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 // Cacher toutes les sections sauf accueil au démarrage
 function showSection(id) {
-  allSections.forEach(s => {
+  document.querySelectorAll('section[id]').forEach(s => {
     s.style.display = (s.id === id) ? '' : 'none';
   });
   // Cacher les panneaux compagnie par défaut
@@ -2376,7 +2376,7 @@ const translations = {
     'nav.temps': 'Flight Time',
     'nav.securite': 'Safety',
     'nav.actualites': 'News',
-    'nav.contact': 'Contact / Devis',
+    'nav.contact': 'Contact / Quote',
     'nav.devis': 'Request a Quote',
     'acc.label': 'Charter Aviation Excellence',
     'acc.title': 'Fly at your own <em>pace,</em><br>to your destinations.',
