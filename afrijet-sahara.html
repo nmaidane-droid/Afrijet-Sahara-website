@@ -1523,7 +1523,7 @@ footer {
       <li><a href="#temps-de-vol" class="nav-link" data-i18n="nav.temps">Temps de Vol</a></li>
       <li><a href="#securite" class="nav-link" data-i18n="nav.securite">Sécurité</a></li>
       <li><a href="#actualites" class="nav-link" data-i18n="nav.actualites">Actualités</a></li>
-      <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="#contact" class="nav-link" data-i18n="nav.contact" onclick="showSection('contact');return false;">Contact</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -1582,7 +1582,7 @@ footer {
   
   <a href="#actualites" class="nav-link" onclick="closeMobile()" data-i18n="nav.actualites">Actualités</a>
   
-  <a href="#contact" class="nav-link" onclick="closeMobile()" data-i18n="nav.contact">Contact / Devis</a>
+  <a href="#contact" class="nav-link" onclick="closeMobile();showSection('contact');return false;" data-i18n="nav.contact">Contact / Devis</a>
   
 </div>
 
