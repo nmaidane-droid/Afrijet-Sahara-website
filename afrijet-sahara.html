@@ -2180,7 +2180,7 @@ const mobileMenu = document.getElementById('mobileMenu');
 // Cacher toutes les sections sauf accueil au démarrage
 function showSection(id) {
   document.querySelectorAll('section[id]').forEach(s => {
-    s.style.display = (s.id === id) ? '' : 'none';
+    s.style.display = (s.id === id) ? 'block' : 'none';
   });
   // Cacher les panneaux compagnie par défaut
   if (id === 'compagnie') {
