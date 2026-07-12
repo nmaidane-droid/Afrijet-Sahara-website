@@ -1495,6 +1495,29 @@ footer {
   font-size: 16px;
 }
 
+
+/* ── Carte prépayée ── */
+.prepaid-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.prepaid-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.prepaid-list li::before {
+  content: "→";
+  color: var(--red);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
 </style>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
 </head>
@@ -1514,8 +1537,9 @@ footer {
       <li class="nav-dropdown-parent">
         <a class="nav-link nav-dropdown-trigger" data-i18n="nav.apropos" onclick="toggleNavDropdown(event)">À propos ▾</a>
         <div class="nav-dropdown-menu" id="navDropdownMenu">
-          <a class="nav-dropdown-item" data-i18n="nav.compagnie" onclick="selectApropos('compagnie')">La Compagnie</a>
           <a class="nav-dropdown-item" data-i18n="nav.president" onclick="selectApropos('president')">Mot du Président</a>
+          <a class="nav-dropdown-item" data-i18n="nav.compagnie" onclick="selectApropos('compagnie')">La Compagnie</a>
+          <a class="nav-dropdown-item" data-i18n="nav.prepaid" onclick="selectApropos('prepaid')">Cartes prépayées</a>
         </div>
       </li>
       <li><a href="#flotte" class="nav-link" data-i18n="nav.flotte">Notre Flotte</a></li>
@@ -1568,8 +1592,9 @@ footer {
   
   <a class="nav-link" onclick="toggleMobileApropos(event)" data-i18n="nav.apropos">À propos ▾</a>
   <div id="mobileAproposMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
-    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('compagnie')" data-i18n="nav.compagnie">La Compagnie</a>
     <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('president')" data-i18n="nav.president">Mot du Président</a>
+    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('compagnie')" data-i18n="nav.compagnie">La Compagnie</a>
+    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('prepaid')" data-i18n="nav.prepaid">Cartes prépayées</a>
   </div>
   
   <a href="#flotte" class="nav-link" onclick="closeMobile()" data-i18n="nav.flotte">Notre Flotte</a>
@@ -2188,8 +2213,10 @@ function showSection(id) {
   if (id === 'compagnie') {
     var pc = document.getElementById('panel-compagnie');
     var pp = document.getElementById('panel-president');
+    var pr = document.getElementById('panel-prepaid');
     if (pc) pc.style.display = 'none';
     if (pp) pp.style.display = 'none';
+    if (pr) pr.style.display = 'none';
   }
 
   // Marquer lien actif
@@ -2267,6 +2294,17 @@ const translations = {
   fr: {
     'nav.accueil': 'Accueil',
     'nav.apropos': 'À propos',
+    'nav.prepaid': 'Cartes prépayées',
+    'prepaid.benefits': 'Avantages clés',
+    'prepaid.l1': 'Disponibilité garantie sous 48 heures',
+    'prepaid.l2': 'Tarif horaire fixe sans surprises',
+    'prepaid.l3': 'Gestionnaire de compte personnel dédié',
+    'prepaid.l4': "Conditions d'annulation préférentielles",
+    'prepaid.l5': 'Taxes aéroportuaires incluses',
+    'prepaid.l6': 'Anti-givrage et restauration à bord inclus',
+    'prepaid.l7': "Pas de date d'expiration de vos crédits",
+    'prepaid.l8': 'Accès à toutes nos destinations — Afrique, Moyen-Orient, Europe',
+    'prepaid.cta': 'Demander une proposition →',
     'nav.president': 'Mot du Président',
     'nav.compagnie': 'La Compagnie',
     'pres.label': 'Mot du Président',
@@ -2369,6 +2407,17 @@ const translations = {
   en: {
     'nav.accueil': 'Home',
     'nav.apropos': 'About',
+    'nav.prepaid': 'Prepaid Cards',
+    'prepaid.benefits': 'Key Benefits',
+    'prepaid.l1': 'Guaranteed availability within 48 hours',
+    'prepaid.l2': 'Fixed hourly rate with no surprises',
+    'prepaid.l3': 'Dedicated personal account manager',
+    'prepaid.l4': 'Preferred cancellation terms',
+    'prepaid.l5': 'Airport fees included',
+    'prepaid.l6': 'De-icing and in-flight catering included',
+    'prepaid.l7': 'No expiry date on your credits',
+    'prepaid.l8': 'Access to all our destinations — Africa, Middle East, Europe',
+    'prepaid.cta': 'Request a proposal →',
     'nav.president': 'Message from the President',
     'nav.compagnie': 'About Us',
     'pres.label': 'Message from the President',
@@ -2472,6 +2521,17 @@ const translations = {
   es: {
     'nav.accueil': 'Inicio',
     'nav.apropos': 'Acerca de',
+    'nav.prepaid': 'Tarjetas Prepago',
+    'prepaid.benefits': 'Ventajas clave',
+    'prepaid.l1': 'Disponibilidad garantizada en 48 horas',
+    'prepaid.l2': 'Tarifa horaria fija sin sorpresas',
+    'prepaid.l3': 'Gestor de cuenta personal dedicado',
+    'prepaid.l4': 'Condiciones de cancelación preferentes',
+    'prepaid.l5': 'Tasas aeroportuarias incluidas',
+    'prepaid.l6': 'Anticongelante y restauración a bordo incluidos',
+    'prepaid.l7': 'Sin fecha de caducidad de sus créditos',
+    'prepaid.l8': 'Acceso a todos nuestros destinos — África, Oriente Medio, Europa',
+    'prepaid.cta': 'Solicitar una propuesta →',
     'nav.president': 'Mensaje del Presidente',
     'nav.compagnie': 'La Empresa',
     'pres.label': 'Mensaje del Presidente',
@@ -2605,6 +2665,8 @@ function selectApropos(panel) {
   showSection('compagnie');
   document.getElementById('panel-compagnie').style.display = panel === 'compagnie' ? 'block' : 'none';
   document.getElementById('panel-president').style.display = panel === 'president' ? 'block' : 'none';
+  var pp = document.getElementById('panel-prepaid');
+  if (pp) pp.style.display = panel === 'prepaid' ? 'block' : 'none';
   // Fermer dropdowns
   var m = document.getElementById('navDropdownMenu');
   if (m) m.classList.remove('open');
