@@ -838,6 +838,59 @@ section { padding: 96px 32px 80px; }
   padding: 4px 8px;
 }
 .el-loading { text-align: center; padding: 32px; color: var(--text-light); }
+.el-ac-dropdown { position: relative; }
+.el-ac-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--transition);
+}
+.el-ac-dropdown-btn:hover, .el-ac-dropdown.open .el-ac-dropdown-btn { border-color: #E8001C; }
+.el-ac-dropdown.open .el-ac-dropdown-btn svg { transform: rotate(180deg); }
+.el-ac-reg {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #E8001C;
+}
+.el-ac-type {
+  font-size: 13px;
+  color: var(--text-light);
+  flex: 1;
+}
+.el-ac-dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(10,22,40,0.12);
+  z-index: 200;
+  overflow: hidden;
+  display: none;
+}
+.el-ac-dropdown.open .el-ac-dropdown-list { display: block; }
+.el-ac-dropdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background var(--transition);
+}
+.el-ac-dropdown-item:hover { background: var(--off-white); border-left-color: #E8001C; }
+.el-ac-dropdown-item.active { background: rgba(232,0,28,0.04); border-left-color: #E8001C; }
+.el-ac-item-reg { font-size: 14px; font-weight: 700; color: #E8001C; letter-spacing: 0.08em; }
+.el-ac-item-type { font-size: 13px; color: var(--text-light); }
 
 
 
@@ -2151,22 +2204,40 @@ footer {
         </div>
       </div>
       <div class="el-form-row">
-        <div class="el-form-group">
+        <div class="el-form-group" style="position:relative;">
           <label>Départ</label>
-          <input type="text" id="elDepart" placeholder="Dakhla" />
+          <input type="text" id="elDepart" placeholder="Code IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+          <div class="autocomplete-list" id="elDepList"></div>
         </div>
-        <div class="el-form-group">
+        <div class="el-form-group" style="position:relative;">
           <label>Arrivée</label>
-          <input type="text" id="elArrivee" placeholder="Casablanca" />
+          <input type="text" id="elArrivee" placeholder="Code IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+          <div class="autocomplete-list" id="elArrList"></div>
         </div>
       </div>
       <div class="el-form-row">
         <div class="el-form-group">
           <label>Avion</label>
-          <select id="elAvion">
-            <option value="CN-KTA">CN-KTA (EMB 135)</option>
-            <option value="CN-KTB">CN-KTB (EMB 145)</option>
-          </select>
+          <div class="el-ac-dropdown" id="elAcDropdown">
+            <button type="button" class="el-ac-dropdown-btn" id="elAcBtn">
+              <span class="el-ac-reg">CN-KTA</span>
+              <span class="el-ac-type">Embraer 135 KL · 18 sièges</span>
+              <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:8px;flex-shrink:0;color:var(--text-light);transition:transform .2s;">
+                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="el-ac-dropdown-list" id="elAcList">
+              <div class="el-ac-dropdown-item active" data-val="CN-KTA">
+                <span class="el-ac-item-reg">CN-KTA</span>
+                <span class="el-ac-item-type">Embraer 135 KL · 18 sièges</span>
+              </div>
+              <div class="el-ac-dropdown-item" data-val="CN-KTB">
+                <span class="el-ac-item-reg">CN-KTB</span>
+                <span class="el-ac-item-type">Embraer 145 · 8 sièges</span>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="elAvion" value="CN-KTA" />
         </div>
         <div class="el-form-group">
           <label>Prix</label>
@@ -2949,6 +3020,282 @@ document.addEventListener('keydown', function(e) {
 // VOLS A VIDE (EMPTY LEGS) — Supabase
 // ============================================================
 const SUPA_URL = 'https://zulwubuzuylmwkittnbg.supabase.co';
+
+// ── Base aéroports (Afrique, Moyen-Orient, Europe) ──
+const EL_AIRPORTS = {
+// Maroc
+'CMN':'Casablanca','RAK':'Marrakech','AGA':'Agadir','FEZ':'Fès','RBA':'Rabat','TNG':'Tanger','OUD':'Oujda','NDR':'Nador','ERH':'Errachidia','ESU':'Essaouira','OZZ':'Ouarzazate','VIL':'Dakhla','LAS':'Laayoune','TTU':'Tétouan','BEM':'Beni Mellal','GUF':'Guelmim',
+// Algérie
+'ALG':'Alger','ORN':'Oran','CZL':'Constantine','AAE':'Annaba','TLM':'Tlemcen','BLJ':'Batna','GHA':'Ghardaïa','TMR':'Tamanrasset','BSK':'Biskra','HRM':'Hassi R\'Mel','BJA':'Béjaïa','DJG':'Djanet','ELU':'El Oued','TIN':'Tindouf',
+// Tunisie
+'TUN':'Tunis','SFA':'Sfax','MIR':'Monastir','DJE':'Djerba','TBJ':'Tabarka','NBE':'Enfidha','TOE':'Tozeur','GAF':'Gafsa',
+// Libye
+'TIP':'Tripoli','BEN':'Benghazi','MRA':'Misrata','SEB':'Sebha',
+// Egypte
+'CAI':'Le Caire','HRG':'Hurghada','SSH':'Charm el-Cheikh','LXR':'Louxor','ASW':'Assouan','ALY':'Alexandrie','HBE':'Borg El Arab',
+// Mauritanie
+'NKC':'Nouakchott','NDB':'Nouadhibou','ATR':'Atar','TIY':'Tidjikja',
+// Sénégal
+'DSS':'Dakar','ZIG':'Ziguinchor','CSK':'Cap Skirring',
+// Mali
+'BKO':'Bamako','GAQ':'Gao','TOM':'Tombouctou',
+// Guinée
+'CKY':'Conakry',
+// Côte d'Ivoire
+'ABJ':'Abidjan','BYK':'Bouaké',
+// Burkina Faso
+'OUA':'Ouagadougou','BOY':'Bobo-Dioulasso',
+// Niger
+'NIM':'Niamey','AJY':'Agadez',
+// Tchad
+'NDJ':'N\'Djamena',
+// Ghana
+'ACC':'Accra','KMS':'Kumasi',
+// Nigeria
+'LOS':'Lagos','ABV':'Abuja','PHC':'Port Harcourt','KAN':'Kano',
+// Cameroun
+'DLA':'Douala','NSI':'Yaoundé','GOU':'Garoua',
+// Gabon
+'LBV':'Libreville','POG':'Port-Gentil','MVB':'Franceville',
+// Congo
+'BZV':'Brazzaville','PNR':'Pointe-Noire',
+// RDC
+'FIH':'Kinshasa','FBM':'Lubumbashi',
+// Centrafrique
+'BGF':'Bangui',
+// Guinée Eq.
+'SSG':'Malabo','BSG':'Bata',
+// Togo
+'LFW':'Lomé',
+// Bénin
+'COO':'Cotonou',
+// Gambie
+'BJL':'Banjul',
+// Sierra Leone
+'FNA':'Freetown',
+// Liberia
+'ROB':'Monrovia',
+// Cap-Vert
+'SID':'Sal','RAI':'Praia',
+// São Tomé
+'TMS':'São Tomé',
+// Angola
+'LAD':'Luanda',
+// Mozambique
+'MPM':'Maputo',
+// Tanzanie
+'DAR':'Dar es Salaam','JRO':'Kilimandjaro','ZNZ':'Zanzibar',
+// Kenya
+'NBO':'Nairobi','MBA':'Mombasa',
+// Ouganda
+'EBB':'Entebbe',
+// Rwanda
+'KGL':'Kigali',
+// Éthiopie
+'ADD':'Addis-Abeba',
+// Djibouti
+'JIB':'Djibouti',
+// Somalie
+'MGQ':'Mogadiscio',
+// Erythrée
+'ASM':'Asmara',
+// Soudan
+'KRT':'Khartoum',
+// Afrique du Sud
+'JNB':'Johannesburg','CPT':'Le Cap','DUR':'Durban',
+// Madagascar
+'TNR':'Antananarivo','NOS':'Nosy Be',
+// Maurice
+'MRU':'Maurice',
+// Comores
+'HAH':'Moroni',
+// Seychelles
+'SEZ':'Mahé',
+// Arabie Saoudite
+'JED':'Djeddah','RUH':'Riyad','DMM':'Dammam','MED':'Médine',
+// EAU
+'DXB':'Dubaï','AUH':'Abu Dhabi','SHJ':'Sharjah',
+// Qatar
+'DOH':'Doha',
+// Bahreïn
+'BAH':'Bahreïn',
+// Koweït
+'KWI':'Koweït',
+// Oman
+'MCT':'Mascate','SLL':'Salalah',
+// Jordanie
+'AMM':'Amman','AQJ':'Aqaba',
+// Liban
+'BEY':'Beyrouth',
+// Irak
+'BGW':'Bagdad','EBL':'Erbil','BSR':'Bassora',
+// Israël
+'TLV':'Tel Aviv',
+// Turquie
+'IST':'Istanbul','SAW':'Istanbul Sabiha','ESB':'Ankara','AYT':'Antalya','ADB':'Izmir','DLM':'Dalaman','BJV':'Bodrum',
+// France
+'CDG':'Paris CDG','ORY':'Paris Orly','LBG':'Paris Le Bourget','NCE':'Nice','LYS':'Lyon','MRS':'Marseille','TLS':'Toulouse','BOD':'Bordeaux','NTE':'Nantes','SXB':'Strasbourg','MPL':'Montpellier','LIL':'Lille','BIA':'Bastia','AJA':'Ajaccio','BIQ':'Biarritz','CFE':'Clermont-Ferrand','RNS':'Rennes',
+// Espagne
+'MAD':'Madrid','BCN':'Barcelone','PMI':'Palma Majorque','AGP':'Malaga','ALC':'Alicante','VLC':'Valence','SVQ':'Séville','BIO':'Bilbao','IBZ':'Ibiza','TFS':'Tenerife','LPA':'Gran Canaria','FUE':'Fuerteventura','ACE':'Lanzarote',
+// Portugal
+'LIS':'Lisbonne','OPO':'Porto','FAO':'Faro','FNC':'Funchal',
+// Royaume-Uni
+'LHR':'Londres Heathrow','LGW':'Londres Gatwick','STN':'Londres Stansted','LTN':'Londres Luton','LCY':'London City','MAN':'Manchester','EDI':'Édimbourg','BHX':'Birmingham','BRS':'Bristol','GLA':'Glasgow',
+// Allemagne
+'FRA':'Francfort','MUC':'Munich','BER':'Berlin','DUS':'Düsseldorf','HAM':'Hambourg','CGN':'Cologne','STR':'Stuttgart','HAJ':'Hanovre',
+// Italie
+'FCO':'Rome Fiumicino','CIA':'Rome Ciampino','MXP':'Milan Malpensa','LIN':'Milan Linate','NAP':'Naples','VCE':'Venise','BLQ':'Bologne','CTA':'Catane','PMO':'Palerme','FLR':'Florence','PSA':'Pise','OLB':'Olbia',
+// Suisse
+'ZRH':'Zurich','GVA':'Genève','BSL':'Bâle-Mulhouse',
+// Belgique
+'BRU':'Bruxelles','CRL':'Charleroi','ANR':'Anvers','LGG':'Liège',
+// Pays-Bas
+'AMS':'Amsterdam','EIN':'Eindhoven','RTM':'Rotterdam',
+// Luxembourg
+'LUX':'Luxembourg',
+// Autriche
+'VIE':'Vienne','SZG':'Salzbourg','INN':'Innsbruck',
+// Grèce
+'ATH':'Athènes','SKG':'Thessalonique','HER':'Héraklion','JMK':'Mykonos','JTR':'Santorin','CFU':'Corfou','RHO':'Rhodes',
+// Chypre
+'LCA':'Larnaca','PFO':'Paphos',
+// Malte
+'MLA':'Malte',
+// Irlande
+'DUB':'Dublin','ORK':'Cork','SNN':'Shannon',
+// Pologne
+'WAW':'Varsovie','KRK':'Cracovie','GDN':'Gdansk','WRO':'Wroclaw',
+// Tchéquie
+'PRG':'Prague','BRQ':'Brno',
+// Hongrie
+'BUD':'Budapest',
+// Roumanie
+'OTP':'Bucarest','CLJ':'Cluj',
+// Bulgarie
+'SOF':'Sofia','VAR':'Varna',
+// Croatie
+'ZAG':'Zagreb','SPU':'Split','DBV':'Dubrovnik',
+// Serbie
+'BEG':'Belgrade',
+// Monténégro
+'TGD':'Podgorica','TIV':'Tivat',
+// Albanie
+'TIA':'Tirana',
+// Macédoine
+'SKP':'Skopje',
+// Bosnie
+'SJJ':'Sarajevo',
+// Slovénie
+'LJU':'Ljubljana',
+// Slovaquie
+'BTS':'Bratislava',
+// Danemark
+'CPH':'Copenhague','BLL':'Billund',
+// Suède
+'ARN':'Stockholm','GOT':'Göteborg',
+// Norvège
+'OSL':'Oslo','BGO':'Bergen','TRD':'Trondheim',
+// Finlande
+'HEL':'Helsinki','TMP':'Tampere',
+// Islande
+'KEF':'Reykjavik',
+// Pays Baltes
+'TLL':'Tallinn','RIX':'Riga','VNO':'Vilnius',
+// Ukraine
+'KBP':'Kiev','ODS':'Odessa','LWO':'Lviv',
+// Moldavie
+'KIV':'Chisinau',
+// Géorgie
+'TBS':'Tbilissi',
+// Arménie
+'EVN':'Erevan',
+// Azerbaïdjan
+'GYD':'Bakou',
+};
+
+// ── Autocomplete admin empty legs ──
+function elFilterAirports(q) {
+  if (!q || q.length < 2) return [];
+  const up = q.toUpperCase();
+  const res = [];
+  for (const [code, city] of Object.entries(EL_AIRPORTS)) {
+    if (code.startsWith(up) || city.toUpperCase().includes(up)) {
+      res.push([code, city]);
+      if (res.length >= 12) break;
+    }
+  }
+  return res;
+}
+
+function elSetupAC(inputId, listId) {
+  const inp = document.getElementById(inputId);
+  const lst = document.getElementById(listId);
+  if (!inp || !lst) return;
+  inp.addEventListener('input', () => {
+    const results = elFilterAirports(inp.value);
+    if (!results.length) { lst.classList.remove('open'); lst.innerHTML = ''; return; }
+    lst.innerHTML = results.map(([code, city]) =>
+      '<div class="autocomplete-item" data-code="' + code + '" data-city="' + city + '"><span class="ac-code">' + code + '</span> ' + city + '</div>'
+    ).join('');
+    lst.querySelectorAll('.autocomplete-item').forEach(item => {
+      item.addEventListener('mousedown', e => {
+        e.preventDefault();
+        inp.value = item.getAttribute('data-city');
+        inp.setAttribute('data-iata', item.getAttribute('data-code'));
+        lst.classList.remove('open');
+      });
+    });
+    lst.classList.add('open');
+  });
+  inp.addEventListener('blur', () => setTimeout(() => lst.classList.remove('open'), 200));
+  inp.addEventListener('focus', () => { if (inp.value.length >= 2) inp.dispatchEvent(new Event('input')); });
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const first = lst.querySelector('.autocomplete-item');
+      if (first) first.dispatchEvent(new MouseEvent('mousedown'));
+    }
+  });
+}
+elSetupAC('elDepart', 'elDepList');
+elSetupAC('elArrivee', 'elArrList');
+elSetupAC('formInputDep', 'formListDep');
+elSetupAC('formInputArr', 'formListArr');
+
+// ── Custom aircraft dropdown (admin) ──
+(function() {
+  var dd = document.getElementById('elAcDropdown');
+  var btn = document.getElementById('elAcBtn');
+  var list = document.getElementById('elAcList');
+  var hidden = document.getElementById('elAvion');
+  if (!dd || !btn || !list) return;
+
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+
+  list.querySelectorAll('.el-ac-dropdown-item').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var val = item.getAttribute('data-val');
+      var reg = item.querySelector('.el-ac-item-reg').textContent;
+      var type = item.querySelector('.el-ac-item-type').textContent;
+
+      dd.querySelector('.el-ac-reg').textContent = reg;
+      dd.querySelector('.el-ac-type').textContent = type;
+      if (hidden) hidden.value = val;
+
+      list.querySelectorAll('.el-ac-dropdown-item').forEach(function(i) { i.classList.remove('active'); });
+      item.classList.add('active');
+      dd.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!dd.contains(e.target)) dd.classList.remove('open');
+  });
+})();
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1bHd1YnV6dXlsbXdraXR0bmJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3Mjk5MjQsImV4cCI6MjA5ODMwNTkyNH0.Bt2MXASzrqWPaxTxo7ImZu-FtdjahLG9FLOMIgz9SWA';
 const EL_TABLE = 'empty_legs';
 const EL_PASS_HASH = 'c4ab3191'; // hash simplifié
