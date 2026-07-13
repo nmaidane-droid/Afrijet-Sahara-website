@@ -638,167 +638,206 @@ section { padding: 96px 32px 80px; }
 }
 
 /* ============================================================
-   TEMPS DE VOL
+   VOLS A VIDE (EMPTY LEGS)
    ============================================================ */
-#temps-de-vol {
+#empty-legs {
   background: var(--off-white);
   padding: 96px 32px 80px;
 }
-#temps-de-vol .section-label { color: #E8001C; }
-#temps-de-vol .section-title { color: var(--navy); }
-#temps-de-vol .section-title em { color: #E8001C; }
-#temps-de-vol .divider { background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%); }
-.flight-calc {
+#empty-legs .section-label { color: #E8001C; }
+#empty-legs .section-title { color: var(--navy); }
+#empty-legs .section-title em { color: #E8001C; }
+#empty-legs .divider { background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%); }
+.el-grid {
   margin-top: 32px;
-  display: block;
-}
-.calc-panel {
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-.calc-row {
-  margin-bottom: 20px;
-}
-.calc-label {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 8px;
-}
-.calc-input {
-  width: 100%;
-  background: var(--off-white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--navy);
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  padding: 14px 16px;
-  outline: none;
-  transition: border-color var(--transition);
-  -webkit-appearance: none;
-}
-.calc-input::placeholder {
-  text-transform: none;
-  color: #aab;
-  font-size: 13px;
-  letter-spacing: 0.01em;
-}
-
-.calc-input:focus {
-  border-color: #E8001C;
-}
-.calc-input.error {
-  border-color: #e55;
-}
-.calc-separator {
-  text-align: center;
-  color: var(--border);
-  font-size: 20px;
-  margin: 4px 0 16px;
-}
-.btn-calc {
-  width: 100%;
-  background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
-  color: #FFFFFF;
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 16px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all var(--transition);
-  margin-top: 8px;
-}
-.btn-calc:hover {
-  background: linear-gradient(90deg, #8B0000 0%, #E8001C 100%);
-  transform: translateY(-1px);
-}
-.btn-calc:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-.calc-result {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  display: none;
-}
-.calc-result.visible { display: block; }
-.result-airports {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  gap: 8px;
-}
-.result-airport {
-  flex: 1;
-  min-width: 0;
-}
-.result-code {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1;
-}
-.result-name {
-  font-size: 16px;
-  color: var(--text-light);
-  margin-top: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.result-arrow {
-  color: #E8001C;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-.result-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
-.result-stat {
+.el-card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 14px;
+  padding: 24px;
+  transition: all var(--transition);
+  position: relative;
 }
-.result-stat-val {
+.el-card:hover {
+  box-shadow: 0 8px 32px rgba(10,22,40,0.08);
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+.el-route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.el-city {
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 600;
-  color: #E8001C;
-  line-height: 1;
+  color: var(--navy);
 }
-.result-stat-lbl {
+.el-arrow { color: #E8001C; font-size: 18px; flex-shrink: 0; }
+.el-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.el-meta span { display: flex; align-items: center; gap: 4px; }
+.el-prix {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: #E8001C;
+}
+.el-cta {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.el-cta:hover { background: linear-gradient(90deg, #8B0000 0%, #E8001C 100%); transform: translateY(-1px); }
+.el-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-light);
   font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  line-height: 1.7;
+}
+.el-empty-icon { font-size: 40px; margin-bottom: 12px; }
+.el-admin-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: all var(--transition);
+  border: none;
+}
+.el-admin-btn:hover { background: #E8001C; transform: scale(1.1); }
+.el-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.el-modal.open { display: flex; }
+.el-modal-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+.el-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-light);
+  background: none;
+  border: none;
+}
+.el-modal h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+.el-form-group {
+  margin-bottom: 14px;
+}
+.el-form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-light);
-  margin-top: 4px;
+  margin-bottom: 4px;
 }
-.calc-error {
-  display: none;
-  margin-top: 12px;
-  font-size: 16px;
+.el-form-group input, .el-form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--navy);
+  background: var(--off-white);
+  outline: none;
+  -webkit-appearance: none;
+}
+.el-form-group input:focus, .el-form-group select:focus { border-color: #E8001C; }
+.el-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.el-btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all var(--transition);
+}
+.el-btn-submit:hover { background: linear-gradient(90deg, #8B0000 0%, #E8001C 100%); }
+.el-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--navy);
+}
+.el-list-item:last-child { border-bottom: none; }
+.el-list-del {
+  background: none;
+  border: none;
   color: #cc0000;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
 }
-.calc-error.visible { display: block; }
+.el-loading { text-align: center; padding: 32px; color: var(--text-light); }
 
 
 
@@ -1141,7 +1180,6 @@ footer {
   #accueil { min-height: calc(100vh - 72px - 52px); }
 }
 @media (max-width: 768px) {
-  .btn-calc { font-size: 12px !important; white-space: nowrap; }
   .btn-primary { font-size: 12px !important; white-space: nowrap; }
   .btn-submit { font-size: 12px !important; white-space: nowrap; }
   .hero-title { font-size: 28px; line-height: 1.15; }
@@ -1149,7 +1187,7 @@ footer {
   .hero-stat { padding: 10px 6px; }
   .hero-stat-num { font-size: 22px; }
   section { padding: 88px 20px 24px; }
-  #temps-de-vol { padding: 88px 20px 24px; }
+  #empty-legs { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
   #accueil { padding: 0 !important; min-height: calc(100vh - 72px - 60px); }
   #accueil .hero-content { padding: 88px 20px 0; flex: 1; }
@@ -1159,12 +1197,11 @@ footer {
   .values-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .cabin-features { grid-template-columns: 1fr; }
-  .result-stats { grid-template-columns: 1fr 1fr; }
+  .el-form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 24px; }
 }
 @media (max-width: 480px) {
   .hero-title { font-size: 26px; line-height: 1.15; }
-  .calc-panel { padding: 24px; }
 }
 
 
@@ -1633,7 +1670,7 @@ footer {
       </li>
       <li><a href="#flotte" class="nav-link" data-i18n="nav.flotte">Notre Flotte</a></li>
       <li><a href="#services" class="nav-link" data-i18n="nav.services">Nos Services</a></li>
-      <li><a href="#temps-de-vol" class="nav-link" data-i18n="nav.temps">Temps de Vol</a></li>
+      <li><a href="#empty-legs" class="nav-link" data-i18n="nav.empty">Vols à Vide</a></li>
       <li><a href="#securite" class="nav-link" data-i18n="nav.securite">Sécurité</a></li>
       <li><a href="#actualites" class="nav-link" data-i18n="nav.actualites">Actualités</a></li>
       <li><a href="#contact" class="nav-link" data-i18n="nav.contact" onclick="showSection('contact');return false;">Contact</a></li>
@@ -1690,7 +1727,7 @@ footer {
   
   <a href="#services" class="nav-link" onclick="closeMobile()" data-i18n="nav.services">Nos Services</a>
   
-  <a href="#temps-de-vol" class="nav-link" onclick="closeMobile()" data-i18n="nav.temps">Temps de Vol</a>
+  <a href="#empty-legs" class="nav-link" onclick="closeMobile()" data-i18n="nav.empty">Vols à Vide</a>
   
   <a href="#securite" class="nav-link" onclick="closeMobile()" data-i18n="nav.securite">Sécurité</a>
   
@@ -2067,89 +2104,85 @@ footer {
 </section>
 
 <!-- ============================================================
-     TEMPS DE VOL
+     VOLS A VIDE (EMPTY LEGS)
      ============================================================ -->
-<section id="temps-de-vol">
+<section id="empty-legs">
   <div class="container">
-    <p class="section-label" data-i18n="tdv.label">Calculateur</p>
-    
-    <div class="divider"></div>
-    <h2 class="section-title" data-i18n="tdv.title">Temps de <em>vol estimé</em></h2>
-    </h2>
-    <p class="section-subtitle" data-i18n="tdv.sub">Recherchez votre aéroport par nom ou code IATA. La route loxodromique sera tracée sur la carte avec le temps de vol estimé.</p>
-    
+    <p class="section-label reveal" data-i18n="el.label">Opportunités</p>
+    <div class="divider reveal"></div>
+    <h2 class="section-title reveal" data-i18n="el.title">Vols à <em>vide disponibles</em></h2>
+    <p class="section-subtitle reveal" data-i18n="el.sub">Profitez de nos repositionnements à tarif préférentiel. Ces vols sont mis à jour quotidiennement.</p>
 
-    <div class="flight-calc">
-      <div class="calc-panel">
-        <div class="calc-airports-row" style="border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;background:var(--white);">
-          <div class="calc-airport-col">
-            <label class="calc-label" data-i18n="tdv.dep">Départ</label>
-            <div class="autocomplete-wrap" id="depWrap">
-              <input class="calc-input" id="inputDep" placeholder="Ex: ORN – Oran Es-Sénia" autocomplete="off" spellcheck="false" />
-              <div class="autocomplete-list" id="listDep"></div>
-            </div>
-          </div>
-          <div class="calc-arrow-col">✈</div>
-          <div class="calc-airport-col">
-            <label class="calc-label" data-i18n="tdv.arr">Arrivée</label>
-            <div class="autocomplete-wrap" id="arrWrap">
-              <input class="calc-input" id="inputArr" placeholder="Ex: CDG – Paris Charles de Gaulle" autocomplete="off" spellcheck="false" />
-              <div class="autocomplete-list" id="listArr"></div>
-            </div>
-          </div>
-        </div>
-        <button class="btn-calc" id="btnCalc" style="margin-top:16px;" data-i18n="tdv.btn">Calculer le temps de vol →</button>
-        
-        <p class="calc-error" id="calcError"></p>
-        <p id="fuelStop" style="display:none;margin-top:12px;font-size:13px;color:#E8001C;font-weight:600;text-align:left;"></p>
-
-        <div class="calc-result" id="calcResult">
-          <div class="result-airports">
-            <div class="result-airport">
-              <div class="result-code" id="resDep">—</div>
-              <div class="result-name" id="resDepName">—</div>
-            </div>
-            <div class="result-arrow">✈</div>
-            <div class="result-airport" style="text-align:right">
-              <div class="result-code" id="resArr">—</div>
-              <div class="result-name" id="resArrName">—</div>
-            </div>
-          </div>
-          <div class="result-stats">
-            <div class="result-stat">
-              <div class="result-stat-val" id="resDist">—</div>
-              <div class="result-stat-lbl" data-i18n="tdv.dkm">Distance (km)</div>
-              
-            </div>
-            <div class="result-stat">
-              <div class="result-stat-val" id="resDistNm">—</div>
-              <div class="result-stat-lbl" data-i18n="tdv.dnm">Distance (nm)</div>
-              
-            </div>
-            <div class="result-stat">
-              <div class="result-stat-val" id="resTime">—</div>
-              <div class="result-stat-lbl" data-i18n="tdv.time">Temps de vol</div>
-              
-            </div>
-            <div class="result-stat">
-              <div class="result-stat-val" id="resSpeed">850</div>
-              <div class="result-stat-lbl" data-i18n="tdv.speed">Vitesse (km/h)</div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="map-container" id="mapContainer">
-        <div id="map" style="width:100%;height:100%;"></div>
-        
-      </div>
-      <p style="margin-top:14px;font-size:11px;color:var(--text-light);line-height:1.7;text-align:justify;font-style:italic;" data-i18n="tdv.disclaimer">
-        Ce temps de vol est une simple estimation. Il peut changer en fonction des autorisations de survol. Afrijet Sahara ne peut être tenue responsable si la route est plus longue. Un temps de vol plus précis sera calculé lors de l'établissement de votre devis.
-      </p>
+    <div class="el-grid" id="elGrid">
+      <div class="el-loading" id="elLoading" data-i18n="el.loading">Chargement des vols…</div>
     </div>
   </div>
 </section>
+
+<!-- Empty Legs Admin Modal -->
+<div class="el-modal" id="elModal">
+  <div class="el-modal-box">
+    <button class="el-modal-close" onclick="document.getElementById('elModal').classList.remove('open')">&times;</button>
+    
+    <!-- Password screen -->
+    <div id="elPassScreen">
+      <h3>Administration</h3>
+      <div class="el-form-group">
+        <label>Mot de passe</label>
+        <input type="password" id="elPassInput" placeholder="••••••••" />
+      </div>
+      <button class="el-btn-submit" onclick="elCheckPass()">Accéder</button>
+      <p id="elPassError" style="color:#cc0000;font-size:13px;margin-top:8px;display:none;">Mot de passe incorrect</p>
+    </div>
+
+    <!-- Admin screen (hidden until auth) -->
+    <div id="elAdminScreen" style="display:none;">
+      <h3 data-i18n="el.admin_title">Gérer les vols à vide</h3>
+      
+      <!-- Add form -->
+      <div class="el-form-row">
+        <div class="el-form-group">
+          <label>Date</label>
+          <input type="date" id="elDate" />
+        </div>
+        <div class="el-form-group">
+          <label>Heure (opt.)</label>
+          <input type="time" id="elHeure" />
+        </div>
+      </div>
+      <div class="el-form-row">
+        <div class="el-form-group">
+          <label>Départ</label>
+          <input type="text" id="elDepart" placeholder="Dakhla" />
+        </div>
+        <div class="el-form-group">
+          <label>Arrivée</label>
+          <input type="text" id="elArrivee" placeholder="Casablanca" />
+        </div>
+      </div>
+      <div class="el-form-row">
+        <div class="el-form-group">
+          <label>Avion</label>
+          <select id="elAvion">
+            <option value="CN-KTA">CN-KTA (EMB 135)</option>
+            <option value="CN-KTB">CN-KTB (EMB 145)</option>
+          </select>
+        </div>
+        <div class="el-form-group">
+          <label>Prix</label>
+          <input type="text" id="elPrix" placeholder="Sur demande" value="Sur demande" />
+        </div>
+      </div>
+      <button class="el-btn-submit" onclick="elAddFlight()">Ajouter le vol →</button>
+
+      <hr style="margin:24px 0 16px;border:none;border-top:1px solid var(--border);">
+      <h3 style="font-size:16px;">Vols actuels</h3>
+      <div id="elAdminList"></div>
+    </div>
+  </div>
+</div>
+
+<button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin">🔒</button>
 
 <!-- ============================================================
      SECURITE
@@ -2477,7 +2510,14 @@ const translations = {
     'pres.title': 'Président — Sahara Aviation Holding',
     'nav.flotte': 'Notre Flotte',
     'nav.services': 'Nos Services',
-    'nav.temps': 'Temps de Vol',
+    'nav.empty': 'Vols à Vide',
+    'el.label': 'Opportunités',
+    'el.title': 'Vols à <em>vide disponibles</em>',
+    'el.sub': 'Profitez de nos repositionnements à tarif préférentiel. Ces vols sont mis à jour quotidiennement.',
+    'el.loading': 'Chargement des vols…',
+    'el.empty_title': 'Aucun vol à vide programmé',
+    'el.empty_text': 'Contactez-nous pour vos besoins spécifiques, nous trouverons la meilleure solution.',
+    'el.contact': 'Réserver →',
     'nav.securite': 'Sécurité',
     'nav.actualites': 'Actualités',
     'nav.contact': 'Contact / Devis',
@@ -2510,17 +2550,6 @@ const translations = {
     'footer.copy': '© 2026 Afrijet Sahara. Tous droits réservés.',
     'footer.legal': 'Mentions légales',
         
-    'tdv.label': 'Calculateur',
-    'tdv.title': 'Temps de <em>vol estimé</em>',
-    'tdv.sub': "Recherchez votre aéroport par nom ou code IATA. La route loxodromique sera tracée sur la carte avec le temps de vol estimé.",
-    'tdv.dep': 'Départ',
-    'tdv.arr': 'Arrivée',
-    'tdv.btn': 'Calculer le temps de vol →',
-    'tdv.dkm': 'Distance (km)',
-    'tdv.dnm': 'Distance (nm)',
-    'tdv.time': 'Temps de vol',
-    'tdv.speed': 'Vitesse (km/h)',
-    'tdv.disclaimer': "Ce temps de vol est une simple estimation. Il peut changer en fonction des autorisations de survol. Afrijet Sahara ne peut être tenue responsable si la route est plus longue. Un temps de vol plus précis sera calculé lors de l'établissement de votre devis.",
     'comp.v1': 'Excellence', 'comp.v1t': 'Des standards opérationnels de niveau international, à chaque vol.',
     'comp.v2': 'Confiance', 'comp.v2t': 'Transparence totale et engagement contractuel clair.',
     'comp.v3': 'Réactivité', 'comp.v3t': 'Disponibles 24h/24 pour confirmer votre vol en quelques heures.',
@@ -2596,7 +2625,14 @@ const translations = {
     'pres.title': 'President — Sahara Aviation Holding',
     'nav.flotte': 'Our Fleet',
     'nav.services': 'Services',
-    'nav.temps': 'Flight Time',
+    'nav.empty': 'Empty Legs',
+    'el.label': 'Opportunities',
+    'el.title': 'Available <em>Empty Legs</em>',
+    'el.sub': 'Take advantage of our repositioning flights at preferential rates. Updated daily.',
+    'el.loading': 'Loading flights…',
+    'el.empty_title': 'No empty legs scheduled',
+    'el.empty_text': 'Contact us for your specific needs, we will find the best solution.',
+    'el.contact': 'Book →',
     'nav.securite': 'Safety',
     'nav.actualites': 'News',
     'nav.contact': 'Contact / Quote',
@@ -2629,17 +2665,6 @@ const translations = {
     'footer.copy': '© 2026 Afrijet Sahara. All rights reserved.',
     'footer.legal': 'Legal Notice',
         
-    'tdv.label': 'Calculator',
-    'tdv.title': 'Estimated <em>Flight Time</em>',
-    'tdv.sub': 'Search for your airport by name or IATA code. The great circle route will be displayed with the estimated flight time.',
-    'tdv.dep': 'Departure',
-    'tdv.arr': 'Arrival',
-    'tdv.btn': 'Calculate Flight Time →',
-    'tdv.dkm': 'Distance (km)',
-    'tdv.dnm': 'Distance (nm)',
-    'tdv.time': 'Flight Time',
-    'tdv.speed': 'Speed (km/h)',
-    'tdv.disclaimer': 'This flight time is a simple estimate. It may change depending on overflight authorisations. Afrijet Sahara cannot be held responsible if the route is longer. A more accurate flight time will be calculated when your quote is established.',
     'comp.v1': 'Excellence', 'comp.v1t': 'International-level operational standards, on every flight.',
     'comp.v2': 'Trust', 'comp.v2t': 'Full transparency and clear contractual commitment.',
     'comp.v3': 'Responsiveness', 'comp.v3t': 'Available 24/7 to confirm your flight within a few hours.',
@@ -2716,7 +2741,14 @@ const translations = {
     'pres.title': 'Presidente — Sahara Aviation Holding',
     'nav.flotte': 'Nuestra Flota',
     'nav.services': 'Servicios',
-    'nav.temps': 'Tiempo de Vuelo',
+    'nav.empty': 'Vuelos Vacíos',
+    'el.label': 'Oportunidades',
+    'el.title': 'Vuelos <em>vacíos disponibles</em>',
+    'el.sub': 'Aproveche nuestros vuelos de reposicionamiento a tarifas preferenciales. Actualizado diariamente.',
+    'el.loading': 'Cargando vuelos…',
+    'el.empty_title': 'No hay vuelos vacíos programados',
+    'el.empty_text': 'Contáctenos para sus necesidades específicas, encontraremos la mejor solución.',
+    'el.contact': 'Reservar →',
     'nav.securite': 'Seguridad',
     'nav.actualites': 'Noticias',
     'nav.contact': 'Contacto / Presupuesto',
@@ -2749,17 +2781,6 @@ const translations = {
     'footer.copy': '© 2026 Afrijet Sahara. Todos los derechos reservados.',
     'footer.legal': 'Aviso Legal',
         
-    'tdv.label': 'Calculadora',
-    'tdv.title': 'Tiempo de <em>vuelo estimado</em>',
-    'tdv.sub': 'Busque su aeropuerto por nombre o código IATA. La ruta ortodrómica se mostrará con el tiempo de vuelo estimado.',
-    'tdv.dep': 'Salida',
-    'tdv.arr': 'Llegada',
-    'tdv.btn': 'Calcular Tiempo de Vuelo →',
-    'tdv.dkm': 'Distancia (km)',
-    'tdv.dnm': 'Distancia (nm)',
-    'tdv.time': 'Tiempo de vuelo',
-    'tdv.speed': 'Velocidad (km/h)',
-    'tdv.disclaimer': 'Este tiempo de vuelo es una simple estimación. Puede variar según las autorizaciones de sobrevuelo. Afrijet Sahara no puede ser responsable si la ruta es más larga. Un tiempo de vuelo más preciso se calculará al establecer su presupuesto.',
     'comp.v1': 'Excelencia', 'comp.v1t': 'Estándares operacionales de nivel internacional, en cada vuelo.',
     'comp.v2': 'Confianza', 'comp.v2t': 'Transparencia total y compromiso contractual claro.',
     'comp.v3': 'Reactividad', 'comp.v3t': 'Disponibles 24h/24 para confirmar su vuelo en pocas horas.',
@@ -2911,343 +2932,9 @@ document.getElementById('btnSubmit')?.addEventListener('click', () => {
 /* ---- Flight calculator ---- */
 
 // Base de données aéroports (codes IATA → [lat, lon, nom])
-const AIRPORTS = {
-  // Maroc
-  'CMN': [33.3675, -7.5899, 'Casablanca Mohammed V', 'Maroc'],
-  'RAK': [31.6069, -8.0363, 'Marrakech Ménara', 'Maroc'],
-  'AGA': [30.3250, -9.4130, 'Agadir Al Massira', 'Maroc'],
-  'FEZ': [33.9273, -4.9779, 'Fès-Saïss', 'Maroc'],
-  'TNG': [35.7269, -5.9169, 'Tanger Ibn Batouta', 'Maroc'],
-  'OUD': [34.7872, -1.9240, 'Oujda Angads'],
-  'NDR': [35.1685, -2.9422, 'Nador Al Aroui'],
-  'ERH': [31.9475, -4.3983, 'Errachidia Moulay Ali Cherif'],
-  'EUN': [27.1517, -13.2192, 'Laâyoune Hassan I'],
-  'VIL': [23.7183, -15.9326, 'Dakhla'],
-  // Europe
-  'CDG': [49.0097, 2.5478, 'Paris Charles de Gaulle', 'France'],
-  'LHR': [51.4775, -0.4614, 'London Heathrow', 'UK'],
-  'MAD': [40.4983, -3.5676, 'Madrid Barajas', 'Espagne'],
-  'BCN': [41.2971, 2.0785, 'Barcelone El Prat'],
-  'AMS': [52.3086, 4.7639, 'Amsterdam Schiphol'],
-  'FRA': [50.0379, 8.5622, 'Frankfurt'],
-  'BRU': [50.9014, 4.4844, 'Bruxelles'],
-  'GVA': [46.2381, 6.1089, 'Genève'],
-  'ZRH': [47.4647, 8.5492, 'Zurich'],
-  'LIS': [38.7756, -9.1354, 'Lisbonne'],
-  'MXP': [45.6306, 8.7231, 'Milan Malpensa'],
-  'VIE': [48.1103, 16.5697, 'Vienne'],
-  'MRS': [43.4365, 5.2214, 'Marseille'],
-  'NCE': [43.6584, 7.2159, 'Nice'],
-  'DXB': [25.2532, 55.3657, 'Dubaï', 'Émirats'],
-  'DOH': [25.2731, 51.6081, 'Doha'],
-  'RUH': [24.9578, 46.6989, 'Riyad'],
-  'CAI': [30.1219, 31.4056, 'Le Caire'],
-  'TUN': [36.8510, 10.2272, 'Tunis'],
-  'ALG': [36.6910, 3.2154, 'Alger'],
-  // Afrique
-  'DKR': [14.7397, -17.4902, 'Dakar Léopold Sédar Senghor'],
-  'ABJ': [5.2613, -3.9263, 'Abidjan Félix Houphouët-Boigny'],
-  'LBV': [0.4586, 9.4123, 'Libreville'],
-  'NBO': [-1.3192, 36.9275, 'Nairobi Jomo Kenyatta'],
-  'ADD': [8.9779, 38.7993, 'Addis-Abeba'],
-  'LOS': [6.5774, 3.3210, 'Lagos'],
-  'ACC': [5.6052, -0.1668, 'Accra'],
-  'DSS': [14.6701, -17.0733, 'Dakar Blaise Diagne'],
-  'BKO': [12.5335, -7.9499, 'Bamako'],
-  'OUA': [12.3532, -1.5124, 'Ouagadougou'],
-  'NIM': [13.4815, 2.1836, 'Niamey'],
-  'NDJ': [12.1337, 15.0340, 'N\'Djaména'],
-  'KAN': [12.0476, 8.5246, 'Kano'],
-  'FIH': [-4.3857, 15.4446, 'Kinshasa'],
-  'LAD': [-8.8584, 13.2312, 'Luanda'],
-  'JNB': [-26.1392, 28.2460, 'Johannesburg'],
-  'CPT': [-33.9715, 18.6021, 'Cape Town'],
-  'TNR': [-18.7969, 47.4788, 'Antananarivo'],
-  'MRU': [-20.4302, 57.6836, 'Île Maurice'],
-  'RUN': [-20.8871, 55.5110, 'La Réunion'],
-  'MPM': [-25.9208, 32.5726, 'Maputo'],
-  'HAH': [-11.5337, 43.2719, 'Moroni'],
-  'BJL': [13.3380, -16.6522, 'Banjul'],
-  'SID': [16.7414, -22.9494, 'Île de Sal (Cap-Vert)'],
-  'TMS': [0.3782, 6.7122, 'São Tomé'],
-  'SSG': [3.7553, 8.7087, 'Malabo'],
-  'CKY': [9.5769, -13.6120, 'Conakry'],
-  'FNA': [8.6162, -13.1955, 'Freetown'],
-  'ROB': [6.2337, -10.3623, 'Monrovia'],
-  'ABV': [9.0068, 7.2632, 'Abuja'],
-  'MFM': [22.1496, 113.5920, 'Macao'],
-
-  // Europe étendue
-  'ORY': [48.7233, 2.3794, 'Paris Orly', 'France'],
-  'LYS': [45.7256, 5.0811, 'Lyon Saint-Exupéry', 'France'],
-  'NCE': [43.6584, 7.2159, 'Nice', 'France'],
-  'TLS': [43.6293, 1.3638, 'Toulouse Blagnac', 'France'],
-  'BOD': [44.8283, -0.7156, 'Bordeaux Mérignac', 'France'],
-  'LGW': [51.1537, -0.1821, 'London Gatwick', 'UK'],
-  'MAN': [53.3537, -2.2750, 'Manchester', 'UK'],
-  'EDI': [55.9500, -3.3725, 'Edinburgh', 'UK'],
-  'BHX': [52.4539, -1.7480, 'Birmingham', 'UK'],
-  'AMS': [52.3086, 4.7639, 'Amsterdam Schiphol', 'Pays-Bas'],
-  'FRA': [50.0379, 8.5622, 'Frankfurt', 'Allemagne'],
-  'MUC': [48.3537, 11.7750, 'Munich', 'Allemagne'],
-  'BER': [52.3667, 13.5033, 'Berlin Brandenburg', 'Allemagne'],
-  'DUS': [51.2895, 6.7668, 'Düsseldorf', 'Allemagne'],
-  'HAM': [53.6304, 9.9882, 'Hambourg', 'Allemagne'],
-  'BCN': [41.2971, 2.0785, 'Barcelone El Prat', 'Espagne'],
-  'AGP': [36.6749, -4.4991, 'Malaga', 'Espagne'],
-  'PMI': [39.5517, 2.7388, 'Palma de Majorque', 'Espagne'],
-  'VLC': [39.4893, -0.4816, 'Valence', 'Espagne'],
-  'LIS': [38.7756, -9.1354, 'Lisbonne', 'Portugal'],
-  'OPO': [41.2481, -8.6814, 'Porto', 'Portugal'],
-  'FCO': [41.8003, 12.2389, 'Rome Fiumicino', 'Italie'],
-  'MXP': [45.6306, 8.7231, 'Milan Malpensa', 'Italie'],
-  'NAP': [40.8860, 14.2908, 'Naples', 'Italie'],
-  'VCE': [45.5053, 12.3519, 'Venise', 'Italie'],
-  'AMS': [52.3086, 4.7639, 'Amsterdam Schiphol', 'Pays-Bas'],
-  'BRU': [50.9014, 4.4844, 'Bruxelles', 'Belgique'],
-  'ZRH': [47.4647, 8.5492, 'Zurich', 'Suisse'],
-  'GVA': [46.2381, 6.1089, 'Genève', 'Suisse'],
-  'VIE': [48.1103, 16.5697, 'Vienne', 'Autriche'],
-  'PRG': [50.1008, 14.2600, 'Prague', 'Rép. Tchèque'],
-  'BUD': [47.4369, 19.2556, 'Budapest', 'Hongrie'],
-  'WAW': [52.1657, 20.9671, 'Varsovie', 'Pologne'],
-  'ATH': [37.9364, 23.9445, 'Athènes', 'Grèce'],
-  'SKG': [40.5197, 22.9709, 'Thessalonique', 'Grèce'],
-  'IST': [41.2753, 28.7519, 'Istanbul', 'Turquie'],
-  'SAW': [40.8986, 29.3092, 'Istanbul Sabiha Gökçen', 'Turquie'],
-  'ESB': [40.1281, 32.9951, 'Ankara', 'Turquie'],
-  'ADB': [38.2924, 27.1570, 'Izmir', 'Turquie'],
-  'CPH': [55.6179, 12.6561, 'Copenhague', 'Danemark'],
-  'OSL': [60.1976, 11.1004, 'Oslo', 'Norvège'],
-  'ARN': [59.6519, 17.9186, 'Stockholm Arlanda', 'Suède'],
-  'HEL': [60.3172, 24.9633, 'Helsinki', 'Finlande'],
-  'DUB': [53.4213, -6.2701, 'Dublin', 'Irlande'],
-  'LUX': [49.6233, 6.2044, 'Luxembourg', 'Luxembourg'],
-  // Moyen-Orient étendu
-  'DOH': [25.2731, 51.6081, 'Doha Hamad', 'Qatar'],
-  'AUH': [24.4330, 54.6511, 'Abu Dhabi', 'Émirats'],
-  'SHJ': [25.3286, 55.5136, 'Sharjah', 'Émirats'],
-  'RUH': [24.9578, 46.6989, 'Riyad', 'Arabie Saoudite'],
-  'JED': [21.6796, 39.1565, 'Djeddah', 'Arabie Saoudite'],
-  'MED': [24.5534, 39.7051, 'Médine', 'Arabie Saoudite'],
-  'KWI': [29.2267, 47.9689, 'Koweït', 'Koweït'],
-  'BAH': [26.2708, 50.6336, 'Bahreïn', 'Bahreïn'],
-  'MCT': [23.5933, 58.2844, 'Mascate', 'Oman'],
-  'AMM': [31.7226, 35.9932, 'Amman', 'Jordanie'],
-  'BEY': [33.8209, 35.4886, 'Beyrouth', 'Liban'],
-  'TLV': [32.0114, 34.8867, 'Tel Aviv', 'Israël'],
-  'CAI': [30.1219, 31.4056, 'Le Caire', 'Egypte'],
-  'HRG': [27.1783, 33.7994, 'Hurghada', 'Egypte'],
-  'SSH': [27.9773, 34.3950, 'Charm el-Cheikh', 'Egypte'],
-  'LXR': [25.6710, 32.7066, 'Louxor', 'Egypte'],
-  // Afrique étendue
-  'TUN': [36.8510, 10.2272, 'Tunis Carthage', 'Tunisie'],
-  'MIR': [35.7582, 10.7547, 'Monastir', 'Tunisie'],
-  'ALG': [36.6910, 3.2154, 'Alger Houari Boumediene', 'Algérie'],
-  'ORN': [35.6239, -0.6212, 'Oran', 'Algérie'],
-  'CZL': [36.2760, 6.6204, 'Constantine', 'Algérie'],
-  'TRI': [32.6635, 13.1590, 'Tripoli', 'Libye'],
-  'BEN': [32.0968, 20.2695, 'Benghazi', 'Libye'],
-  'KRT': [15.5895, 32.5532, 'Khartoum', 'Soudan'],
-  'ETH': [9.6350, 41.8579, 'Jijiga', 'Éthiopie'],
-  'ASM': [15.2919, 38.9107, 'Asmara', 'Érythrée'],
-  'JIB': [11.5473, 43.1595, 'Djibouti', 'Djibouti'],
-  'MGQ': [2.0144, 45.3047, 'Mogadiscio', 'Somalie'],
-  'MBA': [-4.0348, 39.5942, 'Mombasa', 'Kenya'],
-  'DAR': [-6.8781, 39.2026, 'Dar es Salaam', 'Tanzanie'],
-  'JRO': [-3.4294, 37.0694, 'Kilimanjaro', 'Tanzanie'],
-  'EBB': [0.0424, 32.4432, 'Entebbe', 'Ouganda'],
-  'KGL': [-1.9686, 30.1395, 'Kigali', 'Rwanda'],
-  'BUJ': [-3.3240, 29.3189, 'Bujumbura', 'Burundi'],
-  'LLW': [-13.7894, 33.7814, 'Lilongwe', 'Malawi'],
-  'LUN': [-15.3308, 28.4526, 'Lusaka', 'Zambie'],
-  'HRE': [-17.9318, 31.0928, 'Harare', 'Zimbabwe'],
-  'BLZ': [-15.6791, 34.9738, 'Blantyre', 'Malawi'],
-  'WDH': [-22.4799, 17.4709, 'Windhoek', 'Namibie'],
-  'GBE': [-24.5552, 25.9182, 'Gaborone', 'Botswana'],
-  'MTS': [-26.5192, 31.1017, 'Manzini', 'Eswatini'],
-  'MPM': [-25.9208, 32.5726, 'Maputo', 'Mozambique'],
-  'SEZ': [-4.6743, 55.5218, 'Mahé (Seychelles)', 'Seychelles'],
-  'MRU': [-20.4302, 57.6836, 'Maurice', 'Île Maurice'],
-  'RUN': [-20.8871, 55.5110, 'La Réunion', 'Réunion'],
-  'TNR': [-18.7969, 47.4788, 'Antananarivo', 'Madagascar'],
-  'DZA': [-12.8047, 45.2814, 'Dzaoudzi (Mayotte)', 'Mayotte'],
-  'YAO': [3.8362, 11.5235, 'Yaoundé', 'Cameroun'],
-  'DLA': [4.0061, 9.7195, 'Douala', 'Cameroun'],
-  'NSI': [3.7226, 11.5533, 'Yaoundé Nsimalen', 'Cameroun'],
-  'BZV': [-4.2517, 15.2530, 'Brazzaville', 'Congo'],
-  'PNR': [-4.8161, 11.8866, 'Pointe-Noire', 'Congo'],
-  'BGF': [4.3985, 18.5186, 'Bangui', 'Centrafrique'],
-  'MLW': [6.4890, -10.7588, 'Monrovia Roberts', 'Liberia'],
-  'ABJ': [5.2613, -3.9263, 'Abidjan Felix Houphouet', 'Côte Ivoire'],
-  'DKR': [14.7397, -17.4902, 'Dakar Leopold Sedar Senghor', 'Sénégal'],
-  'DSS': [14.6701, -17.0733, 'Dakar Blaise Diagne', 'Sénégal'],
-  'BKO': [12.5335, -7.9499, 'Bamako', 'Mali'],
-  'TBJ': [36.7209, 10.2272, 'Tabarka', 'Tunisie'],
-  'DJE': [33.8750, 10.7755, 'Djerba', 'Tunisie'],
-};
-
-
-function toRad(d) { return d * Math.PI / 180; }
-
-function haversine(lat1, lon1, lat2, lon2) {
-  const R = 6371;
-  const dLat = toRad(lat2 - lat1);
-  const dLon = toRad(lon2 - lon1);
-  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon/2)**2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-  return pts;
-}
-
-function formatTime(hours) {
-  const h = Math.floor(hours);
-  const m = Math.round((hours - h) * 60);
-  return `${h}h${m.toString().padStart(2,'0')}`;
-}
 
 
 
-function doCalc() {
-  // Récupérer le code depuis la sélection autocomplete ou depuis la saisie directe
-  const rawDep = document.getElementById('inputDep').value.trim().toUpperCase();
-  const rawArr = document.getElementById('inputArr').value.trim().toUpperCase();
-  const dep = selectedDep || rawDep.split(/[–\s]/)[0].trim().replace(/[^A-Z]/g,'').substring(0,4);
-  const arr = selectedArr || rawArr.split(/[–\s]/)[0].trim().replace(/[^A-Z]/g,'').substring(0,4);
-  const errEl = document.getElementById('calcError');
-  const resEl = document.getElementById('calcResult');
-
-  errEl.classList.remove('visible');
-  document.getElementById('inputDep').classList.remove('error');
-  document.getElementById('inputArr').classList.remove('error');
-
-  
-
-  if (!dep || dep.length < 3) {
-    errEl.textContent = 'Veuillez entrer un code IATA de départ valide.';
-    errEl.classList.add('visible');
-    document.getElementById('inputDep').classList.add('error');
-    return;
-  }
-  if (!arr || arr.length < 3) {
-    errEl.textContent = 'Veuillez entrer un code IATA d\'arrivée valide.';
-    errEl.classList.add('visible');
-    document.getElementById('inputArr').classList.add('error');
-    return;
-  }
-  if (dep === arr) {
-    errEl.textContent = 'Le départ et l\'arrivée doivent être différents.';
-    errEl.classList.add('visible');
-    return;
-  }
-
-  const depData = AIRPORTS[dep];
-  const arrData = AIRPORTS[arr];
-
-  if (!depData) {
-    errEl.textContent = `Code IATA "${dep}" non trouvé dans notre base.`;
-    errEl.classList.add('visible');
-    document.getElementById('inputDep').classList.add('error');
-    return;
-  }
-  if (!arrData) {
-    errEl.textContent = `Code IATA "${arr}" non trouvé dans notre base.`;
-    errEl.classList.add('visible');
-    document.getElementById('inputArr').classList.add('error');
-    return;
-  }
-
-  const distKm = haversine(depData[0], depData[1], arrData[0], arrData[1]);
-  const distNm = distKm / 1.852;
-  const SPEED_KMH = 850; // Mach 0.78 @ FL350 ~850 km/h
-  // Add 15min taxi/climb/descent
-  const flightHours = distKm / SPEED_KMH + 0.25;
-
-  document.getElementById('resDep').textContent = dep;
-  document.getElementById('resDepName').textContent = depData[2];
-  document.getElementById('resArr').textContent = arr;
-  document.getElementById('resArrName').textContent = arrData[2];
-  const RANGE_KM = 3241; // Rayon d'action EMB 135 KL
-  document.getElementById('resDist').textContent = Math.round(distKm).toLocaleString('fr-FR') + ' km';
-  document.getElementById('resDistNm').textContent = Math.round(distNm).toLocaleString('fr-FR') + ' nm';
-  document.getElementById('resTime').textContent = formatTime(flightHours);
-  // Message fuel stop
-  const fuelEl = document.getElementById('fuelStop');
-  if (fuelEl) {
-    if (distKm > RANGE_KM) {
-      fuelEl.textContent = '⚠ Fuel stop nécessaire — distance supérieure au rayon d\'action (3 241 km)';
-      fuelEl.style.display = 'block';
-    } else {
-      fuelEl.style.display = 'none';
-    }
-  }
-
-  resEl.classList.add('visible');
-
-}
-
-// ── Autocomplete airports ──
-let selectedDep = null;
-let selectedArr = null;
-
-function filterAirports(query) {
-  if (!query || query.length < 2) return [];
-  const q = query.toUpperCase().trim();
-  const results = [];
-  for (const [code, data] of Object.entries(AIRPORTS)) {
-    if (code.startsWith(q) || data[2].toUpperCase().includes(q)) {
-      results.push([code, data]);
-      if (results.length >= 20) break;
-    }
-  }
-  return results;
-}
-
-function renderList(listEl, results, inputEl, side) {
-  listEl.innerHTML = '';
-  if (!results.length) { listEl.classList.remove('open'); return; }
-  results.forEach(([code, data]) => {
-    const div = document.createElement('div');
-    div.className = 'autocomplete-item';
-    const country = data[3] || '';
-    div.innerHTML = '<span class="ac-code">' + code + '</span>' + data[2] + '<span class="ac-country">' + country + '</span>';
-    div.addEventListener('mousedown', (e) => {
-      e.preventDefault();
-      inputEl.value = code + ' – ' + data[2];
-      if (side === 'dep') selectedDep = code;
-      else selectedArr = code;
-      listEl.classList.remove('open');
-    });
-    listEl.appendChild(div);
-  });
-  listEl.classList.add('open');
-}
-
-function setupAutocomplete(inputId, listId, side) {
-  const input = document.getElementById(inputId);
-  const list = document.getElementById(listId);
-  if (!input || !list) return;
-  input.addEventListener('input', () => {
-    if (side === 'dep') selectedDep = null; else selectedArr = null;
-    renderList(list, filterAirports(input.value), input, side);
-  });
-  input.addEventListener('blur', () => setTimeout(() => list.classList.remove('open'), 200));
-  input.addEventListener('focus', () => {
-    if (input.value.length >= 2) renderList(list, filterAirports(input.value), input, side);
-  });
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      const items = list.querySelectorAll('.autocomplete-item');
-      if (items.length) items[0].dispatchEvent(new MouseEvent('mousedown'));
-      else if (side === 'dep') document.getElementById('inputArr')?.focus();
-      else doCalc();
-    }
-  });
-}
-
-setupAutocomplete('inputDep', 'listDep', 'dep');
-setupAutocomplete('inputArr', 'listArr', 'arr');
-document.getElementById('btnCalc')?.addEventListener('click', doCalc);
 
 // ── Autocomplete formulaire devis ──
 setupAutocomplete('formInputDep', 'formListDep', 'formDep');
@@ -3266,6 +2953,169 @@ function closeLightbox() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLightbox();
 });
+
+// ============================================================
+// VOLS A VIDE (EMPTY LEGS) — Supabase
+// ============================================================
+const SUPA_URL = 'https://zulwubuzuylmwkittnbg.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1bHd1YnV6dXlsbXdraXR0bmJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3Mjk5MjQsImV4cCI6MjA5ODMwNTkyNH0.Bt2MXASzrqWPaxTxo7ImZu-FtdjahLG9FLOMIgz9SWA';
+const EL_TABLE = 'empty_legs';
+const EL_PASS_HASH = 'c4ab3191'; // hash simplifié
+
+function elHash(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; }
+  return (h >>> 0).toString(16);
+}
+
+async function elFetch() {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const res = await fetch(
+      SUPA_URL + '/rest/v1/' + EL_TABLE + '?actif=eq.true&date_vol=gte.' + today + '&order=date_vol.asc',
+      { headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY } }
+    );
+    if (!res.ok) throw new Error(res.status);
+    return await res.json();
+  } catch(e) { console.error('Empty legs fetch error:', e); return []; }
+}
+
+async function elFetchAll() {
+  try {
+    const res = await fetch(
+      SUPA_URL + '/rest/v1/' + EL_TABLE + '?order=date_vol.desc&limit=50',
+      { headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY } }
+    );
+    if (!res.ok) throw new Error(res.status);
+    return await res.json();
+  } catch(e) { console.error('Empty legs fetch error:', e); return []; }
+}
+
+function elFormatDate(d) {
+  const dt = new Date(d + 'T00:00:00');
+  const opts = { day: 'numeric', month: 'long', year: 'numeric' };
+  const lang = document.documentElement.lang || 'fr';
+  return dt.toLocaleDateString(lang === 'es' ? 'es-ES' : lang === 'en' ? 'en-GB' : 'fr-FR', opts);
+}
+
+function elWhatsAppUrl(dep, arr, date) {
+  const msg = encodeURIComponent('Bonjour, je suis intéressé(e) par le vol à vide ' + dep + ' → ' + arr + ' du ' + date + '. Merci de me communiquer les détails.');
+  return 'https://wa.me/212660151562?text=' + msg;
+}
+
+async function elRender() {
+  const grid = document.getElementById('elGrid');
+  if (!grid) return;
+  const flights = await elFetch();
+  const t = window._i18n || {};
+  
+  if (!flights.length) {
+    grid.innerHTML = '<div class="el-empty"><div class="el-empty-icon">✈</div><p style="font-weight:600;color:var(--navy);font-size:18px;" data-i18n="el.empty_title">' + (t['el.empty_title'] || 'Aucun vol à vide programmé') + '</p><p data-i18n="el.empty_text">' + (t['el.empty_text'] || 'Contactez-nous pour vos besoins spécifiques, nous trouverons la meilleure solution.') + '</p><a href="#contact" class="el-cta" style="margin-top:20px;" data-i18n="form.submit">Demander un devis →</a></div>';
+    return;
+  }
+
+  grid.innerHTML = flights.map(f => {
+    const dateStr = elFormatDate(f.date_vol);
+    const heureStr = f.heure ? ' · ' + f.heure : '';
+    return '<div class="el-card reveal">' +
+      '<div class="el-route"><span class="el-city">' + f.depart + '</span><span class="el-arrow">✈</span><span class="el-city">' + f.arrivee + '</span></div>' +
+      '<div class="el-prix">' + (f.prix || 'Sur demande') + '</div>' +
+      '<div class="el-meta"><span>📅 ' + dateStr + heureStr + '</span><span>🛩 ' + f.avion + '</span></div>' +
+      '<a href="' + elWhatsAppUrl(f.depart, f.arrivee, dateStr) + '" target="_blank" class="el-cta" data-i18n="el.contact">' + (t['el.contact'] || 'Réserver →') + '</a>' +
+    '</div>';
+  }).join('');
+
+  // Re-trigger reveal animation
+  document.querySelectorAll('.el-card.reveal').forEach(el => { observer && observer.observe(el); });
+}
+
+// Admin
+let elAuthed = false;
+
+function elCheckPass() {
+  const pass = document.getElementById('elPassInput').value;
+  if (elHash(pass) === EL_PASS_HASH) {
+    elAuthed = true;
+    document.getElementById('elPassScreen').style.display = 'none';
+    document.getElementById('elAdminScreen').style.display = 'block';
+    elLoadAdmin();
+  } else {
+    document.getElementById('elPassError').style.display = 'block';
+  }
+}
+
+document.getElementById('elPassInput')?.addEventListener('keydown', e => { if (e.key === 'Enter') elCheckPass(); });
+
+async function elLoadAdmin() {
+  const list = document.getElementById('elAdminList');
+  if (!list) return;
+  list.innerHTML = '<div class="el-loading">Chargement…</div>';
+  const flights = await elFetchAll();
+  if (!flights.length) { list.innerHTML = '<p style="color:var(--text-light);font-size:14px;">Aucun vol enregistré.</p>'; return; }
+  list.innerHTML = flights.map(f => {
+    const badge = f.actif ? '🟢' : '🔴';
+    return '<div class="el-list-item">' +
+      '<span>' + badge + ' ' + f.date_vol + ' · ' + f.depart + ' → ' + f.arrivee + ' · ' + f.avion + '</span>' +
+      '<span><button class="el-list-del" onclick="elToggle('' + f.id + '',' + !f.actif + ')" title="' + (f.actif ? 'Désactiver' : 'Activer') + '">' + (f.actif ? '⏸' : '▶') + '</button>' +
+      '<button class="el-list-del" onclick="elDelete('' + f.id + '')" title="Supprimer">🗑</button></span>' +
+    '</div>';
+  }).join('');
+}
+
+async function elAddFlight() {
+  if (!elAuthed) return;
+  const date = document.getElementById('elDate').value;
+  const depart = document.getElementById('elDepart').value.trim();
+  const arrivee = document.getElementById('elArrivee').value.trim();
+  const avion = document.getElementById('elAvion').value;
+  const prix = document.getElementById('elPrix').value.trim() || 'Sur demande';
+  const heure = document.getElementById('elHeure').value || null;
+  if (!date || !depart || !arrivee) { alert('Date, départ et arrivée sont obligatoires.'); return; }
+  try {
+    const res = await fetch(SUPA_URL + '/rest/v1/' + EL_TABLE, {
+      method: 'POST',
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ date_vol: date, depart, arrivee, avion, prix, heure, actif: true })
+    });
+    if (!res.ok) throw new Error(res.status);
+    document.getElementById('elDate').value = '';
+    document.getElementById('elDepart').value = '';
+    document.getElementById('elArrivee').value = '';
+    document.getElementById('elHeure').value = '';
+    document.getElementById('elPrix').value = 'Sur demande';
+    elLoadAdmin();
+    elRender();
+  } catch(e) { alert('Erreur: ' + e.message); }
+}
+
+async function elToggle(id, newState) {
+  if (!elAuthed) return;
+  try {
+    await fetch(SUPA_URL + '/rest/v1/' + EL_TABLE + '?id=eq.' + id, {
+      method: 'PATCH',
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ actif: newState })
+    });
+    elLoadAdmin();
+    elRender();
+  } catch(e) { alert('Erreur: ' + e.message); }
+}
+
+async function elDelete(id) {
+  if (!elAuthed || !confirm('Supprimer ce vol ?')) return;
+  try {
+    await fetch(SUPA_URL + '/rest/v1/' + EL_TABLE + '?id=eq.' + id, {
+      method: 'DELETE',
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
+    });
+    elLoadAdmin();
+    elRender();
+  } catch(e) { alert('Erreur: ' + e.message); }
+}
+
+// Init
+elRender();
+
 </script>
 
 <div id="lightbox" onclick="closeLightbox()">
