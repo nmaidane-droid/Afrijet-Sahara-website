@@ -698,8 +698,6 @@ section { padding: 96px 32px 80px; }
   display: inline-block;
   margin-top: 8px;
   padding: 10px 24px;
-  background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
-  color: #fff;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -708,7 +706,17 @@ section { padding: 96px 32px 80px; }
   text-decoration: none;
   transition: all var(--transition);
 }
-.el-cta:hover { background: linear-gradient(90deg, #8B0000 0%, #E8001C 100%); transform: translateY(-1px); }
+.el-cta-row { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.el-cta-wa {
+  background: #25D366;
+  color: #fff;
+}
+.el-cta-wa:hover { background: #1da851; transform: translateY(-1px); }
+.el-cta-mail {
+  background: var(--navy);
+  color: #fff;
+}
+.el-cta-mail:hover { background: #E8001C; transform: translateY(-1px); }
 .el-empty {
   text-align: center;
   padding: 48px 24px;
@@ -3338,6 +3346,12 @@ function elWhatsAppUrl(dep, arr, date) {
   return 'https://wa.me/212689595910?text=' + msg;
 }
 
+function elMailUrl(dep, arr, date) {
+  const subject = encodeURIComponent('Vol à vide ' + dep + ' → ' + arr + ' — ' + date);
+  const body = encodeURIComponent('Bonjour,\n\nJe suis intéressé(e) par le vol à vide suivant :\n\n• Trajet : ' + dep + ' → ' + arr + '\n• Date : ' + date + '\n\nMerci de me communiquer les détails et conditions.\n\nCordialement');
+  return 'mailto:info@afrijet.ma?subject=' + subject + '&body=' + body;
+}
+
 async function elRender() {
   const grid = document.getElementById('elGrid');
   if (!grid) return;
@@ -3356,7 +3370,10 @@ async function elRender() {
       '<div class="el-route"><span class="el-city">' + f.depart + '</span><span class="el-arrow">✈</span><span class="el-city">' + f.arrivee + '</span></div>' +
       '<div class="el-prix">Prix : ' + (f.prix || 'Sur demande') + '</div>' +
       '<div class="el-meta"><span>📅 ' + dateStr + heureStr + '</span><span>🛩 ' + f.avion + '</span></div>' +
-      '<a href="' + elWhatsAppUrl(f.depart, f.arrivee, dateStr) + '" target="_blank" class="el-cta" data-i18n="el.contact">' + (t['el.contact'] || 'Réserver →') + '</a>' +
+      '<div class="el-cta-row">' +
+        '<a href="' + elWhatsAppUrl(f.depart, f.arrivee, dateStr) + '" target="_blank" class="el-cta el-cta-wa">WhatsApp</a>' +
+        '<a href="' + elMailUrl(f.depart, f.arrivee, dateStr) + '" class="el-cta el-cta-mail">✉ Email</a>' +
+      '</div>' +
     '</div>';
   }).join('');
 
