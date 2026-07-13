@@ -2042,7 +2042,7 @@ footer {
     </div>
 
   </div>
-</section></section>
+</section>
 
 <!-- ============================================================
      NOS SERVICES
@@ -3047,8 +3047,8 @@ async function elLoadAdmin() {
     const badge = f.actif ? '🟢' : '🔴';
     return '<div class="el-list-item">' +
       '<span>' + badge + ' ' + f.date_vol + ' · ' + f.depart + ' → ' + f.arrivee + ' · ' + f.avion + '</span>' +
-      '<span><button class="el-list-del" onclick="elToggle('' + f.id + '',' + !f.actif + ')" title="' + (f.actif ? 'Désactiver' : 'Activer') + '">' + (f.actif ? '⏸' : '▶') + '</button>' +
-      '<button class="el-list-del" onclick="elDelete('' + f.id + '')" title="Supprimer">🗑</button></span>' +
+      '<span><button class="el-list-del" onclick="elToggle(\'' + f.id + '\',' + !f.actif + ')" title="' + (f.actif ? 'Désactiver' : 'Activer') + '">' + (f.actif ? '⏸' : '▶') + '</button>' +
+      '<button class="el-list-del" onclick="elDelete(\'' + f.id + '\')" title="Supprimer">🗑</button></span>' +
     '</div>';
   }).join('');
 }
