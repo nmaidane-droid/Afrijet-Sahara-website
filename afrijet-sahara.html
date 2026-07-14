@@ -3623,15 +3623,32 @@ async function elRender() {
   }
 
   function typewriterSpan(text) {
-    const total = text.length;
-    const cycleDuration = (total * 0.15 + 0.3).toFixed(2);
-    const visiblePct = Math.round((0.15 / parseFloat(cycleDuration)) * 100);
-    return text.split('').map((ch, i) => {
-      const appearPct = Math.round((i * 0.15 / parseFloat(cycleDuration)) * 100);
-      const disappearPct = Math.round(((total * 0.15 + 0.15) / parseFloat(cycleDuration)) * 100);
-      return '<span style="display:inline-block;opacity:0;animation:typewriterLoop ' + cycleDuration + 's linear ' + (i * 0.15) + 's infinite;">' +
-        (ch === ' ' ? '&nbsp;' : ch) + '</span>';
-    }).join('');
+    return text.split('').map((ch, i) =>
+      '<span class="tw-letter" style="display:inline-block;opacity:0;" data-index="' + i + '">' +
+      (ch === ' ' ? '&nbsp;' : ch) + '</span>'
+    ).join('');
+  }
+
+  function startTypewriterLoops() {
+    document.querySelectorAll('.el-city').forEach(cityEl => {
+      const letters = cityEl.querySelectorAll('.tw-letter');
+      if (!letters.length) return;
+      let idx = 0;
+      function showNext() {
+        if (idx < letters.length) {
+          letters[idx].style.opacity = '1';
+          idx++;
+          setTimeout(showNext, 150);
+        } else {
+          setTimeout(() => {
+            letters.forEach(l => l.style.opacity = '0');
+            idx = 0;
+            setTimeout(showNext, 300);
+          }, 500);
+        }
+      }
+      showNext();
+    });
   }
 
   grid.innerHTML = flights.map(f => {
@@ -3650,6 +3667,8 @@ async function elRender() {
 
   // Re-trigger reveal animation
   document.querySelectorAll('.el-card.reveal').forEach(el => { observer && observer.observe(el); });
+
+  startTypewriterLoops();
 }
 
 // Admin
