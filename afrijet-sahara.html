@@ -750,6 +750,13 @@ section { padding: 96px 32px 80px; }
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes typewriterLoop {
+  0%   { opacity: 0; transform: translateY(4px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  70%  { opacity: 1; transform: translateY(0); }
+  85%  { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 0; transform: translateY(4px); }
+}
 .el-empty {
   text-align: center;
   padding: 48px 24px;
@@ -3616,8 +3623,12 @@ async function elRender() {
   }
 
   function typewriterSpan(text) {
+    const total = text.length;
+    const showDuration = total * 0.15;
+    const pauseDuration = 1.5;
+    const cycleDuration = (showDuration + pauseDuration).toFixed(2);
     return text.split('').map((ch, i) =>
-      '<span style="display:inline-block;opacity:0;animation:typewriter 0.15s ease forwards;animation-delay:' + (i * 0.15) + 's">' +
+      '<span style="display:inline-block;opacity:0;animation:typewriterLoop ' + cycleDuration + 's linear infinite;animation-delay:' + (i * 0.15) + 's">' +
       (ch === ' ' ? '&nbsp;' : ch) + '</span>'
     ).join('');
   }
