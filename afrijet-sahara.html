@@ -3928,20 +3928,29 @@ elRender();
     const firstDotRect = firstDot.getBoundingClientRect();
     const lastDotRect = lastDot.getBoundingClientRect();
 
-    // La barre va du centre du premier dot au centre du dernier dot
     const startY = firstDotRect.top + firstDotRect.height / 2 - lineRect.top;
     const endY = lastDotRect.top + lastDotRect.height / 2 - lineRect.top;
     const totalHeight = endY - startY;
 
-    const scrolled = winH * 0.5 - firstDotRect.top - firstDotRect.height / 2;
-    const pct = totalHeight > 0 ? Math.min(1, Math.max(0, scrolled / totalHeight)) : 0;
+    // Utilise 75% du viewport comme point de référence (au lieu de 50%)
+    // pour atteindre le dernier dot même quand il est en bas de page
+    const trigger = winH * 0.75;
+    const scrolled = trigger - firstDotRect.top - firstDotRect.height / 2;
+    const lastDotCenter = lastDotRect.top + lastDotRect.height / 2;
+
+    let pct;
+    if (lastDotCenter <= trigger) {
+      pct = 1; // Forcer 100% quand le dernier dot est dans la zone
+    } else {
+      pct = totalHeight > 0 ? Math.min(1, Math.max(0, scrolled / totalHeight)) : 0;
+    }
 
     fill.style.top = startY + 'px';
     fill.style.height = (pct * totalHeight) + 'px';
 
     dots.forEach((dot, i) => {
       const dr = dot.getBoundingClientRect();
-      if (dr.top + dr.height / 2 < winH * 0.55) {
+      if (dr.top + dr.height / 2 < trigger) {
         steps[i].classList.add('active');
       } else {
         steps[i].classList.remove('active');
