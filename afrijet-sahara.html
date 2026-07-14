@@ -1484,12 +1484,11 @@ section {
 #accueil.section-enter {
   animation: none;
 }
-/* Hero parallax */
-#accueil {
-  background-attachment: fixed;
-}
-@media (max-width: 1024px) {
-  #accueil { background-attachment: scroll; }
+/* Hero parallax - desktop only */
+@media (min-width: 1025px) {
+  #accueil {
+    background-attachment: fixed;
+  }
 }
 
 /* LIGHTBOX */
