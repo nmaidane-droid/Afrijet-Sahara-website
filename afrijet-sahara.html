@@ -2663,21 +2663,24 @@ function showSection(id) {
   // Reset all reveals in section (remove visible first so animation replays)
   const reveals = document.querySelectorAll('#' + id + ' .reveal, #' + id + ' .reveal-left, #' + id + ' .reveal-right, #' + id + ' .reveal-scale, #' + id + ' .divider');
   reveals.forEach(el => el.classList.remove('visible'));
+  // Reset counters
+  document.querySelectorAll('#' + id + ' [data-count]').forEach(c => { c.textContent = '0'; c.classList.remove('counted'); });
 
   // Stagger reveal animations with delays
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      reveals.forEach((el, i) => {
-        const baseDelay = 80; // ms between each element
-        const staggerClass = [...el.classList].find(c => c.startsWith('stagger-'));
-        const extraDelay = staggerClass ? parseInt(staggerClass.split('-')[1]) * 100 : 0;
-        setTimeout(() => {
-          el.classList.add('visible');
-          if (el.hasAttribute('data-count')) animateCounter(el);
-        }, (i * baseDelay) + extraDelay);
-      });
+  setTimeout(() => {
+    reveals.forEach((el, i) => {
+      const baseDelay = 80;
+      const staggerClass = [...el.classList].find(c => c.startsWith('stagger-'));
+      const extraDelay = staggerClass ? parseInt(staggerClass.split('-')[1]) * 100 : 0;
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, (i * baseDelay) + extraDelay);
     });
-  });
+    // Animate counters with delay
+    document.querySelectorAll('#' + id + ' [data-count]').forEach((c, i) => {
+      setTimeout(() => animateCounter(c), 400 + (i * 150));
+    });
+  }, 50);
 
   // Remonter en haut
   window.scrollTo(0, 0);
