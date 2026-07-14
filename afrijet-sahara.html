@@ -649,7 +649,6 @@ section { padding: 96px 32px 80px; }
   height: 0%;
   background: linear-gradient(180deg, #E8001C, #8B0000);
   border-radius: 2px;
-  transition: height 0.1s linear;
 }
 .journey-steps { display: flex; flex-direction: column; gap: 48px; flex: 1; padding-bottom: 8px; }
 .journey-step { display: flex; gap: 20px; align-items: flex-start; position: relative; }
@@ -3916,35 +3915,36 @@ elRender();
 (function() {
   const fill = document.getElementById('journeyFill');
   const steps = document.querySelectorAll('.journey-step');
+  const dots = document.querySelectorAll('.journey-dot');
   if (!fill || !steps.length) return;
 
-  const lastStep = steps[steps.length - 1];
-  const firstStep = steps[0];
+  const line = fill.parentElement;
 
   function updateJourney() {
     const winH = window.innerHeight;
-    const firstRect = firstStep.getBoundingClientRect();
-    const lastRect = lastStep.getBoundingClientRect();
+    const lineRect = line.getBoundingClientRect();
+    const firstDot = dots[0];
+    const lastDot = dots[dots.length - 1];
+    const firstDotRect = firstDot.getBoundingClientRect();
+    const lastDotRect = lastDot.getBoundingClientRect();
 
-    // Début : quand le premier step entre dans le viewport
-    // Fin : quand le dernier step est visible (top < 80% viewport)
-    const totalTravel = (lastRect.top - firstRect.top);
-    const scrolled = Math.max(0, winH * 0.5 - firstRect.top);
-    const pct = totalTravel > 0 ? Math.min(100, Math.max(0, (scrolled / totalTravel) * 100)) : 0;
+    // La barre va du centre du premier dot au centre du dernier dot
+    const startY = firstDotRect.top + firstDotRect.height / 2 - lineRect.top;
+    const endY = lastDotRect.top + lastDotRect.height / 2 - lineRect.top;
+    const totalHeight = endY - startY;
 
-    // Force 100% si le dernier step est visible
-    if (lastRect.top < winH * 0.8) {
-      fill.style.height = '100%';
-    } else {
-      fill.style.height = pct + '%';
-    }
+    const scrolled = winH * 0.5 - firstDotRect.top - firstDotRect.height / 2;
+    const pct = totalHeight > 0 ? Math.min(1, Math.max(0, scrolled / totalHeight)) : 0;
 
-    steps.forEach(step => {
-      const sr = step.getBoundingClientRect();
-      if (sr.top < winH * 0.75) {
-        step.classList.add('active');
+    fill.style.top = startY + 'px';
+    fill.style.height = (pct * totalHeight) + 'px';
+
+    dots.forEach((dot, i) => {
+      const dr = dot.getBoundingClientRect();
+      if (dr.top + dr.height / 2 < winH * 0.55) {
+        steps[i].classList.add('active');
       } else {
-        step.classList.remove('active');
+        steps[i].classList.remove('active');
       }
     });
   }
