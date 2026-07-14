@@ -3922,6 +3922,7 @@ elRender();
 
   function updateJourney() {
     const winH = window.innerHeight;
+    const winW = window.innerWidth;
     const lineRect = line.getBoundingClientRect();
     const firstDot = dots[0];
     const lastDot = dots[dots.length - 1];
@@ -3932,15 +3933,23 @@ elRender();
     const endY = lastDotRect.top + lastDotRect.height / 2 - lineRect.top;
     const totalHeight = endY - startY;
 
-    // Utilise 75% du viewport comme point de référence (au lieu de 50%)
-    // pour atteindre le dernier dot même quand il est en bas de page
-    const trigger = winH * 0.75;
-    const scrolled = trigger - firstDotRect.top - firstDotRect.height / 2;
+    // Trigger adapté : plus bas sur grand écran car le dernier élément
+    // peut être visible depuis plus haut dans le viewport
+    let trigger;
+    if (winW >= 1024) {
+      trigger = winH * 0.90; // Mac/PC
+    } else if (winW >= 768) {
+      trigger = winH * 0.85; // iPad
+    } else {
+      trigger = winH * 0.75; // Mobile
+    }
+
     const lastDotCenter = lastDotRect.top + lastDotRect.height / 2;
+    const scrolled = trigger - firstDotRect.top - firstDotRect.height / 2;
 
     let pct;
     if (lastDotCenter <= trigger) {
-      pct = 1; // Forcer 100% quand le dernier dot est dans la zone
+      pct = 1;
     } else {
       pct = totalHeight > 0 ? Math.min(1, Math.max(0, scrolled / totalHeight)) : 0;
     }
@@ -3959,6 +3968,7 @@ elRender();
   }
 
   window.addEventListener('scroll', updateJourney, { passive: true });
+  window.addEventListener('resize', updateJourney, { passive: true });
   updateJourney();
 })();
 
