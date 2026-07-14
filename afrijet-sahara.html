@@ -69,20 +69,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ============================================================
-   SCROLL PROGRESS BAR
-   ============================================================ */
-#scrollProgress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #E8001C 0%, #ff4444 100%);
-  z-index: 1001;
-  width: 0%;
-  transition: width 0.05s linear;
-  box-shadow: 0 0 8px rgba(232,0,28,0.4);
-}
-/* ============================================================
    NAVIGATION
    ============================================================ */
 #navbar {
@@ -1483,6 +1469,15 @@ section {
   transition: opacity 0.4s ease;
 }
 
+
+/* Section fade-in transition */
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section-enter {
+  animation: sectionFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 /* Hero parallax */
 #accueil {
   background-attachment: fixed;
@@ -1856,7 +1851,6 @@ section {
      NAVBAR
      ============================================================ -->
 <div id="progressBar"></div>
-<div id="scrollProgress"></div>
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#accueil" class="nav-logo">
@@ -1949,7 +1943,7 @@ section {
 
   <div class="hero-content">
     <p class="section-label" data-i18n="acc.label">Aviation Charter d'Exception</p>
-    <div class="divider"></div>
+    <div class="divider reveal"></div>
     <h1 class="section-title" data-i18n="acc.title">Volez à votre <em>rythme,</em><br>vers vos destinations.</h1>
     <p class="section-subtitle" data-i18n="acc.sub">
       Afrijet Sahara met à votre disposition sa flotte EMB 135 et EMB 145 pour vos vols à la demande vers toute destination. Basée à Dakhla, au sud du Maroc, notre compagnie vous offre une liberté de vol totale : décollage à l'heure qui vous convient, depuis l'aéroport de votre choix, sans escales inutiles. Discrétion absolue, service personnalisé et excellence opérationnelle à chaque vol.
@@ -1997,7 +1991,7 @@ section {
       <div class="compagnie-text reveal">
         <p class="section-label" data-i18n="comp.label">La Compagnie</p>
         
-        <div class="divider"></div>
+        <div class="divider reveal"></div>
         <h2 class="section-title" data-i18n="comp.title">Une compagnie au service de <em>votre ambition</em></h2>
         </h2>
         <p class="section-subtitle" data-i18n="comp.sub">
@@ -2066,7 +2060,7 @@ section {
     <!-- Panel Cartes prépayées -->
     <div id="panel-prepaid" style="display:none;">
       <p class="section-label" data-i18n="nav.prepaid">Cartes prépayées</p>
-      <div class="divider"></div>
+      <div class="divider reveal"></div>
       <h2 class="section-title" data-i18n="prepaid.title">La Carte Prépayée Afrijet Sahara</h2>
       <p class="section-subtitle" style="font-style:italic;margin-bottom:16px;" data-i18n="prepaid.tagline">Volez à votre rythme, à tarif fixe.</p>
       <p class="section-subtitle" style="margin-bottom:32px;" data-i18n="prepaid.desc">La Carte Prépayée Afrijet Sahara vous garantit un accès prioritaire à notre flotte EMB 135 et EMB 145, à un tarif horaire fixe et compétitif. Idéale pour les voyageurs institutionnels et d'affaires qui volent régulièrement.</p>
@@ -2122,7 +2116,7 @@ section {
 
 <div id="panel-president" style="display:none;">
       <p class="section-label" data-i18n="pres.label">Mot du Président</p>
-      <div class="divider"></div>
+      <div class="divider reveal"></div>
       <div class="president-grid">
         <div>
           <div class="president-photo">
@@ -2484,7 +2478,7 @@ section {
   <div class="container">
     <p class="section-label" data-i18n="cta.label">Contact & Devis</p>
     
-    <div class="divider"></div>
+    <div class="divider reveal"></div>
     <h2 class="section-title" data-i18n="cta.title">Planifions votre <em>prochain vol</em></h2>
     </h2>
 
@@ -2638,9 +2632,19 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 // Cacher toutes les sections sauf accueil au démarrage
 function showSection(id) {
+  // Hide all sections
   document.querySelectorAll('section[id]').forEach(s => {
-    s.style.display = (s.id === id) ? 'block' : 'none';
+    s.style.display = 'none';
+    s.classList.remove('section-enter');
   });
+
+  // Show target section with animation
+  const target = document.getElementById(id);
+  if (target) {
+    target.style.display = 'block';
+    target.classList.add('section-enter');
+  }
+
   // Cacher les panneaux compagnie par défaut
   if (id === 'compagnie') {
     var pc = document.getElementById('panel-compagnie');
@@ -2655,11 +2659,26 @@ function showSection(id) {
   navLinks.forEach(l => {
     l.classList.toggle('active', l.getAttribute('href') === '#' + id);
   });
-  // Révéler les éléments .reveal de la section affichée
-  document.querySelectorAll('#' + id + ' .reveal, #' + id + ' .reveal-left, #' + id + ' .reveal-right, #' + id + ' .reveal-scale').forEach(el => {
-    el.classList.add('visible');
-    if (el.hasAttribute('data-count')) animateCounter(el);
+
+  // Reset all reveals in section (remove visible first so animation replays)
+  const reveals = document.querySelectorAll('#' + id + ' .reveal, #' + id + ' .reveal-left, #' + id + ' .reveal-right, #' + id + ' .reveal-scale, #' + id + ' .divider');
+  reveals.forEach(el => el.classList.remove('visible'));
+
+  // Stagger reveal animations with delays
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      reveals.forEach((el, i) => {
+        const baseDelay = 80; // ms between each element
+        const staggerClass = [...el.classList].find(c => c.startsWith('stagger-'));
+        const extraDelay = staggerClass ? parseInt(staggerClass.split('-')[1]) * 100 : 0;
+        setTimeout(() => {
+          el.classList.add('visible');
+          if (el.hasAttribute('data-count')) animateCounter(el);
+        }, (i * baseDelay) + extraDelay);
+      });
+    });
   });
+
   // Remonter en haut
   window.scrollTo(0, 0);
 }
@@ -3687,35 +3706,6 @@ async function elDelete(id) {
 // Init
 elRender();
 
-
-/* ---- Scroll Progress Bar ---- */
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
-  document.getElementById('scrollProgress').style.width = progress + '%';
-});
-
-/* ---- Navbar hide on scroll down, show on scroll up ---- */
-let lastScrollY = 0;
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
-  if (currentScrollY > lastScrollY && currentScrollY > 200) {
-    navbar.style.transform = 'translateY(-100%)';
-  } else {
-    navbar.style.transform = 'translateY(0)';
-  }
-  lastScrollY = currentScrollY;
-}, { passive: true });
-
-/* ---- Add scroll class to navbar ---- */
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-}, { passive: true });
 
 </script>
 
