@@ -270,6 +270,9 @@ section { padding: 96px 32px 80px; }
   flex-direction: column;
   justify-content: space-between;
   padding: 0 !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: auto;
 }
 #accueil .section-title,
 #accueil .section-title em,
@@ -1268,7 +1271,7 @@ footer {
   section { padding: 88px 20px 24px; }
   #empty-legs { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
-  #accueil { padding: 0 !important; min-height: calc(100vh - 72px - 60px); }
+  #accueil { padding: 0 !important; min-height: calc(100svh - 72px - 60px); min-height: calc(100vh - 72px - 60px); }
   #accueil .hero-content { padding: 88px 20px 0; flex: 1; }
   footer { padding: 12px 20px; }
   .nav-inner { padding: 0 20px; }
@@ -1468,11 +1471,6 @@ footer {
 }
 
 /* Smooth section transitions */
-section {
-  transition: opacity 0.4s ease;
-}
-
-
 /* Section fade-in transition */
 @keyframes sectionFadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -1483,6 +1481,12 @@ section {
 }
 #accueil.section-enter {
   animation: none;
+  opacity: 1;
+}
+#accueil .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 /* Hero parallax - desktop only */
 @media (min-width: 1025px) {
