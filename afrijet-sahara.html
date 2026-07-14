@@ -744,6 +744,12 @@ section { padding: 96px 32px 80px; }
   color: #fff;
 }
 .el-cta-mail:hover { background: #E8001C; transform: translateY(-1px); }
+.el-cta-mail:focus, .el-cta-mail:active { background: var(--navy); color: #fff; }
+
+@keyframes typewriter {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .el-empty {
   text-align: center;
   padding: 48px 24px;
@@ -3609,11 +3615,18 @@ async function elRender() {
     return;
   }
 
+  function typewriterSpan(text) {
+    return text.split('').map((ch, i) =>
+      '<span style="display:inline-block;opacity:0;animation:typewriter 0.08s ease forwards;animation-delay:' + (i * 0.06) + 's">' +
+      (ch === ' ' ? '&nbsp;' : ch) + '</span>'
+    ).join('');
+  }
+
   grid.innerHTML = flights.map(f => {
     const dateStr = elFormatDate(f.date_vol);
     const heureStr = f.heure ? ' · ' + f.heure : '';
     return '<div class="el-card reveal">' +
-      '<div class="el-route"><span class="el-city">' + f.depart + '</span><span class="el-arrow">✈</span><span class="el-city">' + f.arrivee + '</span></div>' +
+      '<div class="el-route"><span class="el-city">' + typewriterSpan(f.depart) + '</span><span class="el-arrow">✈</span><span class="el-city">' + typewriterSpan(f.arrivee) + '</span></div>' +
       '<div class="el-prix">Prix : ' + (f.prix || 'Sur demande') + '</div>' +
       '<div class="el-meta"><span>📅 ' + dateStr + heureStr + '</span><span>🛩 ' + f.avion + '</span></div>' +
       '<div class="el-cta-row">' +
