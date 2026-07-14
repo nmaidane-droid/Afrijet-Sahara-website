@@ -3617,7 +3617,7 @@ async function elRender() {
 
   function typewriterSpan(text) {
     return text.split('').map((ch, i) =>
-      '<span style="display:inline-block;opacity:0;animation:typewriter 0.08s ease forwards;animation-delay:' + (i * 0.06) + 's">' +
+      '<span style="display:inline-block;opacity:0;animation:typewriter 0.15s ease forwards;animation-delay:' + (i * 0.15) + 's">' +
       (ch === ' ' ? '&nbsp;' : ch) + '</span>'
     ).join('');
   }
