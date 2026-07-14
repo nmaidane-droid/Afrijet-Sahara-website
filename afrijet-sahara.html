@@ -3918,17 +3918,26 @@ elRender();
   const steps = document.querySelectorAll('.journey-step');
   if (!fill || !steps.length) return;
 
-  const timeline = fill.closest('.journey-timeline');
+  const lastStep = steps[steps.length - 1];
+  const firstStep = steps[0];
 
   function updateJourney() {
-    const rect = timeline.getBoundingClientRect();
     const winH = window.innerHeight;
-    // La barre commence quand le haut de la timeline entre dans le viewport
-    // et finit quand le bas sort du viewport
-    const start = winH - rect.top;
-    const total = rect.height + winH;
-    const pct = Math.min(100, Math.max(0, (start / total) * 100));
-    fill.style.height = pct + '%';
+    const firstRect = firstStep.getBoundingClientRect();
+    const lastRect = lastStep.getBoundingClientRect();
+
+    // Début : quand le premier step entre dans le viewport
+    // Fin : quand le dernier step est visible (top < 80% viewport)
+    const totalTravel = (lastRect.top - firstRect.top);
+    const scrolled = Math.max(0, winH * 0.5 - firstRect.top);
+    const pct = totalTravel > 0 ? Math.min(100, Math.max(0, (scrolled / totalTravel) * 100)) : 0;
+
+    // Force 100% si le dernier step est visible
+    if (lastRect.top < winH * 0.8) {
+      fill.style.height = '100%';
+    } else {
+      fill.style.height = pct + '%';
+    }
 
     steps.forEach(step => {
       const sr = step.getBoundingClientRect();
