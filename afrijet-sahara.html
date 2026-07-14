@@ -1268,8 +1268,10 @@ footer {
   .btn-primary { font-size: 12px !important; white-space: nowrap; }
   .btn-submit { font-size: 12px !important; white-space: nowrap; }
   .hero-title { font-size: 28px; line-height: 1.15; }
-  .hero-stats { display: none; }
-  .hero-stat { display: none; }
+  .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
+  .hero-stat { padding: 10px 4px; flex: 1 1 0; min-width: 0; }
+  .hero-stat-num { font-size: 20px; }
+  .hero-stat-label { font-size: 7px; letter-spacing: 0.06em; }
   section { padding: 88px 20px 24px; }
   #empty-legs { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
@@ -2680,9 +2682,16 @@ function showSection(id) {
         el.classList.add('visible');
       }, (i * baseDelay) + extraDelay);
     });
-    // Animate counters with delay
+    // Animate counters with delay (skip animation on mobile)
+    const isMobile = window.innerWidth <= 768;
     document.querySelectorAll('#' + id + ' [data-count]').forEach((c, i) => {
-      setTimeout(() => animateCounter(c), 400 + (i * 150));
+      const target = parseInt(c.getAttribute('data-count'), 10);
+      const suffix = c.getAttribute('data-suffix') || '';
+      if (isMobile) {
+        c.textContent = target.toLocaleString() + suffix;
+      } else {
+        setTimeout(() => animateCounter(c), 400 + (i * 150));
+      }
     });
   }, 50);
 
