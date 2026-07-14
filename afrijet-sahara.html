@@ -3630,24 +3630,39 @@ async function elRender() {
   }
 
   function startTypewriterLoops() {
-    document.querySelectorAll('.el-city').forEach(cityEl => {
-      const letters = cityEl.querySelectorAll('.tw-letter');
-      if (!letters.length) return;
-      let idx = 0;
-      function showNext() {
-        if (idx < letters.length) {
-          letters[idx].style.opacity = '1';
-          idx++;
-          setTimeout(showNext, 150);
-        } else {
-          setTimeout(() => {
-            letters.forEach(l => l.style.opacity = '0');
-            idx = 0;
-            setTimeout(showNext, 300);
-          }, 500);
+    document.querySelectorAll('.el-card').forEach(card => {
+      const cities = card.querySelectorAll('.el-city');
+      const allLetters = [];
+      cities.forEach(city => {
+        const letters = city.querySelectorAll('.tw-letter');
+        allLetters.push(letters);
+      });
+      const maxLen = Math.max(...Array.from(allLetters).map(l => l.length));
+
+      function runCycle() {
+        // Afficher lettre par lettre sur toutes les villes en parallèle
+        let step = 0;
+        function showStep() {
+          if (step < maxLen) {
+            allLetters.forEach(letters => {
+              if (letters[step]) letters[step].style.opacity = '1';
+            });
+            step++;
+            setTimeout(showStep, 150);
+          } else {
+            // Toutes les lettres affichées — attendre 500ms puis effacer tout
+            setTimeout(() => {
+              allLetters.forEach(letters => {
+                letters.forEach(l => l.style.opacity = '0');
+              });
+              // Pause avant de relancer
+              setTimeout(runCycle, 400);
+            }, 500);
+          }
         }
+        showStep();
       }
-      showNext();
+      runCycle();
     });
   }
 
