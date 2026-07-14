@@ -1481,12 +1481,6 @@ footer {
 }
 #accueil.section-enter {
   animation: none;
-  opacity: 1;
-}
-#accueil .reveal {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
 }
 /* Hero parallax - desktop only */
 @media (min-width: 1025px) {
@@ -2647,11 +2641,11 @@ function showSection(id) {
     s.classList.remove('section-enter');
   });
 
-  // Show target section with animation
+  // Show target section with animation (skip for accueil)
   const target = document.getElementById(id);
   if (target) {
     target.style.display = 'block';
-    target.classList.add('section-enter');
+    if (id !== 'accueil') target.classList.add('section-enter');
   }
 
   // Cacher les panneaux compagnie par défaut
