@@ -1268,12 +1268,13 @@ footer {
   .btn-primary { font-size: 12px !important; white-space: nowrap; }
   .btn-submit { font-size: 12px !important; white-space: nowrap; }
   .hero-title { font-size: 28px; line-height: 1.15; }
+  .section-subtitle { font-size: 13px; line-height: 1.5; }
   .hero-stats { display: none; }
   section { padding: 88px 20px 24px; }
   #empty-legs { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
-  #accueil { padding: 0 !important; min-height: 100vh; overflow: visible; }
-  #accueil .hero-content { padding: 88px 20px 100px !important; flex: 1; }
+  #accueil { padding: 0 !important; min-height: 100vh; overflow: visible !important; height: auto !important; }
+  #accueil .hero-content { padding: 72px 20px 120px !important; flex: 1; }
   footer { padding: 12px 20px; }
   .nav-inner { padding: 0 20px; }
 
@@ -2692,8 +2693,8 @@ function showSection(id) {
     });
   }, 50);
 
-  // Bloquer le scroll sur accueil
-  document.body.style.overflow = (id === 'accueil') ? 'hidden' : 'auto';
+  // Bloquer le scroll sur accueil (desktop uniquement)
+  document.body.style.overflow = (id === 'accueil' && window.innerWidth > 768) ? 'hidden' : 'auto';
 
   // Remonter en haut
   window.scrollTo(0, 0);
