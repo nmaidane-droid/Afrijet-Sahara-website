@@ -2695,6 +2695,9 @@ function showSection(id) {
     });
   }, 50);
 
+  // Bloquer le scroll sur accueil
+  document.body.style.overflow = (id === 'accueil') ? 'hidden' : 'auto';
+
   // Remonter en haut
   window.scrollTo(0, 0);
 }
