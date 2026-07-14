@@ -341,6 +341,7 @@ section { padding: 96px 32px 80px; }
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 16px;
+  margin-bottom: auto;
 }
 .btn-primary {
   background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
@@ -1250,7 +1251,7 @@ footer {
 
 @media (max-width: 1400px) {
   .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 40px; gap: 12px; }
-  .hero-stat { padding: 10px 12px; flex: 1; }
+  .hero-stat { padding: 10px 8px; flex: 1 1 0; min-width: 0; }
   .hero-stat-num { font-size: 26px; }
   footer { padding: 12px 32px; }
   #accueil .hero-content { padding-bottom: 8px; flex: 1; }
@@ -1261,8 +1262,9 @@ footer {
   .btn-submit { font-size: 12px !important; white-space: nowrap; }
   .hero-title { font-size: 28px; line-height: 1.15; }
   .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
-  .hero-stat { padding: 10px 6px; }
-  .hero-stat-num { font-size: 22px; }
+  .hero-stat { padding: 10px 4px; flex: 1 1 0; min-width: 0; }
+  .hero-stat-num { font-size: 20px; }
+  .hero-stat-label { font-size: 7px; letter-spacing: 0.06em; }
   section { padding: 88px 20px 24px; }
   #empty-legs { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
