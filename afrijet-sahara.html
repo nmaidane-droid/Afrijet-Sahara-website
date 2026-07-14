@@ -632,6 +632,65 @@ section { padding: 96px 32px 80px; }
    SERVICES
    ============================================================ */
 #services { background: var(--off-white); }
+
+/* Journey Timeline */
+.journey-wrap { margin-top: 64px; }
+.journey-timeline { position: relative; display: flex; gap: 32px; }
+.journey-line {
+  position: relative;
+  width: 2px;
+  background: var(--border);
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+.journey-line-fill {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0%;
+  background: linear-gradient(180deg, #E8001C, #8B0000);
+  border-radius: 2px;
+  transition: height 0.1s linear;
+}
+.journey-steps { display: flex; flex-direction: column; gap: 48px; flex: 1; padding-bottom: 8px; }
+.journey-step { display: flex; gap: 20px; align-items: flex-start; position: relative; }
+.journey-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid #E8001C;
+  background: var(--off-white);
+  flex-shrink: 0;
+  margin-top: 4px;
+  position: absolute;
+  left: -40px;
+  transition: background 0.3s;
+}
+.journey-step.active .journey-dot { background: #E8001C; }
+.journey-content { padding-left: 0; }
+.journey-time {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E8001C;
+  display: block;
+  margin-bottom: 6px;
+}
+.journey-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.journey-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+@media (max-width: 768px) {
+  .journey-timeline { gap: 24px; }
+  .journey-dot { left: -34px; }
+}
 .services-grid {
   display: block;
   margin-top: 32px;
@@ -2342,6 +2401,65 @@ footer {
         <p class="service-text" data-i18n="srv.d6">Soute généreuse adaptée à vos besoins, sans les contraintes des compagnies régulières. Embarquez vos équipements professionnels en toute liberté.</p>
       </div>
     </div>
+
+    <!-- Timeline Le Voyage -->
+    <div class="journey-wrap">
+      <p class="section-label reveal" data-i18n="srv.journey.label">Le Voyage</p>
+      <div class="divider reveal"></div>
+      <h3 class="section-title reveal" style="font-size:clamp(20px,3vw,36px);margin-bottom:48px;" data-i18n="srv.journey.title">Chaque instant, <em>pensé pour vous</em></h3>
+      <div class="journey-timeline">
+        <div class="journey-line"><div class="journey-line-fill" id="journeyFill"></div></div>
+        <div class="journey-steps">
+
+          <div class="journey-step reveal">
+            <div class="journey-dot"></div>
+            <div class="journey-content">
+              <span class="journey-time" data-i18n="srv.journey.t1">T - 30 MIN</span>
+              <h4 class="journey-title" data-i18n="srv.journey.h1">Arrivée au Terminal Privé</h4>
+              <p class="journey-text" data-i18n="srv.journey.d1">Rejoignez le terminal privé de l'aéroport de Dakhla. Aucune file d'attente, aucune foule. Votre appareil vous attend sur le tarmac, à quelques pas.</p>
+            </div>
+          </div>
+
+          <div class="journey-step reveal">
+            <div class="journey-dot"></div>
+            <div class="journey-content">
+              <span class="journey-time" data-i18n="srv.journey.t2">T - 15 MIN</span>
+              <h4 class="journey-title" data-i18n="srv.journey.h2">Accueil Personnalisé</h4>
+              <p class="journey-text" data-i18n="srv.journey.d2">Votre hôtesse vous accueille par votre nom. Votre boisson de prédilection est servie. Vos bagages sont déjà à bord.</p>
+            </div>
+          </div>
+
+          <div class="journey-step reveal">
+            <div class="journey-dot"></div>
+            <div class="journey-content">
+              <span class="journey-time" data-i18n="srv.journey.t3">T - 5 MIN</span>
+              <h4 class="journey-title" data-i18n="srv.journey.h3">Embarquement Fluide</h4>
+              <p class="journey-text" data-i18n="srv.journey.d3">Rejoignez votre appareil directement. Aucun contrôle de sécurité, aucune carte d'embarquement. Montez simplement à bord de votre espace privé.</p>
+            </div>
+          </div>
+
+          <div class="journey-step reveal">
+            <div class="journey-dot"></div>
+            <div class="journey-content">
+              <span class="journey-time" data-i18n="srv.journey.t4">EN VOL</span>
+              <h4 class="journey-title" data-i18n="srv.journey.h4">Expérience en Vol</h4>
+              <p class="journey-text" data-i18n="srv.journey.d4">Installez-vous dans votre siège business. Savourez une restauration gastronomique, des vins fins et un divertissement personnalisé à 11 000 mètres d'altitude.</p>
+            </div>
+          </div>
+
+          <div class="journey-step reveal">
+            <div class="journey-dot"></div>
+            <div class="journey-content">
+              <span class="journey-time" data-i18n="srv.journey.t5">ARRIVÉE</span>
+              <h4 class="journey-title" data-i18n="srv.journey.h5">Arrivée Discrète</h4>
+              <p class="journey-text" data-i18n="srv.journey.d5">Atterrissez au terminal privé de votre destination. Votre transport au sol vous attend. De porte à porte, le voyage est sans couture.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2863,6 +2981,13 @@ const translations = {
     'srv.t4': 'Restauration', 'srv.d4': "Service de restauration personnalisé selon vos préférences : plats chauds et froids, boissons sélectionnées. Chaque repas est préparé avec soin pour répondre à vos exigences.",
     'srv.t5': 'Confort & Espace', 'srv.d5': "Sièges business inclinables avec espace généreux entre les rangées. Cabine calme et intimiste, conçue pour votre repos et votre productivité.",
     'srv.t6': 'Bagages', 'srv.d6': "Soute généreuse adaptée à vos besoins, sans les contraintes des compagnies régulières. Embarquez vos équipements professionnels en toute liberté.",
+    'srv.journey.label': 'Le Voyage',
+    'srv.journey.title': 'Chaque instant, <em>pensé pour vous</em>',
+    'srv.journey.t1': 'T - 30 MIN', 'srv.journey.h1': 'Arrivée au Terminal Privé', 'srv.journey.d1': "Rejoignez le terminal privé de l'aéroport. Aucune file d'attente, aucune foule. Votre appareil vous attend sur le tarmac, à quelques pas.",
+    'srv.journey.t2': 'T - 15 MIN', 'srv.journey.h2': 'Accueil Personnalisé', 'srv.journey.d2': "Votre hôtesse vous accueille par votre nom. Votre boisson de prédilection est servie. Vos bagages sont déjà à bord.",
+    'srv.journey.t3': 'T - 5 MIN', 'srv.journey.h3': 'Embarquement Fluide', 'srv.journey.d3': "Rejoignez votre appareil directement. Aucun contrôle de sécurité, aucune carte d'embarquement. Montez simplement à bord de votre espace privé.",
+    'srv.journey.t4': 'EN VOL', 'srv.journey.h4': 'Expérience en Vol', 'srv.journey.d4': "Installez-vous dans votre siège business. Savourez une restauration gastronomique, des vins fins et un divertissement personnalisé à 11 000 mètres d'altitude.",
+    'srv.journey.t5': 'ARRIVÉE', 'srv.journey.h5': 'Arrivée Discrète', 'srv.journey.d5': "Atterrissez au terminal privé de votre destination. Votre transport au sol vous attend. De porte à porte, le voyage est sans couture.",
     
     
     'news.label': 'Actualités', 'news.photo': 'Challenge.ma', 'news.d1': '25 mai 2025', 'news.t1': "Anas Bennani parie sur l'aérien à Dakhla avec Sahara Aviation Holding", 'news.e1': "Fort d'une carrière internationale dans le financement aéronautique, Anas Bennani crée Sahara Aviation Holding, basée à Dakhla, pour structurer un écosystème d'investissement aérien dans le sud du Maroc. Source : Challenge.ma", 'news.read': 'Lire l\'article →', 'news.title': 'Les dernières <em>nouvelles</em>',
@@ -2978,6 +3103,13 @@ const translations = {
     'srv.t4': 'Catering', 'srv.d4': 'Personalised catering service according to your preferences: hot and cold dishes, selected beverages. Each meal is carefully prepared to meet your requirements.',
     'srv.t5': 'Comfort & Space', 'srv.d5': 'Reclining business seats with generous legroom. A quiet and intimate cabin designed for your rest and productivity.',
     'srv.t6': 'Baggage', 'srv.d6': 'Generous hold space tailored to your needs, without the constraints of regular airlines. Board your professional equipment with complete freedom.',
+    'srv.journey.label': 'The Journey',
+    'srv.journey.title': 'Every moment, <em>considered</em>',
+    'srv.journey.t1': 'T - 30 MIN', 'srv.journey.h1': 'Private Terminal Arrival', 'srv.journey.d1': 'Arrive at the airport\'s private terminal. No queues. No crowds. Your aircraft awaits on the tarmac, steps away.',
+    'srv.journey.t2': 'T - 15 MIN', 'srv.journey.h2': 'Personalised Welcome', 'srv.journey.d2': 'Your flight attendant greets you by name. Your preferred refreshment is served. Your luggage is already aboard.',
+    'srv.journey.t3': 'T - 5 MIN', 'srv.journey.h3': 'Seamless Boarding', 'srv.journey.d3': 'Walk directly to your aircraft. No security lines. No boarding passes. Simply step aboard your private sanctuary.',
+    'srv.journey.t4': 'IN FLIGHT', 'srv.journey.h4': 'In-Flight Experience', 'srv.journey.d4': 'Settle into your business seat. Enjoy gourmet catering, fine wines, and personalised entertainment at 37,000 feet.',
+    'srv.journey.t5': 'ARRIVAL', 'srv.journey.h5': 'Discreet Arrival', 'srv.journey.d5': 'Land at your destination\'s private terminal. Your ground transportation awaits. From door to door, the journey is seamless.',
     
     
     'news.label': 'Actualités', 'news.photo': 'Challenge.ma', 'news.d1': '25 mai 2025', 'news.t1': "Anas Bennani parie sur l'aérien à Dakhla avec Sahara Aviation Holding", 'news.e1': "Fort d'une carrière internationale dans le financement aéronautique, Anas Bennani crée Sahara Aviation Holding, basée à Dakhla, pour structurer un écosystème d'investissement aérien dans le sud du Maroc. Source : Challenge.ma", 'news.read': 'Lire l\'article →', 'news.title': 'Les dernières <em>nouvelles</em>',
@@ -3094,6 +3226,13 @@ const translations = {
     'srv.t4': 'Restauración', 'srv.d4': 'Servicio de restauración personalizado según sus preferencias: platos calientes y fríos, bebidas seleccionadas. Cada comida se prepara con esmero para satisfacer sus exigencias.',
     'srv.t5': 'Confort & Espacio', 'srv.d5': 'Asientos business reclinables con espacio generoso entre filas. Cabina tranquila e intimista, diseñada para su descanso y productividad.',
     'srv.t6': 'Equipaje', 'srv.d6': 'Bodega generosa adaptada a sus necesidades, sin las restricciones de las compañías regulares. Embarque su equipamiento profesional con total libertad.',
+    'srv.journey.label': 'El Viaje',
+    'srv.journey.title': 'Cada instante, <em>pensado para usted</em>',
+    'srv.journey.t1': 'T - 30 MIN', 'srv.journey.h1': 'Llegada a la Terminal Privada', 'srv.journey.d1': 'Llegue a la terminal privada del aeropuerto. Sin colas. Sin aglomeraciones. Su aeronave le espera en la pista, a pocos pasos.',
+    'srv.journey.t2': 'T - 15 MIN', 'srv.journey.h2': 'Bienvenida Personalizada', 'srv.journey.d2': 'Su azafata le recibe por su nombre. Su bebida preferida está servida. Su equipaje ya está a bordo.',
+    'srv.journey.t3': 'T - 5 MIN', 'srv.journey.h3': 'Embarque sin Esperas', 'srv.journey.d3': 'Diríjase directamente a su aeronave. Sin controles de seguridad. Sin tarjetas de embarque. Suba simplemente a su espacio privado.',
+    'srv.journey.t4': 'EN VUELO', 'srv.journey.h4': 'Experiencia a Bordo', 'srv.journey.d4': 'Acomódese en su asiento business. Disfrute de una restauración gourmet, vinos selectos y entretenimiento personalizado a 11 000 metros de altitud.',
+    'srv.journey.t5': 'LLEGADA', 'srv.journey.h5': 'Llegada Discreta', 'srv.journey.d5': 'Aterrice en la terminal privada de su destino. Su transporte terrestre le espera. De puerta a puerta, el viaje es impecable.',
     
     
     'news.label': 'Noticias', 'news.photo': 'Challenge.ma', 'news.d1': '25 de mayo de 2025', 'news.t1': 'Anas Bennani apuesta por la aviación en Dakhla con Sahara Aviation Holding', 'news.e1': 'Con una carrera internacional en financiación aeronáutica, Anas Bennani crea Sahara Aviation Holding, con sede en Dakhla, para estructurar un ecosistema de inversión aérea en el sur de Marruecos. Fuente: Challenge.ma', 'news.read': 'Leer el artículo →', 'news.title': 'Últimas <em>noticias</em>',
@@ -3772,6 +3911,36 @@ async function elDelete(id) {
 
 // Init
 elRender();
+
+// Journey timeline scroll progress
+(function() {
+  const fill = document.getElementById('journeyFill');
+  const steps = document.querySelectorAll('.journey-step');
+  if (!fill || !steps.length) return;
+
+  const timeline = fill.closest('.journey-timeline');
+
+  function updateJourney() {
+    const rect = timeline.getBoundingClientRect();
+    const winH = window.innerHeight;
+    const total = rect.height;
+    const scrolled = Math.max(0, winH * 0.6 - rect.top);
+    const pct = Math.min(100, Math.max(0, (scrolled / total) * 100));
+    fill.style.height = pct + '%';
+
+    steps.forEach(step => {
+      const sr = step.getBoundingClientRect();
+      if (sr.top < winH * 0.65) {
+        step.classList.add('active');
+      } else {
+        step.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateJourney, { passive: true });
+  updateJourney();
+})();
 
 
 </script>
