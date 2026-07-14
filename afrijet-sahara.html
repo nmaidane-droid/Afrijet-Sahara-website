@@ -340,7 +340,7 @@ section { padding: 96px 32px 80px; }
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 .btn-primary {
   background: linear-gradient(90deg, #E8001C 0%, #8B0000 100%);
@@ -385,12 +385,13 @@ section { padding: 96px 32px 80px; }
   width: 100%;
 }
 .hero-stat {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   text-align: center;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 12px;
+  padding: 16px 8px;
 }
 .hero-stat-num {
   font-family: var(--font-display);
@@ -3196,11 +3197,6 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      // Counter animation
-      if (entry.target.hasAttribute('data-count')) {
-        animateCounter(entry.target);
-      }
-      observer.unobserve(entry.target);
     }
   });
 }, observerOptions);
@@ -3208,14 +3204,6 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
   observer.observe(el);
 });
-
-// Also reveal elements in currently visible section
-const activeSection = document.querySelector('section[style*="display: block"], section:first-of-type');
-if (activeSection) {
-  activeSection.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
-    el.classList.add('visible');
-  });
-}
 
 /* ---- Counter Animation ---- */
 /* ---- Enhanced Counter Animation ---- */
