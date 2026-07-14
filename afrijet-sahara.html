@@ -408,8 +408,6 @@ section { padding: 96px 32px 80px; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px 8px;
-  will-change: auto;
-  contain: layout style;
 }
 .hero-stat-num {
   font-family: var(--font-display);
@@ -1279,10 +1277,8 @@ footer {
   .btn-primary { font-size: 12px !important; white-space: nowrap; }
   .btn-submit { font-size: 12px !important; white-space: nowrap; }
   .hero-title { font-size: 28px; line-height: 1.15; }
-  .hero-stats { display: flex; padding: 8px 20px 16px; gap: 6px; }
-  .hero-stat { padding: 10px 4px; flex: 1 1 0; min-width: 0; }
-  .hero-stat-num { font-size: 20px; }
-  .hero-stat-label { font-size: 7px; letter-spacing: 0.06em; }
+  .hero-stats { display: none; }
+  .hero-stat { display: none; }
   section { padding: 88px 20px 24px; }
   #empty-legs { padding: 88px 20px 24px; }
   #contact { padding: 88px 20px 24px; }
@@ -1973,7 +1969,6 @@ footer {
       
       
     </div>
-    <br>
   </div>
 
 
