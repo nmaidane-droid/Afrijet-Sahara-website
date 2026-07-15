@@ -1329,12 +1329,14 @@ footer {
   }
 }
 @media (max-width: 768px) {
-  .footer-link-legal, .footer-link-privacy {
-    display: inline;
+  .footer-inner {
+    flex-wrap: wrap;
   }
-  .footer-link-legal::after {
-    content: '   ';
-    white-space: pre;
+  .footer-copy {
+    width: 100%;
+  }
+  .footer-link-legal, .footer-link-privacy {
+    flex: 1;
   }
 }
 .footer-copy {
