@@ -1313,12 +1313,19 @@ footer {
 @media (min-width: 769px) {
   section { padding-bottom: 100px; }
   #contact { padding-bottom: 100px; }
+  .footer-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
 }
 @media (min-width: 1025px) {
   .footer-inner {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    width: 100%;
   }
 }
 .footer-copy {
@@ -2777,12 +2784,8 @@ footer {
 <footer>
   <div class="footer-inner">
     <p class="footer-copy" data-i18n="footer.copy">© 2026 Afrijet Sahara. Tous droits réservés.</p>
-    <div class="footer-links">
-      <a href="#" class="footer-link" id="legalLink" data-i18n="footer.legal">Mentions légales</a>
-      
-      <a href="#" class="footer-link" data-i18n="footer.privacy">Politique de confidentialité</a>
-      
-    </div>
+    <a href="#" class="footer-link" id="legalLink" data-i18n="footer.legal">Mentions légales</a>
+    <a href="#" class="footer-link" data-i18n="footer.privacy">Politique de confidentialité</a>
   </div>
 </footer>
 
