@@ -206,14 +206,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu.open { display: block; }
 .mobile-menu .nav-link {
   display: block;
-  padding: 12px 8px;
+  padding: 14px 16px;
   font-size: 14px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
   color: var(--navy);
-  background: none;
+  background: var(--off-white);
   -webkit-text-fill-color: var(--navy);
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
-.mobile-menu .nav-link:last-child { border-bottom: none; }
+.mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
 .mobile-actions {
   display: flex;
   gap: 12px;
