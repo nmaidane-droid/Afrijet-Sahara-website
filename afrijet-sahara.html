@@ -3963,9 +3963,13 @@ async function elDelete(id) {
 
 function openLegalModal() {
   document.getElementById('modalLegal').style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  document.body.style.position = 'fixed';
-  document.body.style.width = '100%';
+  if (window.innerWidth <= 768) {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
 }
 function closeLegalModal() {
   document.getElementById('modalLegal').style.display = 'none';
