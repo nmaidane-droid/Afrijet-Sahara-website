@@ -39,14 +39,15 @@
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
+html, body { height: 100%; }
 body {
-  padding-bottom: 80px;
   font-family: var(--font-body);
   color: var(--text);
   background: var(--off-white);
   -webkit-font-smoothing: antialiased;
   text-align: justify;
   text-justify: inter-word;
+  overflow: hidden;
 }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
@@ -251,7 +252,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ============================================================
    SECTIONS COMMON
    ============================================================ */
-section { padding: 96px 32px 80px; }
+section { padding: 96px 32px 80px; overflow-y: auto; height: calc(100vh - var(--nav-h) - 48px); }
 .container { max-width: 1280px; margin: 0 auto; background: transparent; }
 .section-label {
   font-size: 16px;
@@ -1350,7 +1351,6 @@ footer {
   .btn-devis { display: none; }
   .nav-link.btn-devis-nav { display: none; }
   .lang-switcher { display: flex !important; }
-  body { padding-bottom: 90px; }
 }
 
 /* iPad landscape et desktop : menu complet, hamburger caché */
@@ -2587,8 +2587,6 @@ footer {
   </div>
 </div>
 
-<button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin">🔒</button>
-
 <!-- ============================================================
      SECURITE
      ============================================================ -->
@@ -2859,8 +2857,9 @@ function showSection(id) {
     });
   }, 50);
 
-  // Bloquer le scroll sur accueil
-  document.body.style.overflow = (id === 'accueil') ? 'hidden' : 'auto';
+  // Afficher le cadenas uniquement sur vols à vide
+  var adminBtn = document.getElementById('elAdminBtn');
+  if (adminBtn) adminBtn.style.display = (id === 'empty-legs') ? 'flex' : 'none';
 
   // Remonter en haut
   window.scrollTo(0, 0);
@@ -4097,6 +4096,8 @@ elRender();
     <p style="font-size:14px;color:#555;line-height:1.7;">Les informations collectées via le formulaire de contact sont utilisées uniquement pour répondre à vos demandes et ne sont en aucun cas cédées à des tiers. Conformément à la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : <a href="mailto:info@afrijet.ma" style="color:#E8001C;">info@afrijet.ma</a>.</p>
   </div>
 </div>
+
+<button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin" style="display:none;">🔒</button>
 
 </body>
 </html>
