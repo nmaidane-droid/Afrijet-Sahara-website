@@ -216,6 +216,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 8px;
 }
 .mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
+@media (max-width: 768px) {
+  .mobile-menu .nav-sub-link { padding-left: 28px !important; }
+}
 .mobile-actions {
   display: flex;
   gap: 12px;
@@ -1998,9 +2001,9 @@ footer {
   
   <a class="nav-link" onclick="toggleMobileApropos(event)" data-i18n="nav.apropos">À propos ▾</a>
   <div id="mobileAproposMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
-    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('president')" data-i18n="nav.president">Mot du Président</a>
-    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('compagnie')" data-i18n="nav.compagnie">La Compagnie</a>
-    <a class="nav-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('prepaid')" data-i18n="nav.prepaid">Cartes prépayées</a>
+    <a class="nav-link nav-sub-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('president')" data-i18n="nav.president">Mot du Président</a>
+    <a class="nav-link nav-sub-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('compagnie')" data-i18n="nav.compagnie">La Compagnie</a>
+    <a class="nav-link nav-sub-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('prepaid')" data-i18n="nav.prepaid">Cartes prépayées</a>
   </div>
   
   <a href="#flotte" class="nav-link" onclick="closeMobile()" data-i18n="nav.flotte">Notre Flotte</a>
