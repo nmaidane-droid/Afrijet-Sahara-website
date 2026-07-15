@@ -218,6 +218,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
 @media (max-width: 768px) {
   .mobile-menu .nav-sub-link { padding-left: 28px !important; }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .nav-sub-link.slide-in {
+    animation: slideInLeft 0.3s ease forwards;
+    opacity: 0;
+  }
 }
 .mobile-actions {
   display: flex;
@@ -3323,7 +3331,17 @@ function toggleNavDropdown(e) {
 function toggleMobileApropos(e) {
   e.preventDefault();
   var mob = document.getElementById('mobileAproposMenu');
-  mob.style.display = mob.style.display === 'none' ? 'block' : 'none';
+  var isOpen = mob.style.display === 'block';
+  mob.style.display = isOpen ? 'none' : 'block';
+  if (!isOpen && window.innerWidth <= 768) {
+    var links = mob.querySelectorAll('.nav-sub-link');
+    links.forEach(function(link, i) {
+      link.classList.remove('slide-in');
+      void link.offsetWidth; // reflow
+      link.style.animationDelay = (i * 0.1) + 's';
+      link.classList.add('slide-in');
+    });
+  }
 }
 
 document.addEventListener('click', function(e) {
