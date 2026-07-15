@@ -1286,6 +1286,30 @@ section { padding: 96px 32px 80px; }
 /* ============================================================
    FOOTER
    ============================================================ */
+
+/* Scroll arrow */
+#scrollArrow {
+  position: fixed;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  background: rgba(232,0,28,0.85);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: scrollBounce 1.4s ease-in-out infinite;
+  box-shadow: 0 4px 16px rgba(232,0,28,0.3);
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
 footer {
   background: var(--white);
   border-top: 1px solid var(--border);
@@ -2854,6 +2878,12 @@ function showSection(id) {
   // Bloquer le scroll sur accueil
   document.body.style.overflow = (id === 'accueil') ? 'hidden' : 'auto';
 
+  // Flèche de scroll
+  var arrow = document.getElementById('scrollArrow');
+  if (arrow) {
+    arrow.style.display = (id === 'accueil') ? 'none' : 'flex';
+  }
+
   // Remonter en haut
   window.scrollTo(0, 0);
 }
@@ -3947,6 +3977,15 @@ async function elDelete(id) {
 // Init
 elRender();
 
+// Masquer la flèche quand on scrolle
+window.addEventListener('scroll', function() {
+  var arrow = document.getElementById('scrollArrow');
+  if (arrow && arrow.style.display !== 'none') {
+    arrow.style.opacity = window.scrollY > 80 ? '0' : '1';
+    arrow.style.pointerEvents = window.scrollY > 80 ? 'none' : 'auto';
+  }
+}, { passive: true });
+
 // Journey timeline scroll progress
 (function() {
   const fill = document.getElementById('journeyFill');
@@ -4010,6 +4049,12 @@ elRender();
 
 
 </script>
+
+<div id="scrollArrow" style="display:none;">
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="4,10 14,20 24,10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
 
 <div id="lightbox" onclick="closeLightbox()">
   <span id="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
