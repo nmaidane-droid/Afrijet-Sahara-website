@@ -2772,7 +2772,7 @@ footer {
   <div class="footer-inner">
     <p class="footer-copy" data-i18n="footer.copy">© 2026 Afrijet Sahara. Tous droits réservés.</p>
     <div class="footer-links">
-      <a href="#" class="footer-link" data-i18n="footer.legal" onclick="openLegalModal();return false;">Mentions légales</a>
+      <a href="#" class="footer-link" id="legalLink" data-i18n="footer.legal">Mentions légales</a>
       
       <a href="#" class="footer-link" data-i18n="footer.privacy">Politique de confidentialité</a>
       
@@ -3958,6 +3958,17 @@ function closeLegalModal() {
   document.getElementById('modalLegal').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
+
+// Attacher le clic après le chargement (évite l'écrasement par i18n)
+document.addEventListener('DOMContentLoaded', function() {
+  var legalLink = document.getElementById('legalLink');
+  if (legalLink) {
+    legalLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      openLegalModal();
+    });
+  }
+});
 
 // Init
 elRender();
