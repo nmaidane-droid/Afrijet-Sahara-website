@@ -865,7 +865,7 @@ section { padding: 96px 32px 80px; }
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 999;
+  z-index: 1500;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   transition: all var(--transition);
   border: none;
@@ -1299,7 +1299,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2000;
+  z-index: 500;
 }
 .footer-inner {
   max-width: 1280px;
@@ -1308,6 +1308,10 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+}
+@media (min-width: 769px) {
+  section { padding-bottom: 100px; }
+  #contact { padding-bottom: 100px; }
 }
 @media (min-width: 1025px) {
   .footer-inner {
@@ -3962,20 +3966,22 @@ async function elDelete(id) {
 }
 
 function openLegalModal() {
+  var scrollY = window.scrollY;
   document.getElementById('modalLegal').style.display = 'block';
-  if (window.innerWidth <= 768) {
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-  } else {
-    document.body.style.overflow = 'hidden';
-  }
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + scrollY + 'px';
+  document.body.style.width = '100%';
+  document.body.dataset.scrollY = scrollY;
 }
 function closeLegalModal() {
+  var scrollY = document.body.dataset.scrollY || 0;
   document.getElementById('modalLegal').style.display = 'none';
   document.body.style.overflow = '';
   document.body.style.position = '';
+  document.body.style.top = '';
   document.body.style.width = '';
+  window.scrollTo(0, parseInt(scrollY));
 }
 
 // Lien mentions légales
