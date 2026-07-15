@@ -183,6 +183,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   gap: 5px;
   padding: 8px;
+  position: relative;
 }
 .hamburger span {
   display: block;
@@ -191,6 +192,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: #fff;
   border-radius: 2px;
   transition: all var(--transition);
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 .mobile-menu {
   display: none;
@@ -3382,9 +3392,10 @@ setLang('fr');
 // Hamburger toggle
 hamburger.addEventListener('click', () => {
   mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open');
 });
 
-function closeMobile() { mobileMenu.classList.remove('open'); }
+function closeMobile() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); }
 
 // Intercepter tous les liens de navigation
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -4056,7 +4067,7 @@ elRender();
       <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Siège social</td><td style="padding:8px 0;color:#1a1a2e;">Lotissement Khalij Dakhla, Villa n°86, BP 3201, 73000 Dakhla — Maroc</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Téléphone</td><td style="padding:8px 0;color:#1a1a2e;">+212 6 89 59 59 00</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Email</td><td style="padding:8px 0;color:#1a1a2e;">info@afrijet.ma</td></tr>
-      <tr><td style="padding:8px 0;color:#888;">Directeur de publication</td><td style="padding:8px 0;color:#1a1a2e;text-align:left;">Anas Bennani</td></tr>
+      <tr><td style="padding:8px 0;color:#888;white-space:nowrap;vertical-align:top;">Directeur de publication</td><td style="padding:8px 0;color:#1a1a2e;vertical-align:top;">Anas Bennani</td></tr>
     </table>
 
     <h3 style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Hébergement</h3>
@@ -4094,7 +4105,7 @@ elRender();
       <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Siège social</td><td style="padding:8px 0;color:#1a1a2e;">Lotissement Khalij Dakhla, Villa n°86, BP 3201, 73000 Dakhla — Maroc</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Téléphone</td><td style="padding:8px 0;color:#1a1a2e;">+212 6 89 59 59 00</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Email</td><td style="padding:8px 0;color:#1a1a2e;">info@afrijet.ma</td></tr>
-      <tr><td style="padding:8px 0;color:#888;">Directeur de publication</td><td style="padding:8px 0;color:#1a1a2e;text-align:left;">Anas Bennani</td></tr>
+      <tr><td style="padding:8px 0;color:#888;white-space:nowrap;vertical-align:top;">Directeur de publication</td><td style="padding:8px 0;color:#1a1a2e;vertical-align:top;">Anas Bennani</td></tr>
     </table>
 
     <h3 style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Hébergement</h3>
