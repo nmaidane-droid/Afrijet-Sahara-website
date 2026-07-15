@@ -218,15 +218,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
 @media (max-width: 768px) {
   .mobile-menu .nav-sub-link { padding-left: 28px !important; }
-  .mobile-triangle {
-    display: inline-block;
+  .nav-apropos-trigger::after {
+    content: ' ▼';
     font-size: 10px;
     color: #E8001C;
-    margin-left: 6px;
-    vertical-align: middle;
+    margin-left: 4px;
+    display: inline-block;
     transition: transform 0.3s ease;
   }
-  .nav-apropos-trigger.open .mobile-triangle {
+  .nav-apropos-trigger.open::after {
     transform: rotate(180deg);
   }
   @keyframes slideInLeft {
@@ -2018,7 +2018,7 @@ footer {
 <div class="mobile-menu" id="mobileMenu">
   <a href="#accueil" class="nav-link" onclick="closeMobile()" data-i18n="nav.accueil">Accueil</a>
   
-  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileApropos(event)"><span data-i18n="nav.apropos">À propos</span><span class="mobile-triangle">▼</span></a>
+  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileApropos(event)" data-i18n="nav.apropos">À propos</a>
   <div id="mobileAproposMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
     <a class="nav-link nav-sub-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('president')" data-i18n="nav.president">Mot du Président</a>
     <a class="nav-link nav-sub-link" style="font-size:13px;padding:8px;" onclick="closeMobile();selectApropos('compagnie')" data-i18n="nav.compagnie">La Compagnie</a>
