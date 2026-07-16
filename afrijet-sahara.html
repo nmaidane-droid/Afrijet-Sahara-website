@@ -181,35 +181,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
+  width: 38px;
+  height: 38px;
   position: relative;
+  -webkit-transition: -webkit-transform 1s ease;
   transition: transform 1s ease;
-  background: transparent !important;
+  background: transparent;
   border: none;
   cursor: pointer;
   -webkit-appearance: none;
-  appearance: none;
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
 .hamburger.open {
+  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .hamburger span {
-  display: block !important;
-  width: 22px !important;
-  height: 2px !important;
-  background: #ffffff !important;
+  position: absolute;
+  left: 8px;
+  width: 22px;
+  height: 2px;
+  background: #ffffff;
   border-radius: 2px;
-  pointer-events: none;
-  flex-shrink: 0;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  opacity: 1 !important;
-  visibility: visible !important;
+  display: block;
 }
+.hamburger span:nth-child(1) { top: 10px; }
+.hamburger span:nth-child(2) { top: 18px; }
+.hamburger span:nth-child(3) { top: 26px; }
 .mobile-menu {
   display: none;
   position: fixed;
@@ -1386,6 +1385,12 @@ footer {
 
 /* iPad landscape et desktop : menu complet, hamburger caché */
 @media (min-width: 1025px) {
+  .nav-menu { display: flex !important; }
+  .hamburger { display: none !important; }
+  .btn-devis { display: flex !important; }
+}
+/* iPad landscape - force menu complet */
+@media (max-width: 1024px) and (orientation: landscape) {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
   .btn-devis { display: flex !important; }
