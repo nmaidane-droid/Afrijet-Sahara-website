@@ -490,10 +490,10 @@ section { padding: 96px 32px 80px; overflow-y: auto; height: calc(100vh - var(--
   margin-top: 32px;
 }
 /* Tablette : texte aligné gauche */
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (min-width: 769px) {
   .values-grid { gap: 0 32px !important; }
   .value-card { padding: 16px 0 !important; min-width: 0; overflow: hidden; }
-  .value-text { text-align: left !important; overflow-wrap: break-word; word-break: break-word; hyphens: auto; }
+  .value-text { text-align: left !important; overflow-wrap: break-word; word-break: break-word; }
 }
 .value-card {
   background: transparent;
@@ -2147,25 +2147,25 @@ footer {
         </p>
         
 
-        <div class="values-grid">
+        <div class="values-grid" style="gap: 0 32px;"  >
           <div class="value-card">
             <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🎯</div><div class="value-title" data-i18n="comp.v1">Excellence</div></div></div>
-            <p class="value-text" data-i18n="comp.v1t">Des standards opérationnels de niveau international, à chaque vol.</p>
+            <p class="value-text" style="text-align:left;overflow-wrap:break-word;word-break:break-word;" data-i18n="comp.v1t">Des standards opérationnels de niveau international, à chaque vol.</p>
             
           </div>
           <div class="value-card">
             <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🤝</div><div class="value-title" data-i18n="comp.v2">Confiance</div></div></div>
-            <p class="value-text" data-i18n="comp.v2t">Transparence totale et engagement contractuel clair.</p>
+            <p class="value-text" style="text-align:left;overflow-wrap:break-word;word-break:break-word;" data-i18n="comp.v2t">Transparence totale et engagement contractuel clair.</p>
             
           </div>
           <div class="value-card">
             <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">⚡</div><div class="value-title" data-i18n="comp.v3">Réactivité</div></div></div>
-            <p class="value-text" data-i18n="comp.v3t">Disponibles 24h/24 pour confirmer votre vol en quelques heures.</p>
+            <p class="value-text" style="text-align:left;overflow-wrap:break-word;word-break:break-word;" data-i18n="comp.v3t">Disponibles 24h/24 pour confirmer votre vol en quelques heures.</p>
             
           </div>
           <div class="value-card">
             <div class="value-card-header"><div class="card-header-badge"><div class="value-icon">🛡️</div><div class="value-title" data-i18n="comp.v4">Sécurité</div></div></div>
-            <p class="value-text" data-i18n="comp.v4t">La sécurité est notre priorité absolue et non négociable.</p>
+            <p class="value-text" style="text-align:left;overflow-wrap:break-word;word-break:break-word;" data-i18n="comp.v4t">La sécurité est notre priorité absolue et non négociable.</p>
             
           </div>
         </div>
@@ -3448,6 +3448,18 @@ document.addEventListener('click', function(e) {
 showSection('accueil');
 setLang('fr');
 
+// Fermer le menu mobile lors du changement d orientation
+window.addEventListener('orientationchange', function() {
+  if (mobileMenu) mobileMenu.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
+});
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 1024) {
+    if (mobileMenu) mobileMenu.classList.remove('open');
+    if (hamburger) hamburger.classList.remove('open');
+  }
+});
+
 // Hamburger toggle
 hamburger.addEventListener('click', () => {
   mobileMenu.classList.toggle('open');
@@ -3455,6 +3467,14 @@ hamburger.addEventListener('click', () => {
 });
 
 function closeMobile() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); }
+
+// Fermer le menu mobile au changement d'orientation
+window.addEventListener('orientationchange', function() {
+  setTimeout(function() { closeMobile(); }, 100);
+});
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 1024) { closeMobile(); }
+});
 
 // Intercepter tous les liens de navigation
 document.querySelectorAll('a[href^="#"]').forEach(link => {
