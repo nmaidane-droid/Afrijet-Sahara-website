@@ -221,6 +221,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 8px;
 }
 .mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
+
+/* Tablette : agrandir menu et réduire sous-menu */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mobile-menu .nav-link {
+    font-size: 16px;
+    padding: 16px 20px;
+  }
+  .mobile-menu .nav-sub-link {
+    font-size: 16px !important;
+    padding: 16px 20px !important;
+    padding-left: 36px !important;
+  }
+}
 @media (max-width: 768px) {
   .mobile-menu .nav-sub-link { padding-left: 28px !important; }
   .mobile-menu .nav-apropos-trigger::after {
