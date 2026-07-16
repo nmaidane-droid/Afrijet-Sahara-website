@@ -1622,12 +1622,7 @@ footer {
 #accueil.section-enter {
   animation: none;
 }
-/* Hero parallax - desktop only */
-@media (min-width: 1025px) {
-  #accueil {
-    background-attachment: fixed;
-  }
-}
+/* Hero parallax - desktop only (disabled on iOS Safari) */
 
 /* LIGHTBOX */
 #lightbox {
@@ -2047,9 +2042,9 @@ footer {
         </button>
       </div>
 
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <div class="hamburger" id="hamburger" role="button" aria-label="Menu" tabindex="0">
         <span></span><span></span><span></span>
-      </button>
+      </div>
     </div>
   </div>
 </nav>
