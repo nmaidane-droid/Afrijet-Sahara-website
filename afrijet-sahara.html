@@ -222,7 +222,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
 
-/* Tablette : agrandir menu et réduire sous-menu */
+/* Tablette : texte aligné gauche */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .value-text { text-align: left !important; }
+}
 @media (min-width: 769px) and (max-width: 1024px) {
   .mobile-menu .nav-link {
     font-size: 16px;
@@ -1415,11 +1418,6 @@ footer {
 
   .values-grid { grid-template-columns: 1fr; }
 
-/* Tablette portrait : 1 colonne, texte aligné gauche */
-@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
-  .values-grid { grid-template-columns: 1fr; }
-  .value-text { text-align: left; }
-}
   .form-row { grid-template-columns: 1fr; }
   .cabin-features { grid-template-columns: 1fr; }
   .el-form-row { grid-template-columns: 1fr; }
