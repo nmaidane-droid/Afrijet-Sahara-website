@@ -1325,7 +1325,7 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 128px;
+    gap: 64px;
     text-align: left;
     width: 100%;
   }
@@ -1363,7 +1363,7 @@ footer {
    RESPONSIVE
    ============================================================ */
 /* Mobile : hamburger visible, menu caché */
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .nav-menu { display: none; }
   .hamburger { display: flex !important; }
   .btn-devis { display: none; }
@@ -1372,10 +1372,17 @@ footer {
 }
 
 /* iPad landscape et desktop : menu complet, hamburger caché */
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
   .btn-devis { display: flex !important; }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .nav-link {
+    font-size: 10.5px;
+    padding: 6px 8px;
+    letter-spacing: 0.03em;
+  }
 }
 
 @media (max-width: 1400px) {
