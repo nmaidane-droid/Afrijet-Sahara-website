@@ -4078,7 +4078,9 @@ elRender();
     });
   }
 
-  window.addEventListener('scroll', updateJourney, { passive: true });
+  const servicesSection = document.getElementById('services');
+  const scrollTarget = servicesSection || window;
+  scrollTarget.addEventListener('scroll', updateJourney, { passive: true });
   window.addEventListener('resize', updateJourney, { passive: true });
   updateJourney();
 })();
