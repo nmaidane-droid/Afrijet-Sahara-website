@@ -1414,6 +1414,12 @@ footer {
   .nav-inner { padding: 0 20px; }
 
   .values-grid { grid-template-columns: 1fr; }
+
+/* Tablette portrait : 1 colonne, texte aligné gauche */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+  .values-grid { grid-template-columns: 1fr; }
+  .value-text { text-align: left; }
+}
   .form-row { grid-template-columns: 1fr; }
   .cabin-features { grid-template-columns: 1fr; }
   .el-form-row { grid-template-columns: 1fr; }
