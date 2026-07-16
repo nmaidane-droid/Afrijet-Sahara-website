@@ -3498,7 +3498,7 @@ function animateCounter(el) {
 }
 
 /* ---- Form submit ---- */
-document.getElementById('btnSubmit')?.addEventListener('click', () => {
+var _btnSubmit = document.getElementById('btnSubmit'); if (_btnSubmit) _btnSubmit.addEventListener('click', function() {
   document.getElementById('contactFormWrap').style.display = 'none';
   document.getElementById('formSuccess').classList.add('visible');
 });
@@ -3940,7 +3940,7 @@ function elCheckPass() {
   }
 }
 
-document.getElementById('elPassInput')?.addEventListener('keydown', e => { if (e.key === 'Enter') elCheckPass(); });
+var _elPassInput = document.getElementById('elPassInput'); if (_elPassInput) _elPassInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') elCheckPass(); });
 
 async function elLoadAdmin() {
   const list = document.getElementById('elAdminList');
