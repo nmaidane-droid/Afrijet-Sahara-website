@@ -181,34 +181,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hamburger {
   display: none;
-  width: 38px;
-  height: 38px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
   position: relative;
-  -webkit-transition: -webkit-transform 1s ease;
   transition: transform 1s ease;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  box-sizing: border-box;
 }
 .hamburger.open {
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .hamburger span {
-  position: absolute;
-  left: 8px;
+  display: block;
   width: 22px;
   height: 2px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 2px;
-  display: block;
 }
-.hamburger span:nth-child(1) { top: 10px; }
-.hamburger span:nth-child(2) { top: 18px; }
-.hamburger span:nth-child(3) { top: 26px; }
 .mobile-menu {
   display: none;
   position: fixed;
@@ -265,7 +253,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    SECTIONS COMMON
    ============================================================ */
 section { padding: 96px 32px 80px; overflow-y: auto; height: calc(100vh - var(--nav-h) - 48px); }
-section[id]:not(#accueil) { display: none; }
 .container { max-width: 1280px; margin: 0 auto; background: transparent; }
 .section-label {
   font-size: 16px;
@@ -1337,7 +1324,7 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 64px;
+    gap: 128px;
     text-align: left;
     width: 100%;
   }
@@ -1388,28 +1375,6 @@ footer {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
   .btn-devis { display: flex !important; }
-}
-/* iPad landscape - force menu complet */
-@media (max-width: 1024px) and (orientation: landscape) {
-  .nav-menu { display: flex !important; }
-  .hamburger { display: none !important; }
-  .btn-devis { display: flex !important; }
-}
-/* Menu compact pour iPad landscape et petits desktops */
-@media (min-width: 768px) and (max-width: 1280px) {
-  .nav-link {
-    font-size: 10.5px;
-    padding: 6px 7px;
-    letter-spacing: 0.02em;
-  }
-  .nav-logo-img { height: 36px; }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .nav-link {
-    font-size: 10.5px;
-    padding: 6px 8px;
-    letter-spacing: 0.03em;
-  }
 }
 
 @media (max-width: 1400px) {
@@ -1643,7 +1608,12 @@ footer {
 #accueil.section-enter {
   animation: none;
 }
-/* Hero parallax - desktop only (disabled on iOS Safari) */
+/* Hero parallax - desktop only */
+@media (min-width: 1025px) {
+  #accueil {
+    background-attachment: fixed;
+  }
+}
 
 /* LIGHTBOX */
 #lightbox {
@@ -2038,14 +2008,14 @@ footer {
 
       <!-- Sélecteur langue -->
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('fr')" title="Français">
+        <button class="lang-btn active" onclick="event.stopPropagation();setLang('fr', event)" title="Français">
           <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
             <rect width="9" height="18" fill="#002395"/>
             <rect x="9" width="8" height="18" fill="#FFFFFF"/>
             <rect x="17" width="9" height="18" fill="#ED2939"/>
           </svg>
         </button>
-        <button class="lang-btn" onclick="setLang('en')" title="English">
+        <button class="lang-btn" onclick="event.stopPropagation();setLang('en', event)" title="English">
           <svg width="26" height="18" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
             <rect width="60" height="40" fill="#012169"/>
             <path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/>
@@ -2054,7 +2024,7 @@ footer {
             <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/>
           </svg>
         </button>
-        <button class="lang-btn" onclick="setLang('es')" title="Español">
+        <button class="lang-btn" onclick="event.stopPropagation();setLang('es', event)" title="Español">
           <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
             <rect width="26" height="4.5" fill="#AA151B"/>
             <rect y="4.5" width="26" height="9" fill="#F1BF00"/>
@@ -2063,9 +2033,9 @@ footer {
         </button>
       </div>
 
-      <div class="hamburger" id="hamburger" role="button" aria-label="Menu" tabindex="0">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </div>
 </nav>
@@ -2869,7 +2839,7 @@ function showSection(id) {
 
   // Marquer lien actif
   navLinks.forEach(l => {
-    if (l.getAttribute('href') === '#' + id) { l.classList.add('active'); } else { l.classList.remove('active'); }
+    l.classList.toggle('active', l.getAttribute('href') === '#' + id);
   });
 
   // Reset all reveals in section (remove visible first so animation replays)
@@ -3002,8 +2972,6 @@ const translations = {
     'el.title': 'Vols à <em>vide disponibles</em>',
     'el.sub': 'Ces vols sont mis à jour quotidiennement.',
     'el.intro': 'Un vol à vide est un vol charter actuellement planifié sans passagers à bord, afin de repositionner l\'appareil vers un autre aéroport.',
-    'el.intro2': 'Les conditions avantageuses en font une opportunité unique de réserver votre prochain vol sur un jet d\'affaires de notre flotte.',
-    'el.intro3': 'La modification de l\'itinéraire peut être possible sur demande.',
     'el.loading': 'Chargement des vols…',
     'el.empty_title': 'Aucun vol à vide programmé',
     'el.empty_text': 'Contactez-nous pour vos besoins spécifiques, nous trouverons la meilleure solution.',
@@ -3394,7 +3362,7 @@ function setLang(lang, e) {
   });
   // Mettre à jour boutons lang actifs
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    if (btn.getAttribute('onclick').includes("'" + lang + "'")) { btn.classList.add('active'); } else { btn.classList.remove('active'); }
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes("'" + lang + "'"));
   });
   // Mettre à jour l'attribut lang du document
   document.documentElement.lang = lang;
@@ -3430,7 +3398,7 @@ function toggleMobileApropos(e) {
   var trigger = e.currentTarget;
   var isOpen = mob.style.display === 'block';
   mob.style.display = isOpen ? 'none' : 'block';
-  if (!isOpen) { trigger.classList.add('open'); } else { trigger.classList.remove('open'); }
+  trigger.classList.toggle('open', !isOpen);
   // Rotate triangle
   var triangle = trigger.querySelector('.nav-triangle');
   if (triangle) {
@@ -3521,7 +3489,7 @@ function animateCounter(el) {
 }
 
 /* ---- Form submit ---- */
-var _btnSubmit = document.getElementById('btnSubmit'); if (_btnSubmit) _btnSubmit.addEventListener('click', function() {
+document.getElementById('btnSubmit')?.addEventListener('click', () => {
   document.getElementById('contactFormWrap').style.display = 'none';
   document.getElementById('formSuccess').classList.add('visible');
 });
@@ -3963,7 +3931,7 @@ function elCheckPass() {
   }
 }
 
-var _elPassInput = document.getElementById('elPassInput'); if (_elPassInput) _elPassInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') elCheckPass(); });
+document.getElementById('elPassInput')?.addEventListener('keydown', e => { if (e.key === 'Enter') elCheckPass(); });
 
 async function elLoadAdmin() {
   const list = document.getElementById('elAdminList');
