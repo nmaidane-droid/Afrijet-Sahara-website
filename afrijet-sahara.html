@@ -1395,6 +1395,15 @@ footer {
   .hamburger { display: none !important; }
   .btn-devis { display: flex !important; }
 }
+/* Menu compact pour iPad landscape et petits desktops */
+@media (min-width: 768px) and (max-width: 1280px) {
+  .nav-link {
+    font-size: 10.5px;
+    padding: 6px 7px;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo-img { height: 36px; }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .nav-link {
     font-size: 10.5px;
@@ -2993,6 +3002,8 @@ const translations = {
     'el.title': 'Vols à <em>vide disponibles</em>',
     'el.sub': 'Ces vols sont mis à jour quotidiennement.',
     'el.intro': 'Un vol à vide est un vol charter actuellement planifié sans passagers à bord, afin de repositionner l\'appareil vers un autre aéroport.',
+    'el.intro2': 'Les conditions avantageuses en font une opportunité unique de réserver votre prochain vol sur un jet d\'affaires de notre flotte.',
+    'el.intro3': 'La modification de l\'itinéraire peut être possible sur demande.',
     'el.loading': 'Chargement des vols…',
     'el.empty_title': 'Aucun vol à vide programmé',
     'el.empty_text': 'Contactez-nous pour vos besoins spécifiques, nous trouverons la meilleure solution.',
