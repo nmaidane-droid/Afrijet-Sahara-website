@@ -3448,18 +3448,6 @@ document.addEventListener('click', function(e) {
 showSection('accueil');
 setLang('fr');
 
-// Fermer le menu mobile lors du changement d orientation
-window.addEventListener('orientationchange', function() {
-  if (mobileMenu) mobileMenu.classList.remove('open');
-  if (hamburger) hamburger.classList.remove('open');
-});
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 1024) {
-    if (mobileMenu) mobileMenu.classList.remove('open');
-    if (hamburger) hamburger.classList.remove('open');
-  }
-});
-
 // Hamburger toggle
 hamburger.addEventListener('click', () => {
   mobileMenu.classList.toggle('open');
@@ -3470,10 +3458,10 @@ function closeMobile() { mobileMenu.classList.remove('open'); hamburger.classLis
 
 // Fermer le menu mobile au changement d'orientation
 window.addEventListener('orientationchange', function() {
-  setTimeout(function() { closeMobile(); }, 100);
+  setTimeout(function() { closeMobile(); }, 300);
 });
 window.addEventListener('resize', function() {
-  if (window.innerWidth > 1024) { closeMobile(); }
+  if (window.innerWidth > 900) { closeMobile(); }
 });
 
 // Intercepter tous les liens de navigation
