@@ -186,6 +186,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 8px;
   position: relative;
   transition: transform 1s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .hamburger.open {
   transform: rotate(180deg);
@@ -196,6 +201,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   height: 2px;
   background: #fff;
   border-radius: 2px;
+  pointer-events: none;
 }
 .mobile-menu {
   display: none;
