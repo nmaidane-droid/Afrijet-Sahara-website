@@ -222,12 +222,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .mobile-menu .nav-link:last-child { border-bottom: none; margin-bottom: 0; }
 
-/* Tablette : texte aligné gauche */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .values-grid { gap: 0 32px !important; }
-  .value-card { padding: 16px 0 !important; min-width: 0; overflow: hidden; }
-  .value-text { text-align: left !important; overflow-wrap: break-word; word-break: break-word; hyphens: auto; }
-}
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .mobile-menu .nav-link {
     font-size: 16px;
@@ -493,6 +488,12 @@ section { padding: 96px 32px 80px; overflow-y: auto; height: calc(100vh - var(--
   grid-template-columns: 1fr 1fr;
   gap: 0;
   margin-top: 32px;
+}
+/* Tablette : texte aligné gauche */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .values-grid { gap: 0 32px !important; }
+  .value-card { padding: 16px 0 !important; min-width: 0; overflow: hidden; }
+  .value-text { text-align: left !important; overflow-wrap: break-word; word-break: break-word; hyphens: auto; }
 }
 .value-card {
   background: transparent;
