@@ -207,6 +207,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 8px 32px rgba(10,22,40,0.12);
 }
 .mobile-menu.open { display: block; }
+@media (orientation: landscape) and (max-width: 1024px) {
+  .mobile-menu { display: none !important; }
+  .hamburger { display: none !important; }
+}
 .mobile-menu .nav-link {
   display: block;
   padding: 14px 16px;
@@ -3456,10 +3460,10 @@ function closeMobile() { mobileMenu.classList.remove('open'); hamburger.classLis
 
 // Fermer le menu mobile au changement d'orientation
 window.addEventListener('orientationchange', function() {
-  setTimeout(function() { closeMobile(); }, 300);
+  setTimeout(function() { closeMobile(); }, 600);
 });
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 600) { closeMobile(); }
+document.addEventListener('visibilitychange', function() {
+  closeMobile();
 });
 
 // Intercepter tous les liens de navigation
