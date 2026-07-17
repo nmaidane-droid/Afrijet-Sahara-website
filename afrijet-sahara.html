@@ -207,10 +207,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 8px 32px rgba(10,22,40,0.12);
 }
 .mobile-menu.open { display: block; }
-@media (orientation: landscape) and (max-width: 1024px) {
-  .mobile-menu { display: none !important; }
-  .hamburger { display: none !important; }
-}
+
 .mobile-menu .nav-link {
   display: block;
   padding: 14px 16px;
@@ -1382,19 +1379,40 @@ footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-/* Mobile : hamburger visible, menu caché */
-@media (max-width: 1024px) {
-  .nav-menu { display: none; }
+/* TEL portrait : hamburger visible */
+@media (max-width: 767px) and (orientation: portrait) {
+  .nav-menu { display: none !important; }
   .hamburger { display: flex !important; }
   .btn-devis { display: none; }
   .nav-link.btn-devis-nav { display: none; }
   .lang-switcher { display: flex !important; }
+  .mobile-menu.open { display: block; }
 }
 
-/* iPad landscape et desktop : menu complet, hamburger caché */
-@media (min-width: 1025px) {
+/* TEL landscape : tout caché (hamburger + menu mobile) */
+@media (max-width: 767px) and (orientation: landscape) {
+  .nav-menu { display: none !important; }
+  .hamburger { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .btn-devis { display: none; }
+  .lang-switcher { display: flex !important; }
+}
+
+/* TABLETTE + IPAD portrait : hamburger visible */
+@media (min-width: 768px) and (max-width: 1279px) and (orientation: portrait) {
+  .nav-menu { display: none !important; }
+  .hamburger { display: flex !important; }
+  .btn-devis { display: none; }
+  .nav-link.btn-devis-nav { display: none; }
+  .lang-switcher { display: flex !important; }
+  .mobile-menu.open { display: block; }
+}
+
+/* TABLETTE + IPAD landscape + MAC : menu desktop complet */
+@media (min-width: 768px) and (orientation: landscape), (min-width: 1280px) {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
+  .mobile-menu { display: none !important; }
   .btn-devis { display: flex !important; }
 }
 
@@ -3458,13 +3476,7 @@ hamburger.addEventListener('click', () => {
 
 function closeMobile() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); }
 
-// Fermer le menu mobile au changement d'orientation
-window.addEventListener('orientationchange', function() {
-  setTimeout(function() { closeMobile(); }, 600);
-});
-document.addEventListener('visibilitychange', function() {
-  closeMobile();
-});
+
 
 // Intercepter tous les liens de navigation
 document.querySelectorAll('a[href^="#"]').forEach(link => {
