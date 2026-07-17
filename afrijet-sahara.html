@@ -1379,42 +1379,25 @@ footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-/* TEL portrait : hamburger visible */
-@media (max-width: 767px) and (orientation: portrait) {
-  .nav-menu { display: none !important; }
+/* Navigation responsive */
+@media (max-width: 1024px) {
+  .nav-menu { display: none; }
   .hamburger { display: flex !important; }
   .btn-devis { display: none; }
   .nav-link.btn-devis-nav { display: none; }
   .lang-switcher { display: flex !important; }
-  .mobile-menu.open { display: block; }
 }
-
-/* TEL landscape : tout caché (hamburger + menu mobile) */
-@media (max-width: 767px) and (orientation: landscape) {
-  .nav-menu { display: none !important; }
-  .hamburger { display: none !important; }
-  .mobile-menu { display: none !important; }
-  .btn-devis { display: none; }
-  .lang-switcher { display: flex !important; }
-}
-
-/* TABLETTE + IPAD portrait : hamburger visible */
-@media (min-width: 768px) and (max-width: 1279px) and (orientation: portrait) {
-  .nav-menu { display: none !important; }
-  .hamburger { display: flex !important; }
-  .btn-devis { display: none; }
-  .nav-link.btn-devis-nav { display: none; }
-  .lang-switcher { display: flex !important; }
-  .mobile-menu.open { display: block; }
-}
-
-/* TABLETTE + IPAD landscape + MAC : menu desktop complet */
-@media (min-width: 768px) and (orientation: landscape), (min-width: 1280px) {
+@media (min-width: 1025px) {
   .nav-menu { display: flex !important; }
   .hamburger { display: none !important; }
-  .mobile-menu { display: none !important; }
   .btn-devis { display: flex !important; }
 }
+
+/* Bloquer landscape sur tel */
+
+
+/* Bloquer portrait sur tablette/iPad */
+
 
 @media (max-width: 1400px) {
   .hero-stats { display: flex; flex-direction: row; padding: 8px 32px 40px; gap: 12px; }
@@ -2079,6 +2062,8 @@ footer {
     </div>
   </div>
 </nav>
+
+
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
@@ -4178,6 +4163,55 @@ elRender();
 </div>
 
 <button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin" style="display:none;">🔒</button>
+
+
+<button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin" style="display:none;">🔒</button>
+
+<!-- Écran blocage TEL landscape -->
+<div id="block-tel-landscape" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a2e;z-index:99999;flex-direction:column;align-items:center;justify-content:center;color:white;text-align:center;padding:40px;">
+  <div style="font-size:50px;margin-bottom:24px;">📱</div>
+  <p style="font-size:18px;font-weight:700;color:#E8001C;margin-bottom:8px;">Veuillez tourner votre téléphone</p>
+  <span style="font-size:14px;color:#aaa;">Ce site est optimisé en mode portrait sur mobile</span>
+</div>
+
+<!-- Écran blocage TABLETTE/IPAD portrait -->
+<div id="block-tablet-portrait" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a2e;z-index:99999;flex-direction:column;align-items:center;justify-content:center;color:white;text-align:center;padding:40px;">
+  <div style="font-size:50px;margin-bottom:24px;">🔄</div>
+  <p style="font-size:18px;font-weight:700;color:#E8001C;margin-bottom:8px;">Veuillez tourner votre appareil</p>
+  <span style="font-size:14px;color:#aaa;">Ce site est optimisé en mode paysage sur tablette</span>
+</div>
+
+<script>
+function checkOrientation() {
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  var isLandscape = w > h;
+  
+  // Détection mobile : largeur <= 767px en portrait, ou hauteur <= 500px en landscape
+  var isMobile = isLandscape ? h <= 500 : w <= 767;
+  
+  var blockTel = document.getElementById('block-tel-landscape');
+  var blockTablet = document.getElementById('block-tablet-portrait');
+  
+  if (isMobile && isLandscape) {
+    blockTel.style.display = 'flex';
+    blockTablet.style.display = 'none';
+    closeMobile();
+  } else if (!isMobile && !isLandscape) {
+    blockTablet.style.display = 'flex';
+    blockTel.style.display = 'none';
+    closeMobile();
+  } else {
+    blockTel.style.display = 'none';
+    blockTablet.style.display = 'none';
+    if (!isMobile) closeMobile();
+  }
+}
+
+window.addEventListener('orientationchange', function() { setTimeout(checkOrientation, 300); });
+window.addEventListener('resize', checkOrientation);
+checkOrientation();
+</script>
 
 </body>
 </html>
