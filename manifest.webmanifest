@@ -1,0 +1,19 @@
+{
+  "name": "Afrijet Sahara — Aviation Charter d'Exception",
+  "short_name": "Afrijet Sahara",
+  "description": "Compagnie charter marocaine opérant un Embraer 135 KL full business 18 places. Vols à la demande vers toute destination.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "categories": ["travel", "business"],
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
