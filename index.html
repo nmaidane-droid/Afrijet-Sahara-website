@@ -265,7 +265,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ============================================================
    SECTIONS COMMON
    ============================================================ */
-section { padding: 96px 32px 80px; overflow-y: auto; height: calc(100vh - var(--nav-h) - 48px); }
+section { padding: 96px 32px 96px; overflow-y: auto; height: calc(100vh - var(--nav-h)); }
 .container { max-width: 1280px; margin: 0 auto; background: transparent; }
 .section-label {
   font-size: 16px;
@@ -1635,6 +1635,15 @@ footer {
   }
 }
 
+#rayon {
+  padding: var(--nav-h) 0 80px 0 !important;
+  overflow: hidden !important;
+  background: var(--white);
+}
+@media (min-width: 769px) {
+  #rayon { padding-bottom: 56px !important; }
+}
+
 /* LIGHTBOX */
 #lightbox {
   display: none;
@@ -2425,7 +2434,7 @@ footer {
 <!-- ============================================================
      RAYON D'ACTION
      ============================================================ -->
-<section id="rayon" style="padding:var(--nav-h) 0 0 0;overflow:hidden;">
+<section id="rayon">
   <iframe id="rayonFrame" data-src="range-2.html" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
 </section>
 
