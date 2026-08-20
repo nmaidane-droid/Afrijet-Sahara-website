@@ -2437,7 +2437,7 @@ footer {
      RAYON D'ACTION
      ============================================================ -->
 <section id="rayon">
-  <iframe id="rayonFrame" data-src="range-2.html?v=13" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
+  <iframe id="rayonFrame" data-src="range-2.html?v=14" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
 </section>
 
 <section id="services">
@@ -3538,7 +3538,8 @@ function fitRayonFrame() {
   if (window.innerWidth <= 860) {
     try {
       var d = rf.contentDocument;
-      var h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
+      var app = d.getElementById('app');
+      var h = app ? app.offsetHeight : d.documentElement.scrollHeight;
       if (h > 200) rf.style.height = h + 'px';
     } catch (err) { rf.style.height = '160vh'; }
   } else {
@@ -3553,7 +3554,8 @@ function fitRayonFrame() {
   function refit() {
     try {
       var d2 = rf.contentDocument;
-      var h2 = Math.max(d2.documentElement.scrollHeight, d2.body.scrollHeight);
+      var app2 = d2.getElementById('app');
+      var h2 = app2 ? app2.offsetHeight : d2.documentElement.scrollHeight;
       if (window.innerWidth <= 860 && h2 > 200) rf.style.height = h2 + 'px';
     } catch (e) {}
   }
