@@ -2426,7 +2426,7 @@ footer {
      RAYON D'ACTION
      ============================================================ -->
 <section id="rayon" style="padding:0;overflow:hidden;">
-  <iframe src="range-2.html" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
+  <iframe id="rayonFrame" data-src="range-2.html" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
 </section>
 
 <section id="services">
@@ -2862,6 +2862,14 @@ function showSection(id) {
   if (target) {
     target.style.display = 'block';
     if (id !== 'accueil') target.classList.add('section-enter');
+  }
+
+  // Charger la carte du rayon d'action à la première ouverture (section visible = taille correcte pour Leaflet)
+  if (id === 'rayon') {
+    var rf = document.getElementById('rayonFrame');
+    if (rf && !rf.getAttribute('src')) {
+      rf.setAttribute('src', rf.getAttribute('data-src'));
+    }
   }
 
   // Cacher les panneaux compagnie par défaut
@@ -3437,8 +3445,19 @@ function toggleNavFlotte(e) {
 function toggleMobileFlotte(e) {
   e.preventDefault();
   var mob = document.getElementById('mobileFlotteMenu');
+  var trigger = e.currentTarget;
   var isOpen = mob.style.display === 'block';
   mob.style.display = isOpen ? 'none' : 'block';
+  if (!isOpen) { trigger.classList.add('open'); } else { trigger.classList.remove('open'); }
+  if (!isOpen && window.innerWidth <= 768) {
+    var links = mob.querySelectorAll('.nav-sub-link');
+    links.forEach(function(link, i) {
+      link.classList.remove('slide-in');
+      void link.offsetWidth; // reflow
+      link.style.animationDelay = (i * 0.4) + 's';
+      link.classList.add('slide-in');
+    });
+  }
 }
 
 function selectFlotte(target) {
