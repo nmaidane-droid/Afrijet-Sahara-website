@@ -1636,12 +1636,12 @@ footer {
 }
 
 #rayon {
-  padding: var(--nav-h) 0 80px 0 !important;
-  overflow: hidden !important;
+  padding: var(--nav-h) 0 96px 0 !important;
+  overflow-y: auto !important;
   background: var(--white);
 }
 @media (min-width: 769px) {
-  #rayon { padding-bottom: 56px !important; }
+  #rayon { padding-bottom: 56px !important; overflow: hidden !important; }
 }
 
 /* LIGHTBOX */
@@ -2877,7 +2877,10 @@ function showSection(id) {
   if (id === 'rayon') {
     var rf = document.getElementById('rayonFrame');
     if (rf && !rf.getAttribute('src')) {
+      rf.addEventListener('load', fitRayonFrame);
       rf.setAttribute('src', rf.getAttribute('data-src'));
+    } else {
+      fitRayonFrame();
     }
   }
 
@@ -3525,6 +3528,22 @@ document.addEventListener('click', function(e) {
 });
 
 // Init : montrer accueil uniquement
+
+// Sur mobile, l'iframe du rayon prend la hauteur de son contenu (carte + panneau) pour scroller jusqu'au bas
+function fitRayonFrame() {
+  var rf = document.getElementById('rayonFrame');
+  if (!rf || !rf.getAttribute('src')) return;
+  if (window.innerWidth <= 860) {
+    try {
+      var h = rf.contentDocument.documentElement.scrollHeight;
+      if (h > 200) rf.style.height = h + 'px';
+    } catch (err) { rf.style.height = '150vh'; }
+  } else {
+    rf.style.height = '100%';
+  }
+}
+window.addEventListener('resize', fitRayonFrame);
+
 showSection('accueil');
 setLang('fr');
 
