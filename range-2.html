@@ -61,11 +61,13 @@
   .res-none{padding:11px 12px;font-size:12px;color:var(--grey)}
 
   .figs{display:flex;border-bottom:1px solid var(--line)}
-  .fig{flex:1;padding:13px 22px;border-right:1px solid var(--line)}
+  .fig{flex:1;padding:13px 22px;border-right:1px solid var(--line);background:var(--offwhite)}
   .fig:last-child{border-right:0}
   .fig b{display:block;font-family:var(--mono);font-size:21px;font-weight:600;line-height:1}
   .fig b em{font-style:normal;font-size:11px;color:var(--grey);margin-left:2px}
   .fig small{display:block;font-size:10px;color:var(--grey);margin-top:5px}
+  .fig-line{display:flex;align-items:baseline;gap:10px}
+  .fig-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
 
 
 
@@ -88,7 +90,7 @@
     .phead{order:1;background:#fff}
     #map{order:2;height:340px;min-height:300px;flex:none}
     .center-box{order:4;background:#fff}
-    .figs{order:5;background:#fff}
+    .figs{order:5}
     .fig b{font-size:19px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -117,8 +119,7 @@
     </div>
 
     <div class="figs">
-      <div class="fig"><b>2 400<em>km</em></b><small>Dégagement 185 km</small></div>
-      <div class="fig"><b>4 120<em>kg</em></b><small>Carburant emportable</small></div>
+      <div class="fig fig-line"><span class="fig-label">Autonomie</span><b>2 400<em>km</em></b></div>
     </div>
 
 
