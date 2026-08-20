@@ -219,7 +219,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
     "out":{radius:1,stroke:false,fillColor:"#9a9a9f",fillOpacity:.5}
   };
   /* halo invisible mais peint : c'est lui qui recoit le clic, pas la pastille */
-  var HIT={radius:9,stroke:false,fillColor:"#E8001C",fillOpacity:0.01,interactive:true};
+  var HIT={radius:("ontouchstart" in window?18:9),stroke:false,fillColor:"#E8001C",fillOpacity:0.01,interactive:true};
   var LABEL={"in":"Dans le rayon","out":"Hors rayon"};
 
   var caps=CAPS.map(function(r){
