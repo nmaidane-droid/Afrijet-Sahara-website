@@ -82,8 +82,11 @@
   @media (max-width:860px){
     body{overflow:auto}
     #app{flex-direction:column;height:auto;min-height:100%}
-    #panel{width:100%;flex:none;border-right:0;order:2;overflow:visible}
-    #map{order:1;height:430px;min-height:310px;flex:none}
+    #panel{display:contents}
+    .phead{order:1;background:#fff}
+    #map{order:2;height:340px;min-height:300px;flex:none}
+    .center-box{order:4;background:#fff}
+    .figs{order:5;background:#fff}
     .fig b{font-size:19px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
