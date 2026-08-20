@@ -1636,7 +1636,7 @@ footer {
 }
 
 #rayon {
-  padding: var(--nav-h) 0 140px 0 !important;
+  padding: var(--nav-h) 0 110px 0 !important;
   overflow-y: auto !important;
   background: var(--off-white);
 }
@@ -2435,7 +2435,7 @@ footer {
      RAYON D'ACTION
      ============================================================ -->
 <section id="rayon">
-  <iframe id="rayonFrame" data-src="range-2.html?v=10" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
+  <iframe id="rayonFrame" data-src="range-2.html?v=11" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
 </section>
 
 <section id="services">
@@ -3537,7 +3537,7 @@ function fitRayonFrame() {
     try {
       var d = rf.contentDocument;
       var h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
-      if (h > 200) rf.style.height = (h + 4) + 'px';
+      if (h > 200) rf.style.height = h + 'px';
     } catch (err) { rf.style.height = '160vh'; }
   } else {
     rf.style.height = '100%';
@@ -3552,7 +3552,7 @@ function fitRayonFrame() {
     try {
       var d2 = rf.contentDocument;
       var h2 = Math.max(d2.documentElement.scrollHeight, d2.body.scrollHeight);
-      if (window.innerWidth <= 860 && h2 > 200) rf.style.height = (h2 + 4) + 'px';
+      if (window.innerWidth <= 860 && h2 > 200) rf.style.height = h2 + 'px';
     } catch (e) {}
   }
 }

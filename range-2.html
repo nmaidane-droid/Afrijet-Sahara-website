@@ -79,12 +79,13 @@
   .pop-v.in{color:var(--red)} .pop-v.band{color:var(--bordeaux)} .pop-v.out{color:var(--grey)}
 
   @media (max-width:860px){
+    html,body{height:auto}
     body{overflow:auto}
-    #app{flex-direction:column;height:auto;min-height:100%}
+    #app{flex-direction:column;height:auto;min-height:0}
     #panel{display:contents}
     .phead{order:1;background:#fff}
     #map{order:2;height:340px;min-height:300px;flex:none}
-    .center-box{order:4;background:#fff}
+    .center-box{order:4;background:#fff;border-bottom:0}
     .figs{order:5;background:#fff}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
