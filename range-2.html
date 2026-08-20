@@ -117,7 +117,7 @@
     </div>
 
     <div class="figs">
-      <div class="fig"><b>1 300<em>NM</em></b><small>Dégagement 100 NM</small></div>
+      <div class="fig"><b>2 400<em>km</em></b><small>Dégagement 185 km</small></div>
       <div class="fig"><b>4 120<em>kg</em></b><small>Carburant emportable</small></div>
     </div>
 
@@ -251,7 +251,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
       p.hit.bindPopup(
         '<div class="pop-icao">'+esc(p.cap)+"</div><div>"+esc(p.apt)+" · "+esc(p.icao)+
         "<br>"+esc(p.cc)+"</div>"+
-        '<div class="pop-d">'+fmt(p.d)+" NM · azimut "+pad3(p.brg)+"°</div>"+
+        '<div class="pop-d">'+fmt(p.d*1.852)+" km · azimut "+pad3(p.brg)+"°</div>"+
         (p.note?'<div class="pop-n">'+esc(p.note)+"</div>":"")+
         '<span class="pop-v '+p.band+'">'+LABEL[p.band]+"</span>");
     });
