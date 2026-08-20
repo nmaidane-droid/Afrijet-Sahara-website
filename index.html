@@ -2016,7 +2016,13 @@ footer {
           <a class="nav-dropdown-item" data-i18n="nav.prepaid" onclick="selectApropos('prepaid')">Cartes prépayées</a>
         </div>
       </li>
-      <li><a href="#flotte" class="nav-link" data-i18n="nav.flotte">Notre Flotte</a></li>
+      <li class="nav-dropdown-parent">
+        <a class="nav-link nav-dropdown-trigger" data-i18n="nav.flotte" onclick="toggleNavFlotte(event)">Notre Flotte ▾</a>
+        <div class="nav-dropdown-menu" id="navFlotteMenu">
+          <a class="nav-dropdown-item" data-i18n="nav.flotte" onclick="selectFlotte('flotte')">Notre Flotte</a>
+          <a class="nav-dropdown-item" data-i18n="nav.rayon" onclick="selectFlotte('rayon')">Rayon d'action</a>
+        </div>
+      </li>
       <li><a href="#services" class="nav-link" data-i18n="nav.services">Nos Services</a></li>
       <li><a href="#empty-legs" class="nav-link" data-i18n="nav.empty">Vols à Vide</a></li>
       <li><a href="#securite" class="nav-link" data-i18n="nav.securite">Sécurité</a></li>
@@ -2071,7 +2077,11 @@ footer {
     <a class="nav-link nav-sub-link" onclick="closeMobile();selectApropos('prepaid')" data-i18n="nav.prepaid">Cartes prépayées</a>
   </div>
   
-  <a href="#flotte" class="nav-link" onclick="closeMobile()" data-i18n="nav.flotte">Notre Flotte</a>
+  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileFlotte(event)" data-i18n="nav.flotte">Notre Flotte</a>
+  <div id="mobileFlotteMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
+    <a class="nav-link nav-sub-link" onclick="closeMobile();selectFlotte('flotte')" data-i18n="nav.flotte">Notre Flotte</a>
+    <a class="nav-link nav-sub-link" onclick="closeMobile();selectFlotte('rayon')" data-i18n="nav.rayon">Rayon d'action</a>
+  </div>
   
   <a href="#services" class="nav-link" onclick="closeMobile()" data-i18n="nav.services">Nos Services</a>
   
@@ -2412,6 +2422,13 @@ footer {
 <!-- ============================================================
      NOS SERVICES
      ============================================================ -->
+<!-- ============================================================
+     RAYON D'ACTION
+     ============================================================ -->
+<section id="rayon" style="padding:0;overflow:hidden;">
+  <iframe src="range-2.html" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
+</section>
+
 <section id="services">
   <div class="container">
     <p class="section-label reveal" data-i18n="srv.label">Nos Services</p>
@@ -2986,6 +3003,7 @@ const translations = {
     'el.admin_title': 'Gérer les vols à vide',
     'form.submit': 'Demander un devis →',
     'nav.flotte': 'Notre Flotte',
+    'nav.rayon': "Rayon d'action",
     'nav.services': 'Nos Services',
     'nav.empty': 'Vols à Vide',
     'el.label': 'Opportunités',
@@ -3118,6 +3136,7 @@ const translations = {
     'el.admin_title': 'Manage empty leg flights',
     'form.submit': 'Request a quote →',
     'nav.flotte': 'Our Fleet',
+    'nav.rayon': 'Range Map',
     'nav.services': 'Services',
     'nav.empty': 'Empty Legs',
     'el.label': 'Opportunities',
@@ -3253,6 +3272,7 @@ const translations = {
     'el.admin_title': 'Gestionar vuelos vacíos',
     'form.submit': 'Solicitar presupuesto →',
     'nav.flotte': 'Nuestra Flota',
+    'nav.rayon': 'Radio de acción',
     'nav.services': 'Servicios',
     'nav.empty': 'Vuelos Vacíos',
     'el.label': 'Oportunidades',
@@ -3403,6 +3423,32 @@ function selectApropos(panel) {
   if (mob) mob.style.display = 'none';
 }
 
+function toggleNavFlotte(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  var menu = document.getElementById('navFlotteMenu');
+  var rect = e.currentTarget.getBoundingClientRect();
+  menu.style.left = rect.left + 'px';
+  menu.classList.toggle('open');
+  var other = document.getElementById('navDropdownMenu');
+  if (other) other.classList.remove('open');
+}
+
+function toggleMobileFlotte(e) {
+  e.preventDefault();
+  var mob = document.getElementById('mobileFlotteMenu');
+  var isOpen = mob.style.display === 'block';
+  mob.style.display = isOpen ? 'none' : 'block';
+}
+
+function selectFlotte(target) {
+  showSection(target === 'rayon' ? 'rayon' : 'flotte');
+  var m = document.getElementById('navFlotteMenu');
+  if (m) m.classList.remove('open');
+  var mob = document.getElementById('mobileFlotteMenu');
+  if (mob) mob.style.display = 'none';
+}
+
 function toggleNavDropdown(e) {
   e.preventDefault();
   e.stopPropagation();
@@ -3410,6 +3456,8 @@ function toggleNavDropdown(e) {
   var rect = e.currentTarget.getBoundingClientRect();
   menu.style.left = rect.left + 'px';
   menu.classList.toggle('open');
+  var other = document.getElementById('navFlotteMenu');
+  if (other) other.classList.remove('open');
 }
 
 function toggleMobileApropos(e) {
@@ -3441,6 +3489,10 @@ document.addEventListener('click', function(e) {
   var isLang = e.target.closest ? e.target.closest('.lang-switcher') : false;
   if (menu && !menu.contains(e.target) && !e.target.classList.contains('nav-dropdown-trigger') && !isLang) {
     menu.classList.remove('open');
+  }
+  var fm = document.getElementById('navFlotteMenu');
+  if (fm && !fm.contains(e.target) && !e.target.classList.contains('nav-dropdown-trigger') && !isLang) {
+    fm.classList.remove('open');
   }
 });
 
