@@ -32,7 +32,9 @@
 
   /* --- Selecteur de centre --- */
   .center-box{padding:14px 22px 16px;border-bottom:1px solid var(--line);position:relative}
-  .cur{display:flex;align-items:baseline;gap:9px;margin-bottom:11px}
+  .cur-row{display:flex;align-items:baseline;gap:10px;margin-bottom:11px}
+  .cur-row .eyebrow{margin:0;white-space:nowrap}
+  .cur{display:flex;align-items:baseline;gap:9px;margin-bottom:0}
   .cur .ic{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--red);letter-spacing:.02em}
   .cur .tx{font-size:12.5px;line-height:1.35;color:var(--navy);overflow:hidden}
   .cur .tx i{font-style:normal;display:block;color:var(--grey);font-size:11px}
@@ -100,10 +102,12 @@
     </div>
 
     <div class="center-box">
-      <p class="eyebrow">Terrain de départ</p>
-      <div class="cur">
-        <span class="ic" id="curIcao">GMMN</span>
-        <span class="tx" id="curName">Mohammed V<i>Casablanca, Maroc</i></span>
+      <div class="cur-row">
+        <p class="eyebrow">Terrain de départ</p>
+        <div class="cur">
+          <span class="ic" id="curIcao">GMMN</span>
+          <span class="tx" id="curName">Mohammed V<i>Casablanca, Maroc</i></span>
+        </div>
       </div>
       <div class="search">
         <input type="text" id="q" placeholder="Changer de terrain - OACI - ville"
