@@ -1638,7 +1638,7 @@ footer {
 #rayon {
   padding: var(--nav-h) 0 96px 0 !important;
   overflow-y: auto !important;
-  background: var(--white);
+  background: var(--off-white);
 }
 @media (min-width: 769px) {
   #rayon { padding-bottom: 56px !important; overflow: hidden !important; }
@@ -3535,14 +3535,28 @@ function fitRayonFrame() {
   if (!rf || !rf.getAttribute('src')) return;
   if (window.innerWidth <= 860) {
     try {
-      var h = rf.contentDocument.documentElement.scrollHeight;
-      if (h > 200) rf.style.height = h + 'px';
-    } catch (err) { rf.style.height = '150vh'; }
+      var d = rf.contentDocument;
+      var h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
+      if (h > 200) rf.style.height = (h + 4) + 'px';
+    } catch (err) { rf.style.height = '160vh'; }
   } else {
     rf.style.height = '100%';
   }
+  // Recalcul après rendu complet (polices, carte)
+  if (!fitRayonFrame._retried) {
+    fitRayonFrame._retried = true;
+    setTimeout(function(){ fitRayonFrame._retried = true; refit(); }, 400);
+    setTimeout(refit, 1200);
+  }
+  function refit() {
+    try {
+      var d2 = rf.contentDocument;
+      var h2 = Math.max(d2.documentElement.scrollHeight, d2.body.scrollHeight);
+      if (window.innerWidth <= 860 && h2 > 200) rf.style.height = (h2 + 4) + 'px';
+    } catch (e) {}
+  }
 }
-window.addEventListener('resize', fitRayonFrame);
+window.addEventListener('resize', function(){ fitRayonFrame._retried = false; fitRayonFrame(); });
 
 showSection('accueil');
 setLang('fr');
