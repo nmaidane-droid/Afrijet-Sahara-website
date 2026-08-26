@@ -262,8 +262,18 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
     document.getElementById("curIcao").textContent=center.icao;
     document.getElementById("curName").innerHTML=esc(center.apt)+
       "<i>"+(center.city?esc(center.city)+", "+esc(center.cc):esc(center.cc))+"</i>";
-    if(fit!==false) map.fitBounds(ring1300.getBounds(),{padding:[24,24]});
+    if(fit!==false) fitRing();
   }
+
+  function fitRing(){
+    map.invalidateSize();
+    map.fitBounds(ring1300.getBounds(),{padding:[18,18]});
+  }
+  var _rft;
+  window.addEventListener("resize",function(){
+    clearTimeout(_rft);
+    _rft=setTimeout(fitRing,250);
+  });
 
 
   /* ---------- Recherche du terrain de départ ---------- */
