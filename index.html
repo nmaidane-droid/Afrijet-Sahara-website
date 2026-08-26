@@ -2437,7 +2437,7 @@ footer {
      RAYON D'ACTION
      ============================================================ -->
 <section id="rayon">
-  <iframe id="rayonFrame" data-src="range-2.html?v=24" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
+  <iframe id="rayonFrame" data-src="range-2.html?v=25" title="Rayon d'action" style="width:100%;height:100%;border:none;display:block;"></iframe>
 </section>
 
 <section id="services">
@@ -2887,6 +2887,10 @@ function showSection(id) {
     } else {
       fitRayonFrame();
     }
+    // Recadrer le cercle à chaque ouverture de la page (carte de nouveau visible)
+    var callFit = function(){ try { if (rf && rf.contentWindow && rf.contentWindow.fitRing) rf.contentWindow.fitRing(); } catch(e) {} };
+    setTimeout(callFit, 250);
+    setTimeout(callFit, 900);
   }
 
   // Cacher les panneaux compagnie par défaut

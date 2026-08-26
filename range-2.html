@@ -266,9 +266,12 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
   }
 
   function fitRing(){
+    var el=document.getElementById("map");
+    if(!el||!el.offsetWidth||!el.offsetHeight) return;  // carte cachée : ne rien faire
     map.invalidateSize();
     map.fitBounds(ring1300.getBounds(),{padding:[18,18]});
   }
+  window.fitRing=fitRing;
   var _rft;
   window.addEventListener("resize",function(){
     clearTimeout(_rft);
