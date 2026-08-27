@@ -116,7 +116,7 @@
     </div>
 
     <div class="figs">
-      <div class="fig-line">AUTONOMIE 3 241 km (sans vent) <span style="color:#bbb;font-size:10px">v25</span></div>
+      <div class="fig-line">AUTONOMIE 3 241 km (sans vent) <span style="color:#bbb;font-size:10px">v26</span></div>
     </div>
 
 
@@ -204,7 +204,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 
   /* ---------- Carte ---------- */
-  var map=L.map("map",{zoomControl:true,worldCopyJump:false,minZoom:2,zoomSnap:.25}).setView([33.37,-7.58],4);
+  var map=L.map("map",{zoomControl:true,worldCopyJump:false,minZoom:1,zoomSnap:.25}).setView([33.37,-7.58],4);
   L.control.scale({imperial:false,maxWidth:140}).addTo(map);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_269n_1_75a47770d40169727a932058",
     {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>',
