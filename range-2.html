@@ -1134,6 +1134,21 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
     var brg=Math.atan2(cU2*Math.sin(lam),cU1*sU2-sU1*cU2*Math.cos(lam))*180/Math.PI;
     return {d:(b*A*(sig-dS))/NM,b:(brg+360)%360};
   }
+  /* Fermeture polaire : si le rayon englobe un pole, la frontiere traverse
+     chaque longitude une seule fois ; on la referme par le sommet de la carte. */
+  function closePolar(pts){
+    if(pts.length<3) return pts;
+    var wrap = pts[pts.length-1][1] - pts[0][1];
+    if(Math.abs(wrap) < 180) return pts;                    // boucle normale
+    var s = pts.map(function(p){
+      var L=p[1]; while(L>180)L-=360; while(L<-180)L+=360;  // normaliser
+      return [p[0],L];
+    });
+    s.sort(function(a,b){return a[1]-b[1];});               // trier par longitude
+    var pole = (center.lat>=0)?90:-90;                      // sommet a refermer
+    s.push([s[s.length-1][0],180],[pole,180],[pole,-180],[s[0][0],-180]);
+    return s;
+  }
   function ring(nm){
     var pts=[],s=nm*NM,prev=null;
     for(var a=0;a<360.0001;a+=0.5){
@@ -1144,7 +1159,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
       }
       prev=p[1]; pts.push(p);
     }
-    return pts;
+    return closePolar(pts);
   }
   function pad3(n){n=Math.round(n)%360;return (n<100?(n<10?"00":"0"):"")+n;}
   function fmt(n){return Math.round(n).toLocaleString("fr-FR");}
