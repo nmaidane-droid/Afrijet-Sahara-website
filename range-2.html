@@ -1149,6 +1149,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
     s.push([s[s.length-1][0],180],[pole,180],[pole,-180],[s[0][0],-180]);
     return s;
   }
+  function lineOnly(pts){var c=closePolar(pts);return c===pts?pts:c.slice(0,c.length-4);}
   function ring(nm){
     var pts=[],s=nm*NM,prev=null;
     for(var a=0;a<360.0001;a+=0.5){
@@ -1159,7 +1160,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
       }
       prev=p[1]; pts.push(p);
     }
-    return closePolar(pts);
+    return pts;
   }
   function pad3(n){n=Math.round(n)%360;return (n<100?(n<10?"00":"0"):"")+n;}
   function fmt(n){return Math.round(n).toLocaleString("fr-FR");}
@@ -1183,8 +1184,9 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
   L.svgOverlay(_svgEl,[[-857,0],[0,2000]],{attribution:'&copy; <a href="https://simplemaps.com">Simplemaps</a>'}).addTo(map);
 
   /* Une seule couche : 32 % reprend le cumul des deux disques superposes. */
-  var ring1300=L.polygon([],{color:"#0F5FA8",weight:1.4,opacity:1,
+  var ring1300=L.polygon([],{stroke:false,
       fill:true,fillColor:"#7A7C82",fillOpacity:.32,interactive:false}).addTo(map);
+  var ringLine=L.polyline([],{color:"#0F5FA8",weight:1.4,opacity:1,interactive:false}).addTo(map);
   var ctrMarker=L.circleMarker([0,0],{radius:5,color:"#8B0000",weight:2,
       fillColor:"#fff",fillOpacity:1}).addTo(map);
 
@@ -1212,7 +1214,9 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
 
   /* ---------- Recalcul ---------- */
   function refresh(fit){
-    ring1300.setLatLngs(ring(R).map(function(ll){return P(ll[0],ll[1]);}));
+    var _raw=ring(R);
+    ring1300.setLatLngs(closePolar(_raw).map(function(ll){return P(ll[0],ll[1]);}));
+    ringLine.setLatLngs(lineOnly(_raw).map(function(ll){return P(ll[0],ll[1]);}));
     ctrMarker.setLatLng(P(center.lat,center.lon)).bindPopup(
       '<div class="pop-icao">'+esc(center.icao)+"</div><div>"+esc(center.apt)+
       (center.city?"<br>"+esc(center.city)+", "+esc(center.cc):"")+"</div>"+
@@ -1241,7 +1245,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
     var el=document.getElementById("map");
     if(!el||!el.offsetWidth||!el.offsetHeight) return;  // carte cachée : ne rien faire
     map.invalidateSize();
-    map.fitBounds(ring1300.getBounds(),{padding:[18,18]});
+    map.fitBounds(ringLine.getBounds(),{padding:[18,18]});
   }
   window.fitRing=fitRing;
   var _rft;
