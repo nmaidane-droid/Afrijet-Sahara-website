@@ -2585,11 +2585,15 @@ footer {
     <div id="elPassScreen">
       <h3>Administration</h3>
       <div class="el-form-group">
-        <label>Mot de passe</label>
-        <input type="password" id="elPassInput" placeholder="••••••••" />
+        <label>Email</label>
+        <input type="email" id="elEmailInput" placeholder="admin@afrijet.ma" autocomplete="username" />
       </div>
-      <button class="el-btn-submit" onclick="elCheckPass()">Accéder</button>
-      <p id="elPassError" style="color:#cc0000;font-size:13px;margin-top:8px;display:none;">Mot de passe incorrect</p>
+      <div class="el-form-group">
+        <label>Mot de passe</label>
+        <input type="password" id="elPassInput" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <button class="el-btn-submit" id="elLoginBtn" onclick="elCheckPass()">Accéder</button>
+      <p id="elPassError" style="color:#cc0000;font-size:13px;margin-top:8px;display:none;">Email ou mot de passe incorrect</p>
     </div>
 
     <!-- Admin screen (hidden until auth) -->
@@ -3944,13 +3948,6 @@ elSetupAC('formInputArr', 'formListArr');
 })();
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1bHd1YnV6dXlsbXdraXR0bmJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3Mjk5MjQsImV4cCI6MjA5ODMwNTkyNH0.Bt2MXASzrqWPaxTxo7ImZu-FtdjahLG9FLOMIgz9SWA';
 const EL_TABLE = 'empty_legs';
-const EL_PASS_HASH = 'c4ab3191'; // hash simplifié
-
-function elHash(s) {
-  let h = 0;
-  for (let i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; }
-  return (h >>> 0).toString(16);
-}
 
 async function elFetch() {
   try {
@@ -3968,7 +3965,7 @@ async function elFetchAll() {
   try {
     const res = await fetch(
       SUPA_URL + '/rest/v1/' + EL_TABLE + '?order=date_vol.desc&limit=50',
-      { headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY } }
+      { headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + elAccessToken } }
     );
     if (!res.ok) throw new Error(res.status);
     return await res.json();
@@ -4069,17 +4066,32 @@ async function elRender() {
 }
 
 // Admin
-let elAuthed = false;
+let elAccessToken = null;
+function elAuthed() { return !!elAccessToken; }
 
-function elCheckPass() {
+async function elCheckPass() {
+  const email = document.getElementById('elEmailInput').value.trim();
   const pass = document.getElementById('elPassInput').value;
-  if (elHash(pass) === EL_PASS_HASH) {
-    elAuthed = true;
+  const btn = document.getElementById('elLoginBtn');
+  const err = document.getElementById('elPassError');
+  err.style.display = 'none';
+  btn.disabled = true; btn.textContent = 'Connexion…';
+  try {
+    const res = await fetch(SUPA_URL + '/auth/v1/token?grant_type=password', {
+      method: 'POST',
+      headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: pass })
+    });
+    const data = await res.json();
+    if (!res.ok || !data.access_token) throw new Error('auth');
+    elAccessToken = data.access_token;
     document.getElementById('elPassScreen').style.display = 'none';
     document.getElementById('elAdminScreen').style.display = 'block';
     elLoadAdmin();
-  } else {
-    document.getElementById('elPassError').style.display = 'block';
+  } catch (e) {
+    err.style.display = 'block';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Accéder';
   }
 }
 
@@ -4102,7 +4114,7 @@ async function elLoadAdmin() {
 }
 
 async function elAddFlight() {
-  if (!elAuthed) return;
+  if (!elAuthed()) return;
   const date = document.getElementById('elDate').value;
   const depart = document.getElementById('elDepart').value.trim();
   const arrivee = document.getElementById('elArrivee').value.trim();
@@ -4113,7 +4125,7 @@ async function elAddFlight() {
   try {
     const res = await fetch(SUPA_URL + '/rest/v1/' + EL_TABLE, {
       method: 'POST',
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + elAccessToken, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ date_vol: date, depart, arrivee, avion, prix, heure, actif: true })
     });
     if (!res.ok) throw new Error(res.status);
@@ -4128,11 +4140,11 @@ async function elAddFlight() {
 }
 
 async function elToggle(id, newState) {
-  if (!elAuthed) return;
+  if (!elAuthed()) return;
   try {
     await fetch(SUPA_URL + '/rest/v1/' + EL_TABLE + '?id=eq.' + id, {
       method: 'PATCH',
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + elAccessToken, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ actif: newState })
     });
     elLoadAdmin();
@@ -4141,11 +4153,11 @@ async function elToggle(id, newState) {
 }
 
 async function elDelete(id) {
-  if (!elAuthed || !confirm('Supprimer ce vol ?')) return;
+  if (!elAuthed() || !confirm('Supprimer ce vol ?')) return;
   try {
     await fetch(SUPA_URL + '/rest/v1/' + EL_TABLE + '?id=eq.' + id, {
       method: 'DELETE',
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
+      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + elAccessToken }
     });
     elLoadAdmin();
     elRender();
