@@ -203,7 +203,7 @@ var CAPS = [["Alger","Algérie","DAAG","Houari Boumediene",36.691,3.2154,""],["L
   /* ---------- Carte ---------- */
   var map=L.map("map",{zoomControl:true,worldCopyJump:false,minZoom:2,zoomSnap:.25}).setView([33.37,-7.58],4);
   L.control.scale({imperial:false,maxWidth:140}).addTo(map);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_269n_1_75a47770d40169727a932058",
     {attribution:"&copy; OpenStreetMap &copy; CARTO",subdomains:"abcd",maxZoom:19}).addTo(map);
 
   /* Une seule couche : 32 % reprend le cumul des deux disques superposes. */
