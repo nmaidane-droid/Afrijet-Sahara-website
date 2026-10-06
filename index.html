@@ -2856,6 +2856,10 @@ function showSection(id) {
     setTimeout(callFit, 900);
   }
 
+  if (id === 'services') {
+    setTimeout(function () { if (window.journeyRefresh) window.journeyRefresh(); }, 200);
+  }
+
   // Cacher les panneaux compagnie par défaut
   if (id === 'compagnie') {
     var pc = document.getElementById('panel-compagnie');
@@ -3984,10 +3988,60 @@ elRender();
   if (!fill || !steps.length) return;
 
   const line = fill.parentElement;
+  const servicesEl = document.getElementById('services');
+
+  // ---- Mode PC (>= 1025 px) : remplissage chronométré, étape par étape ----
+  var jPlaying = false, jPlayed = false, jTimers = [];
+  function jReset() {
+    jTimers.forEach(function (t) { clearTimeout(t); });
+    jTimers = [];
+    jPlaying = false; jPlayed = false;
+    fill.style.transition = 'none';
+    fill.style.height = '0px';
+    steps.forEach(function (s) { s.classList.remove('active'); });
+  }
+  function jPlay() {
+    if (jPlaying || jPlayed) return;
+    const lineRect = line.getBoundingClientRect();
+    const d0 = dots[0].getBoundingClientRect();
+    const startY = d0.top + d0.height / 2 - lineRect.top;
+    const ys = [];
+    dots.forEach(function (d) {
+      const r = d.getBoundingClientRect();
+      ys.push(r.top + r.height / 2 - lineRect.top - startY);
+    });
+    const total = ys[ys.length - 1];
+    if (!(total > 0)) return;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dur = reduce ? 0 : 2800;
+    jPlaying = true;
+    fill.style.transition = 'none';
+    fill.style.top = startY + 'px';
+    fill.style.height = '0px';
+    void fill.offsetHeight; // force le recalcul avant la transition
+    steps[0].classList.add('active');
+    fill.style.transition = dur ? ('height ' + dur + 'ms linear') : 'none';
+    fill.style.height = total + 'px';
+    steps.forEach(function (s, i) {
+      if (i === 0) return;
+      jTimers.push(setTimeout(function () { s.classList.add('active'); }, dur * (ys[i] / total)));
+    });
+    jTimers.push(setTimeout(function () { jPlaying = false; jPlayed = true; }, dur + 50));
+  }
+  function updateJourneyDesktop() {
+    const winH = window.innerHeight;
+    const hidden = !servicesEl || servicesEl.style.display === 'none' || line.offsetHeight === 0;
+    if (hidden) { jReset(); return; }
+    const top = dots[0].getBoundingClientRect().top;
+    if (top > winH) { if (jPlayed || jPlaying) jReset(); return; } // sorti par le bas : rejouable
+    if (top < winH * 0.85) jPlay();
+  }
 
   function updateJourney() {
     const winH = window.innerHeight;
     const winW = window.innerWidth;
+    if (winW >= 1025) { updateJourneyDesktop(); return; }
+    if (jPlaying || jPlayed || fill.style.transition) { jReset(); fill.style.transition = ''; }
     const lineRect = line.getBoundingClientRect();
     const firstDot = dots[0];
     const lastDot = dots[dots.length - 1];
@@ -4033,6 +4087,7 @@ elRender();
   }
 
   const servicesSection = document.getElementById('services');
+  window.journeyRefresh = function () { if (window.innerWidth >= 1025) updateJourney(); };
   const scrollTarget = servicesSection || window;
   scrollTarget.addEventListener('scroll', updateJourney, { passive: true });
   window.addEventListener('resize', updateJourney, { passive: true });
