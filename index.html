@@ -2004,6 +2004,10 @@ footer {
 }
 </style>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<link rel="manifest" href="./manifest.webmanifest" />
+<link rel="icon" href="./icon-192.png" />
+<link rel="apple-touch-icon" href="./icon-180.png" />
+<meta name="theme-color" content="#FFFFFF" />
 </head>
 <body>
 
@@ -4255,6 +4259,18 @@ elRender();
 </div>
 
 <button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin" style="display:none;">🔒</button>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').then(function (reg) {
+      /* enregistré */
+    })['catch'](function (err) {
+      /* echec silencieux : le site fonctionne normalement sans PWA */
+    });
+  });
+}
+</script>
 
 </body>
 </html>
