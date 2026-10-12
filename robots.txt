@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /range-1750.html
+Disallow: /rayon-emb145.html
+Disallow: /range-2.html
+
+Sitemap: https://afrijet.ma/sitemap.xml

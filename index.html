@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Afrijet Sahara — Aviation Charter d'Exception</title>
-<meta name="description" content="Afrijet Sahara, compagnie charter marocaine opérant un Embraer 140 LR full business 18 places. Vols à la demande vers toute destination." />
+<title>Afrijet Sahara — Charter privé au Maroc | Jet d'affaires Embraer depuis Dakhla</title>
+<meta name="description" content="Afrijet Sahara, compagnie charter marocaine basée à Dakhla : location de jet privé Embraer 140 LR full business 18 places, vols à la demande vers toute destination, vols à vide et cartes prépayées." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -2008,6 +2009,25 @@ footer {
 <link rel="icon" href="./icon-192.png" />
 <link rel="apple-touch-icon" href="./icon-180.png" />
 <meta name="theme-color" content="#FFFFFF" />
+<link rel="canonical" href="https://afrijet.ma/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afrijet Sahara" />
+<meta property="og:title" content="Afrijet Sahara — Charter privé au Maroc" />
+<meta property="og:description" content="Jet d'affaires Embraer 140 LR full business 18 places. Vols à la demande depuis Dakhla vers toute destination." />
+<meta property="og:url" content="https://afrijet.ma/" />
+<meta property="og:image" content="https://afrijet.ma/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Passager d'affaires à bord d'un jet Afrijet Sahara" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Afrijet Sahara — Charter privé au Maroc" />
+<meta name="twitter:description" content="Jet d'affaires Embraer 140 LR full business 18 places. Vols à la demande depuis Dakhla." />
+<meta name="twitter:image" content="https://afrijet.ma/og-image.jpg" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Airline", "name": "Afrijet Sahara", "legalName": "Sahara Aviation SAS", "url": "https://afrijet.ma/", "logo": "https://afrijet.ma/logo.png", "image": "https://afrijet.ma/og-image.jpg", "description": "Afrijet Sahara, compagnie charter marocaine basée à Dakhla : location de jet privé Embraer 140 LR full business 18 places, vols à la demande vers toute destination, vols à vide et cartes prépayées.", "telephone": "+212689595900", "email": "info@afrijet.ma", "address": {"@type": "PostalAddress", "streetAddress": "Lotissement Khalij Dakhla, Villa n°86, BP 3201", "postalCode": "73000", "addressLocality": "Dakhla", "addressCountry": "MA"}, "areaServed": ["MA", "Afrique", "Europe", "Moyen-Orient"], "inLanguage": ["fr", "en", "es"]}</script>
 </head>
 <body>
 
@@ -3383,6 +3403,7 @@ let currentLang = 'fr';
 function setLang(lang, e) {
   if (e) e.stopPropagation();
   currentLang = lang;
+  document.documentElement.lang = lang;
   const t = translations[lang];
   // Mettre à jour tous les éléments data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
