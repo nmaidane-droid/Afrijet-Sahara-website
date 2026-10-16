@@ -5,13 +5,15 @@
    bloqué sur l'ancienne version.
    Pour retirer complètement le service worker le jour de la migration,
    remplacer le contenu de ce fichier par le bloc de désinscription fourni. */
-var VERSION = 'afrijet-v3';
+var VERSION = 'afrijet-v4';
 var CACHE = 'secours-' + VERSION;
 
 var SECOURS = [
   './',
   './index.html',
   './range-2.html',
+  './style.css',
+  './app.js',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css?v=1" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="icon" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/icon-180.png" />
+<meta name="theme-color" content="#FFFFFF" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<title>Cartes prépayées — Volez à tarif fixe | Afrijet Sahara</title>
+<meta name="description" content="La carte prépayée Afrijet Sahara : volez à votre rythme, à tarif fixe, en jet d'affaires Embraer au départ du Maroc." />
+<link rel="canonical" href="https://afrijet.ma/cartes-prepayees" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afrijet Sahara" />
+<meta property="og:title" content="Cartes prépayées — Volez à tarif fixe | Afrijet Sahara" />
+<meta property="og:description" content="La carte prépayée Afrijet Sahara : volez à votre rythme, à tarif fixe, en jet d'affaires Embraer au départ du Maroc." />
+<meta property="og:url" content="https://afrijet.ma/cartes-prepayees" />
+<meta property="og:image" content="https://afrijet.ma/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="fr_FR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cartes prépayées — Volez à tarif fixe | Afrijet Sahara" />
+<meta name="twitter:description" content="La carte prépayée Afrijet Sahara : volez à votre rythme, à tarif fixe, en jet d'affaires Embraer au départ du Maroc." />
+<meta name="twitter:image" content="https://afrijet.ma/og-image.jpg" />
+</head>
+<body data-section="compagnie" data-panel="prepaid">
+<div id="progressBar"></div>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/img-e3749ea246.png" alt="Afrijet Sahara" class="nav-logo-img" />
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="/" class="nav-link" data-i18n="nav.accueil">Accueil</a></li>
+      <li class="nav-dropdown-parent">
+        <a class="nav-link nav-dropdown-trigger" data-i18n="nav.apropos" onclick="toggleNavDropdown(event)">À propos ▾</a>
+        <div class="nav-dropdown-menu" id="navDropdownMenu">
+          <a class="nav-dropdown-item" data-i18n="nav.president" href="/mot-du-president">Mot du Président</a>
+          <a class="nav-dropdown-item" data-i18n="nav.compagnie" href="/la-compagnie">La Compagnie</a>
+          <a class="nav-dropdown-item" data-i18n="nav.prepaid" href="/cartes-prepayees">Cartes prépayées</a>
+        </div>
+      </li>
+      <li class="nav-dropdown-parent">
+        <a class="nav-link nav-dropdown-trigger" data-i18n="nav.flotte" onclick="toggleNavFlotte(event)">Notre Flotte ▾</a>
+        <div class="nav-dropdown-menu" id="navFlotteMenu">
+          <a class="nav-dropdown-item" data-i18n="nav.flotte" href="/notre-flotte">Notre Flotte</a>
+          <a class="nav-dropdown-item" data-i18n="nav.rayon" href="/rayon-d-action">Rayon d'action</a>
+        </div>
+      </li>
+      <li><a href="/nos-services" class="nav-link" data-i18n="nav.services">Nos Services</a></li>
+      <li><a href="/vols-a-vide" class="nav-link" data-i18n="nav.empty">Vols à Vide</a></li>
+      <li><a href="/securite" class="nav-link" data-i18n="nav.securite">Sécurité</a></li>
+      <li><a href="/actualites" class="nav-link" data-i18n="nav.actualites">Actualités</a></li>
+      <li><a href="/contact" class="nav-link" data-i18n="nav.contact" onclick="">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+
+      <!-- Sélecteur langue -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="event.stopPropagation();setLang('fr', event)" title="Français">
+          <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
+            <rect width="9" height="18" fill="#002395"/>
+            <rect x="9" width="8" height="18" fill="#FFFFFF"/>
+            <rect x="17" width="9" height="18" fill="#ED2939"/>
+          </svg>
+        </button>
+        <button class="lang-btn" onclick="event.stopPropagation();setLang('en', event)" title="English">
+          <svg width="26" height="18" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
+            <rect width="60" height="40" fill="#012169"/>
+            <path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/>
+            <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/>
+            <path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="12"/>
+            <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/>
+          </svg>
+        </button>
+        <button class="lang-btn" onclick="event.stopPropagation();setLang('es', event)" title="Español">
+          <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
+            <rect width="26" height="4.5" fill="#AA151B"/>
+            <rect y="4.5" width="26" height="9" fill="#F1BF00"/>
+            <rect y="13.5" width="26" height="4.5" fill="#AA151B"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="nav-link" onclick="closeMobile()" data-i18n="nav.accueil">Accueil</a>
+  
+  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileApropos(event)" data-i18n="nav.apropos">À propos</a>
+  <div id="mobileAproposMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
+    <a class="nav-link nav-sub-link" href="/mot-du-president" data-i18n="nav.president">Mot du Président</a>
+    <a class="nav-link nav-sub-link" href="/la-compagnie" data-i18n="nav.compagnie">La Compagnie</a>
+    <a class="nav-link nav-sub-link" href="/cartes-prepayees" data-i18n="nav.prepaid">Cartes prépayées</a>
+  </div>
+  
+  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileFlotte(event)" data-i18n="nav.flotte">Notre Flotte</a>
+  <div id="mobileFlotteMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
+    <a class="nav-link nav-sub-link" href="/notre-flotte" data-i18n="nav.flotte">Notre Flotte</a>
+    <a class="nav-link nav-sub-link" href="/rayon-d-action" data-i18n="nav.rayon">Rayon d'action</a>
+  </div>
+  
+  <a href="/nos-services" class="nav-link" onclick="closeMobile()" data-i18n="nav.services">Nos Services</a>
+  
+  <a href="/vols-a-vide" class="nav-link" onclick="closeMobile()" data-i18n="nav.empty">Vols à Vide</a>
+  
+  <a href="/securite" class="nav-link" onclick="closeMobile()" data-i18n="nav.securite">Sécurité</a>
+  
+  <a href="/actualites" class="nav-link" onclick="closeMobile()" data-i18n="nav.actualites">Actualités</a>
+  
+  <a href="/contact" class="nav-link" onclick="closeMobile();" data-i18n="nav.contact">Contact / Devis</a>
+  
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+
+<section id="compagnie" style="display:block;">
+  <div class="container">
+
+    <!-- PANEL : La Compagnie -->
+    <div id="panel-prepaid" style="display:block;">
+      <p class="section-label" data-i18n="nav.prepaid">Cartes prépayées</p>
+      <div class="divider reveal"></div>
+      <h1 class="section-title" data-i18n="prepaid.title">La Carte Prépayée Afrijet Sahara</h1>
+      <p class="section-subtitle" style="font-style:italic;margin-bottom:16px;" data-i18n="prepaid.tagline">Volez à votre rythme, à tarif fixe.</p>
+      <p class="section-subtitle" style="margin-bottom:32px;" data-i18n="prepaid.desc">La Carte Prépayée Afrijet Sahara vous garantit un accès prioritaire à notre flotte EMB 140 LR et EMB 145, à un tarif horaire fixe et compétitif. Idéale pour les voyageurs institutionnels et d'affaires qui volent régulièrement.</p>
+      <div class="prepaid-grid" style="margin-top:8px;">
+        <div>
+          <div class="card-header-badge" style="margin-bottom:20px;">
+            <span>✈</span>
+            <span class="value-title" data-i18n="prepaid.benefits">Avantages clés</span>
+          </div>
+          <ul class="prepaid-list">
+        <li data-i18n="prepaid.l1">Disponibilité garantie sous 48 heures</li>
+        <li data-i18n="prepaid.l2">Tarif horaire fixe sans surprises</li>
+        <li data-i18n="prepaid.l3">Gestionnaire de compte personnel dédié</li>
+        <li data-i18n="prepaid.l4">Conditions d'annulation préférentielles</li>
+        <li data-i18n="prepaid.l5">Taxes aéroportuaires incluses</li>
+        <li data-i18n="prepaid.l6">Anti-givrage et service à bord inclus</li>
+        <li data-i18n="prepaid.l7">Pas de date d'expiration de vos crédits</li>
+        <li data-i18n="prepaid.l8">Accès à toutes nos destinations — Afrique, Moyen-Orient, Europe</li>
+          </ul>
+        </div>
+        <div class="prepaid-card-col" style="display:flex;align-items:center;justify-content:center;">
+          <div style="width:323px;height:204px;border-radius:14px;background:linear-gradient(135deg,#E8001C 0%,#6B0011 55%,#1a0005 100%);box-shadow:0 16px 48px rgba(232,0,28,0.35),0 6px 16px rgba(0,0,0,0.2);position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:5% 6%;color:white;">
+  <div style="position:absolute;top:-40%;right:-20%;width:70%;height:110%;border:2px solid rgba(255,255,255,0.06);border-radius:50%;"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <img src="/img-e3749ea246.png" style="height:36px;filter:brightness(0) invert(1);display:block;" alt="Afrijet" />
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap;" data-i18n="card.type">Carte Prépayée</span>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:5%;">
+    <div style="width:38px;height:28px;background:linear-gradient(135deg,#f5c842,#c8960c);border-radius:4px;flex-shrink:0;position:relative;">
+      <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(0,0,0,0.15);transform:translateY(-50%);"></div>
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(0,0,0,0.15);transform:translateX(-50%);"></div>
+    </div>
+    <span style="font-size:clamp(11px,2.5vw,16px);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Mr. Karim BERRADA</span>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+    <div>
+      <div style="font-size:8px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:3px;" data-i18n="card.fleet">Flotte</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;">All Fleet</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:8px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:3px;" data-i18n="card.validity">Validité</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;">31 DEC 2027</div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);"></div>
+</div>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/contact" class="btn-primary" onclick="" data-i18n="prepaid.cta">Demander une proposition →</a>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy" data-i18n="footer.copy">© 2026 Afrijet Sahara. Tous droits réservés.</p>
+    <a href="#" class="footer-link footer-link-legal" id="legalLink" data-i18n="footer.legal">Mentions légales</a>
+  </div>
+</footer>
+<script src="/app.js?v=1"></script>
+
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+<!-- Modal Mentions Légales -->
+<div id="modalLegal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;overflow-y:auto;" onclick="if(event.target===this)closeLegalModal()">
+  <div style="background:#fff;max-width:680px;margin:40px auto;border-radius:8px;padding:40px;position:relative;">
+    <button onclick="closeLegalModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
+    <img src="/img-1808d5d0be.png" alt="Afrijet Sahara" style="height:72px;margin-bottom:28px;display:block;">
+    <h2 style="font-size:22px;color:#1a1a2e;margin-bottom:4px;" data-i18n="footer.legal">Mentions légales</h2>
+    <div style="width:40px;height:2px;background:#E8001C;margin-bottom:24px;"></div>
+
+    <h3 data-i18n="legal.section1" style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Informations légales</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:24px;">
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.company" style="padding:8px 0;color:#888;width:45%;">Raison sociale</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;font-weight:600;">Sahara Aviation SAS</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.form" style="padding:8px 0;color:#888;">Forme juridique</td><td data-i18n="legal.form.val" style="padding:8px 0 8px 16px;color:#1a1a2e;">Société par Actions Simplifiée</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.capital" style="padding:8px 0;color:#888;">Capital social</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">2.000.000 MAD</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">RC</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">29461 — Dakhla</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">ICE</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">003722554000017</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">IF</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">66974679</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.address" style="padding:8px 0;color:#888;">Siège social</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">Lotissement Khalij Dakhla, Villa n°86, BP 3201, 73000 Dakhla — Maroc</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.phone" style="padding:8px 0;color:#888;">Téléphone</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">+212 6 89 59 59 00</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Email</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">info@afrijet.ma</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.director" style="padding:8px 0;color:#888;white-space:nowrap;vertical-align:top;">Directeur de publication</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;vertical-align:top;">Anas Bennani</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.host" style="padding:8px 0;color:#888;">Hébergeur</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">Heberjahiz</td></tr>
+      <tr><td data-i18n="legal.host.site" style="padding:8px 0;color:#888;">Site hébergeur</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;"><a href="https://www.heberjahiz.com" target="_blank" style="color:#E8001C;">www.heberjahiz.com</a></td></tr>
+    </table>
+
+    <h3 data-i18n="legal.section2" style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Propriété intellectuelle</h3>
+    <p data-i18n="legal.ip.text" style="font-size:14px;color:#555;line-height:1.7;margin-bottom:24px;">L'ensemble du contenu de ce site (textes, images, logos, graphismes) est la propriété exclusive de Sahara Aviation SAS et est protégé par les lois marocaines et internationales relatives à la propriété intellectuelle. Toute reproduction, même partielle, est strictement interdite sans autorisation préalable.</p>
+
+    <h3 data-i18n="legal.section3" style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Données personnelles</h3>
+    <p data-i18n="legal.data.text" style="font-size:14px;color:#555;line-height:1.7;">Les informations collectées via le formulaire de contact sont utilisées uniquement pour répondre à vos demandes et ne sont en aucun cas cédées à des tiers. Conformément à la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : <a href="mailto:info@afrijet.ma" style="color:#E8001C;">info@afrijet.ma</a>.</p>
+  </div>
+</div>
+
+
+
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js")["catch"](function () {}); }); }
+</script>
+</body>
+</html>

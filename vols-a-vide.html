@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css?v=1" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="icon" href="/icon-192.png" />
+<link rel="apple-touch-icon" href="/icon-180.png" />
+<meta name="theme-color" content="#FFFFFF" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<title>Vols à vide — Jet privé à prix réduit | Afrijet Sahara</title>
+<meta name="description" content="Les vols à vide (empty legs) Afrijet Sahara : profitez de nos retours d'avion à vide pour voyager en jet d'affaires à tarif avantageux." />
+<link rel="canonical" href="https://afrijet.ma/vols-a-vide" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afrijet Sahara" />
+<meta property="og:title" content="Vols à vide — Jet privé à prix réduit | Afrijet Sahara" />
+<meta property="og:description" content="Les vols à vide (empty legs) Afrijet Sahara : profitez de nos retours d'avion à vide pour voyager en jet d'affaires à tarif avantageux." />
+<meta property="og:url" content="https://afrijet.ma/vols-a-vide" />
+<meta property="og:image" content="https://afrijet.ma/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="fr_FR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Vols à vide — Jet privé à prix réduit | Afrijet Sahara" />
+<meta name="twitter:description" content="Les vols à vide (empty legs) Afrijet Sahara : profitez de nos retours d'avion à vide pour voyager en jet d'affaires à tarif avantageux." />
+<meta name="twitter:image" content="https://afrijet.ma/og-image.jpg" />
+</head>
+<body data-section="empty-legs" data-panel="">
+<div id="progressBar"></div>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/img-e3749ea246.png" alt="Afrijet Sahara" class="nav-logo-img" />
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="/" class="nav-link" data-i18n="nav.accueil">Accueil</a></li>
+      <li class="nav-dropdown-parent">
+        <a class="nav-link nav-dropdown-trigger" data-i18n="nav.apropos" onclick="toggleNavDropdown(event)">À propos ▾</a>
+        <div class="nav-dropdown-menu" id="navDropdownMenu">
+          <a class="nav-dropdown-item" data-i18n="nav.president" href="/mot-du-president">Mot du Président</a>
+          <a class="nav-dropdown-item" data-i18n="nav.compagnie" href="/la-compagnie">La Compagnie</a>
+          <a class="nav-dropdown-item" data-i18n="nav.prepaid" href="/cartes-prepayees">Cartes prépayées</a>
+        </div>
+      </li>
+      <li class="nav-dropdown-parent">
+        <a class="nav-link nav-dropdown-trigger" data-i18n="nav.flotte" onclick="toggleNavFlotte(event)">Notre Flotte ▾</a>
+        <div class="nav-dropdown-menu" id="navFlotteMenu">
+          <a class="nav-dropdown-item" data-i18n="nav.flotte" href="/notre-flotte">Notre Flotte</a>
+          <a class="nav-dropdown-item" data-i18n="nav.rayon" href="/rayon-d-action">Rayon d'action</a>
+        </div>
+      </li>
+      <li><a href="/nos-services" class="nav-link" data-i18n="nav.services">Nos Services</a></li>
+      <li><a href="/vols-a-vide" class="nav-link" data-i18n="nav.empty">Vols à Vide</a></li>
+      <li><a href="/securite" class="nav-link" data-i18n="nav.securite">Sécurité</a></li>
+      <li><a href="/actualites" class="nav-link" data-i18n="nav.actualites">Actualités</a></li>
+      <li><a href="/contact" class="nav-link" data-i18n="nav.contact" onclick="">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+
+      <!-- Sélecteur langue -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="event.stopPropagation();setLang('fr', event)" title="Français">
+          <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
+            <rect width="9" height="18" fill="#002395"/>
+            <rect x="9" width="8" height="18" fill="#FFFFFF"/>
+            <rect x="17" width="9" height="18" fill="#ED2939"/>
+          </svg>
+        </button>
+        <button class="lang-btn" onclick="event.stopPropagation();setLang('en', event)" title="English">
+          <svg width="26" height="18" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
+            <rect width="60" height="40" fill="#012169"/>
+            <path d="M0,0 L60,40 M60,0 L0,40" stroke="#FFFFFF" stroke-width="8"/>
+            <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/>
+            <path d="M30,0 V40 M0,20 H60" stroke="#FFFFFF" stroke-width="12"/>
+            <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/>
+          </svg>
+        </button>
+        <button class="lang-btn" onclick="event.stopPropagation();setLang('es', event)" title="Español">
+          <svg width="26" height="18" viewBox="0 0 26 18" xmlns="http://www.w3.org/2000/svg" style="display:block;border-radius:2px;pointer-events:none;">
+            <rect width="26" height="4.5" fill="#AA151B"/>
+            <rect y="4.5" width="26" height="9" fill="#F1BF00"/>
+            <rect y="13.5" width="26" height="4.5" fill="#AA151B"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="nav-link" onclick="closeMobile()" data-i18n="nav.accueil">Accueil</a>
+  
+  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileApropos(event)" data-i18n="nav.apropos">À propos</a>
+  <div id="mobileAproposMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
+    <a class="nav-link nav-sub-link" href="/mot-du-president" data-i18n="nav.president">Mot du Président</a>
+    <a class="nav-link nav-sub-link" href="/la-compagnie" data-i18n="nav.compagnie">La Compagnie</a>
+    <a class="nav-link nav-sub-link" href="/cartes-prepayees" data-i18n="nav.prepaid">Cartes prépayées</a>
+  </div>
+  
+  <a class="nav-link nav-apropos-trigger" onclick="toggleMobileFlotte(event)" data-i18n="nav.flotte">Notre Flotte</a>
+  <div id="mobileFlotteMenu" style="display:none;padding-left:16px;border-left:2px solid #eee;">
+    <a class="nav-link nav-sub-link" href="/notre-flotte" data-i18n="nav.flotte">Notre Flotte</a>
+    <a class="nav-link nav-sub-link" href="/rayon-d-action" data-i18n="nav.rayon">Rayon d'action</a>
+  </div>
+  
+  <a href="/nos-services" class="nav-link" onclick="closeMobile()" data-i18n="nav.services">Nos Services</a>
+  
+  <a href="/vols-a-vide" class="nav-link" onclick="closeMobile()" data-i18n="nav.empty">Vols à Vide</a>
+  
+  <a href="/securite" class="nav-link" onclick="closeMobile()" data-i18n="nav.securite">Sécurité</a>
+  
+  <a href="/actualites" class="nav-link" onclick="closeMobile()" data-i18n="nav.actualites">Actualités</a>
+  
+  <a href="/contact" class="nav-link" onclick="closeMobile();" data-i18n="nav.contact">Contact / Devis</a>
+  
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+
+<section id="empty-legs" style="display:block;">
+  <div class="container">
+    <p class="section-label reveal" data-i18n="el.label">Opportunités</p>
+    <div class="divider reveal"></div>
+    <h1 class="section-title reveal" data-i18n="el.title">Vols à <em>vide disponibles</em></h1>
+    <p class="section-subtitle reveal" style="margin-top:12px;" data-i18n="el.intro">Un vol à vide est un vol charter actuellement planifié sans passagers à bord, afin de repositionner l'appareil vers un autre aéroport.</p>
+    <p class="section-subtitle reveal" style="margin-top:12px;" data-i18n="el.intro2">Les conditions avantageuses en font une opportunité unique de réserver votre prochain vol sur un jet d'affaires de notre flotte.</p>
+    <p class="section-subtitle reveal" style="margin-top:12px;" data-i18n="el.intro3">La modification de l'itinéraire peut être possible sur demande.</p>
+    <p class="section-subtitle reveal" data-i18n="el.sub" style="margin-top:12px;">Ces vols sont mis à jour quotidiennement.</p>
+
+    <div class="el-grid" id="elGrid">
+      <div class="el-loading" id="elLoading" data-i18n="el.loading">Chargement des vols…</div>
+    </div>
+  </div>
+</section>
+<!-- Empty Legs Admin Modal -->
+<div class="el-modal" id="elModal">
+  <div class="el-modal-box">
+    <button class="el-modal-close" onclick="document.getElementById('elModal').classList.remove('open')">&times;</button>
+    
+    <!-- Password screen -->
+    <div id="elPassScreen">
+      <h3>Administration</h3>
+      <div class="el-form-group">
+        <label>Email</label>
+        <input type="email" id="elEmailInput" placeholder="admin@afrijet.ma" autocomplete="username" />
+      </div>
+      <div class="el-form-group">
+        <label>Mot de passe</label>
+        <input type="password" id="elPassInput" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <button class="el-btn-submit" id="elLoginBtn" onclick="elCheckPass()">Accéder</button>
+      <p id="elPassError" style="color:#cc0000;font-size:13px;margin-top:8px;display:none;">Email ou mot de passe incorrect</p>
+    </div>
+
+    <!-- Admin screen (hidden until auth) -->
+    <div id="elAdminScreen" style="display:none;">
+      <h3 data-i18n="el.admin_title">Gérer les vols à vide</h3>
+      
+      <!-- Add form -->
+      <div class="el-form-row">
+        <div class="el-form-group">
+          <label>Date</label>
+          <input type="date" id="elDate" />
+        </div>
+        <div class="el-form-group">
+          <label>Heure (opt.)</label>
+          <input type="time" id="elHeure" />
+        </div>
+      </div>
+      <div class="el-form-row">
+        <div class="el-form-group" style="position:relative;">
+          <label>Départ</label>
+          <input type="text" id="elDepart" placeholder="Code IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+          <div class="autocomplete-list" id="elDepList"></div>
+        </div>
+        <div class="el-form-group" style="position:relative;">
+          <label>Arrivée</label>
+          <input type="text" id="elArrivee" placeholder="Code IATA ou ville" autocomplete="off" spellcheck="false" style="text-transform:uppercase;" />
+          <div class="autocomplete-list" id="elArrList"></div>
+        </div>
+      </div>
+      <div class="el-form-row">
+        <div class="el-form-group">
+          <label>Avion</label>
+          <div class="el-ac-dropdown" id="elAcDropdown">
+            <button type="button" class="el-ac-dropdown-btn" id="elAcBtn">
+              <span class="el-ac-reg">CN-KTA</span>
+              <span class="el-ac-type">Embraer 140 LR · 18 sièges</span>
+              <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:8px;flex-shrink:0;color:var(--text-light);transition:transform .2s;">
+                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="el-ac-dropdown-list" id="elAcList">
+              <div class="el-ac-dropdown-item active" data-val="CN-KTA">
+                <span class="el-ac-item-reg">CN-KTA</span>
+                <span class="el-ac-item-type">Embraer 140 LR · 18 sièges</span>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="elAvion" value="CN-KTA" />
+        </div>
+        <div class="el-form-group">
+          <label>Prix</label>
+          <input type="text" id="elPrix" placeholder="Sur demande" value="Sur demande" />
+        </div>
+      </div>
+      <button class="el-btn-submit" onclick="elAddFlight()">Ajouter le vol →</button>
+
+      <hr style="margin:24px 0 16px;border:none;border-top:1px solid var(--border);">
+      <h3 style="font-size:16px;">Vols actuels</h3>
+      <div id="elAdminList"></div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy" data-i18n="footer.copy">© 2026 Afrijet Sahara. Tous droits réservés.</p>
+    <a href="#" class="footer-link footer-link-legal" id="legalLink" data-i18n="footer.legal">Mentions légales</a>
+  </div>
+</footer>
+<script src="/app.js?v=1"></script>
+
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+<!-- Modal Mentions Légales -->
+<div id="modalLegal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;overflow-y:auto;" onclick="if(event.target===this)closeLegalModal()">
+  <div style="background:#fff;max-width:680px;margin:40px auto;border-radius:8px;padding:40px;position:relative;">
+    <button onclick="closeLegalModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;">✕</button>
+    <img src="/img-1808d5d0be.png" alt="Afrijet Sahara" style="height:72px;margin-bottom:28px;display:block;">
+    <h2 style="font-size:22px;color:#1a1a2e;margin-bottom:4px;" data-i18n="footer.legal">Mentions légales</h2>
+    <div style="width:40px;height:2px;background:#E8001C;margin-bottom:24px;"></div>
+
+    <h3 data-i18n="legal.section1" style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Informations légales</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:24px;">
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.company" style="padding:8px 0;color:#888;width:45%;">Raison sociale</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;font-weight:600;">Sahara Aviation SAS</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.form" style="padding:8px 0;color:#888;">Forme juridique</td><td data-i18n="legal.form.val" style="padding:8px 0 8px 16px;color:#1a1a2e;">Société par Actions Simplifiée</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.capital" style="padding:8px 0;color:#888;">Capital social</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">2.000.000 MAD</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">RC</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">29461 — Dakhla</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">ICE</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">003722554000017</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">IF</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">66974679</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.address" style="padding:8px 0;color:#888;">Siège social</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">Lotissement Khalij Dakhla, Villa n°86, BP 3201, 73000 Dakhla — Maroc</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.phone" style="padding:8px 0;color:#888;">Téléphone</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">+212 6 89 59 59 00</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:8px 0;color:#888;">Email</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">info@afrijet.ma</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.director" style="padding:8px 0;color:#888;white-space:nowrap;vertical-align:top;">Directeur de publication</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;vertical-align:top;">Anas Bennani</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td data-i18n="legal.host" style="padding:8px 0;color:#888;">Hébergeur</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;">Heberjahiz</td></tr>
+      <tr><td data-i18n="legal.host.site" style="padding:8px 0;color:#888;">Site hébergeur</td><td style="padding:8px 0 8px 16px;color:#1a1a2e;"><a href="https://www.heberjahiz.com" target="_blank" style="color:#E8001C;">www.heberjahiz.com</a></td></tr>
+    </table>
+
+    <h3 data-i18n="legal.section2" style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Propriété intellectuelle</h3>
+    <p data-i18n="legal.ip.text" style="font-size:14px;color:#555;line-height:1.7;margin-bottom:24px;">L'ensemble du contenu de ce site (textes, images, logos, graphismes) est la propriété exclusive de Sahara Aviation SAS et est protégé par les lois marocaines et internationales relatives à la propriété intellectuelle. Toute reproduction, même partielle, est strictement interdite sans autorisation préalable.</p>
+
+    <h3 data-i18n="legal.section3" style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Données personnelles</h3>
+    <p data-i18n="legal.data.text" style="font-size:14px;color:#555;line-height:1.7;">Les informations collectées via le formulaire de contact sont utilisées uniquement pour répondre à vos demandes et ne sont en aucun cas cédées à des tiers. Conformément à la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : <a href="mailto:info@afrijet.ma" style="color:#E8001C;">info@afrijet.ma</a>.</p>
+  </div>
+</div>
+
+
+
+<button class="el-admin-btn" id="elAdminBtn" onclick="document.getElementById('elModal').classList.add('open')" title="Admin" style="display:none;">🔒</button>
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js")["catch"](function () {}); }); }
+</script>
+</body>
+</html>
