@@ -251,6 +251,7 @@ const translations = {
     
     
     'news.label': 'Actualités', 'news.photo': 'Challenge.ma', 'news.d1': '25 mai 2025', 'news.t1': "Anas Bennani parie sur l'aérien à Dakhla avec Sahara Aviation Holding", 'news.e1': "Fort d'une carrière internationale dans le financement aéronautique, Anas Bennani crée Sahara Aviation Holding, basée à Dakhla, pour structurer un écosystème d'investissement aérien dans le sud du Maroc. Source : Challenge.ma", 'news.read': 'Lire l\'article →', 'news.title': 'Les dernières <em>nouvelles</em>',
+    'news.d2': '7 – 10 octobre 2026', 'news.t2': 'Afrijet Sahara au Marrakech Airshow', 'news.e2': "Le Marrakech Airshow s'est tenu du 7 au 10 octobre 2026. Retrouvez en vidéo notre passage sur ce rendez-vous de l'aviation au Maroc.", 'news.video': 'Voir la vidéo sur Facebook →',
     'fleet.config': 'Configuration', 'fleet.speed': 'Vitesse',
     'fleet.alt': 'Altitude', 'fleet.range': "Rayon d'action",
     'fleet.endur': 'Autonomie', 'fleet.cabin': 'Cabine', 'fleet.cargo': 'Soute', 'fleet.engine': 'Motorisation',
@@ -387,6 +388,7 @@ const translations = {
     
     'news.label': 'Actualités', 'news.photo': 'Challenge.ma', 'news.d1': '25 mai 2025', 'news.t1': "Anas Bennani parie sur l'aérien à Dakhla avec Sahara Aviation Holding", 'news.e1': "Fort d'une carrière internationale dans le financement aéronautique, Anas Bennani crée Sahara Aviation Holding, basée à Dakhla, pour structurer un écosystème d'investissement aérien dans le sud du Maroc. Source : Challenge.ma", 'news.read': 'Lire l\'article →', 'news.title': 'Les dernières <em>nouvelles</em>',
     'news.label': 'News', 'news.photo': 'Challenge.ma', 'news.d1': '25 May 2025', 'news.t1': 'Anas Bennani bets on aviation in Dakhla with Sahara Aviation Holding', 'news.e1': 'Drawing on an international career in aeronautical financing, Anas Bennani creates Sahara Aviation Holding, based in Dakhla, to structure an aviation investment ecosystem in southern Morocco. Source: Challenge.ma', 'news.read': 'Read the article →', 'news.title': 'Latest <em>News</em>',
+    'news.d2': '7 – 10 October 2026', 'news.t2': 'Afrijet Sahara at the Marrakech Airshow', 'news.e2': 'The Marrakech Airshow took place from 7 to 10 October 2026. Watch our visit to this aviation event in Morocco in the video.', 'news.video': 'Watch the video on Facebook →',
     'fleet.config': 'Configuration', 'fleet.speed': 'Speed',
     'fleet.alt': 'Altitude', 'fleet.range': 'Range',
     'fleet.endur': 'Endurance', 'fleet.cabin': 'Cabin', 'fleet.cargo': 'Cargo hold', 'fleet.engine': 'Engines',
@@ -522,6 +524,7 @@ const translations = {
     
     
     'news.label': 'Noticias', 'news.photo': 'Challenge.ma', 'news.d1': '25 de mayo de 2025', 'news.t1': 'Anas Bennani apuesta por la aviación en Dakhla con Sahara Aviation Holding', 'news.e1': 'Con una carrera internacional en financiación aeronáutica, Anas Bennani crea Sahara Aviation Holding, con sede en Dakhla, para estructurar un ecosistema de inversión aérea en el sur de Marruecos. Fuente: Challenge.ma', 'news.read': 'Leer el artículo →', 'news.title': 'Últimas <em>noticias</em>',
+    'news.d2': '7 – 10 de octubre de 2026', 'news.t2': 'Afrijet Sahara en el Marrakech Airshow', 'news.e2': 'El Marrakech Airshow se celebró del 7 al 10 de octubre de 2026. Vea en vídeo nuestra presencia en este evento de aviación en Marruecos.', 'news.video': 'Ver el vídeo en Facebook →',
     'fleet.config': 'Configuración', 'fleet.speed': 'Velocidad',
     'fleet.alt': 'Altitud', 'fleet.range': 'Radio de Acción',
     'fleet.endur': 'Autonomía', 'fleet.cabin': 'Cabina', 'fleet.cargo': 'Bodega', 'fleet.engine': 'Motorización',

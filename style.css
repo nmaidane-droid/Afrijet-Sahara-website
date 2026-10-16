@@ -1989,3 +1989,8 @@ footer {
     flex-direction: column !important;
   }
 }
+
+/* Actualité avec vidéo intégrée */
+.news-img.news-video { aspect-ratio: auto; height: 560px; background: #000; overflow: hidden; }
+.news-img.news-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 768px) { .news-img.news-video { height: 480px; } }
