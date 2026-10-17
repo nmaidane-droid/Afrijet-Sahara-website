@@ -1994,3 +1994,11 @@ footer {
 .news-img.news-video { aspect-ratio: auto; height: 560px; background: #000; overflow: hidden; }
 .news-img.news-video iframe { width: 100%; height: 100%; border: 0; display: block; }
 @media (max-width: 768px) { .news-img.news-video { height: 480px; } }
+
+/* Accueil : cases de chiffres plus compactes (ordinateur et tablette) */
+@media (min-width: 769px) {
+  .hero-stats { justify-content: flex-start; gap: 10px; padding: 8px 0 28px; width: min(1216px, calc(100% - 64px)); margin: 0 auto; }
+  .hero-stat { flex: 0 0 auto; width: 150px; padding: 8px 6px; }
+  .hero-stat-num { font-size: 20px; min-height: 20px; }
+  .hero-stat-label { font-size: 8.5px; margin-top: 3px; letter-spacing: 0.12em; }
+}
