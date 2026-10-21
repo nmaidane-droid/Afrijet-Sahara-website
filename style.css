@@ -1995,3 +1995,10 @@ footer {
 .news-img.news-video .video-wrap { width: min(360px, 100%); }
 .news-img.news-video .video-box { position: relative; width: 100%; padding-top: 177.78%; }
 .news-img.news-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; display: block; }
+
+/* Actualité vidéo : vidéo à gauche, texte à droite sur tablette et ordinateur */
+@media (min-width: 769px) {
+  .news-card.news-card-video { display: flex; align-items: stretch; }
+  .news-card.news-card-video .news-img.news-video { width: 360px; flex: 0 0 360px; border-bottom: 0; border-right: 1px solid var(--border); }
+  .news-card.news-card-video .news-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; padding: 32px; }
+}
