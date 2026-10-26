@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/style.css?v=8" />
+<link rel="stylesheet" href="/style.css?v=9" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="icon" href="/icon-192.png" />
 <link rel="apple-touch-icon" href="/icon-180.png" />
@@ -205,7 +205,7 @@
           <img src="/img-airshow-1.jpg" alt="Embraer 140 LR Afrijet Sahara au Marrakech Airshow" loading="lazy" onclick="openLightbox(this.src, this.alt)" />
           <img src="/img-airshow-2.jpg" alt="Équipage Afrijet Sahara devant l'avion, Marrakech Airshow" loading="lazy" onclick="openLightbox(this.src, this.alt)" />
           <img src="/img-airshow-3.jpg" alt="Empennage Afrijet Sahara, Marrakech Airshow" loading="lazy" onclick="openLightbox(this.src, this.alt)" />
-          <video controls preload="none" playsinline poster="/img-airshow-poster.jpg"><source src="/video-airshow.mp4" type="video/mp4" /></video>
+          <div class="airshow-video" onclick="openVideoLightbox('/video-airshow.mp4', '/img-airshow-poster.jpg')" role="button" aria-label="Lire la vidéo"><img src="/img-airshow-poster.jpg" alt="Vidéo Afrijet Sahara, Marrakech Airshow" loading="lazy" /><span class="airshow-play"></span></div>
         </div>
       </div>
     </div>
@@ -227,7 +227,7 @@
     <a href="#" class="footer-link footer-link-legal" id="legalLink" data-i18n="footer.legal">Mentions légales</a>
   </div>
 </footer>
-<script src="/app.js?v=6"></script>
+<script src="/app.js?v=7"></script>
 
 
 <div id="lightbox" onclick="closeLightbox()">

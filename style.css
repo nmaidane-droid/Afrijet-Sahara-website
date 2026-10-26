@@ -2013,3 +2013,8 @@ footer {
 .airshow-grid img,.airshow-grid video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#000;cursor:zoom-in}
 .airshow-grid video{cursor:default}
 @media (max-width:768px){.airshow-grid{grid-template-columns:1fr}}
+.airshow-video{position:relative;cursor:pointer;aspect-ratio:16/9;background:#000}
+.airshow-video img{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
+.airshow-play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid #fff}
+.airshow-play::after{content:"";position:absolute;left:25px;top:18px;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+#lightbox video{max-width:92vw;max-height:88vh;background:#000}

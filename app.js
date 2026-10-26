@@ -821,7 +821,30 @@ function openLightbox(src, alt) {
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+function openVideoLightbox(src, poster) {
+  var lb = document.getElementById('lightbox');
+  var v = document.getElementById('lightbox-video');
+  if (!v) {
+    v = document.createElement('video');
+    v.id = 'lightbox-video';
+    v.controls = true;
+    v.setAttribute('playsinline', '');
+    v.onclick = function(e) { e.stopPropagation(); };
+    lb.appendChild(v);
+  }
+  document.getElementById('lightbox-img').style.display = 'none';
+  v.poster = poster || '';
+  v.src = src;
+  v.style.display = 'block';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  v.play().catch(function(){});
+}
 function closeLightbox() {
+  var v = document.getElementById('lightbox-video');
+  if (v) { v.pause(); v.removeAttribute('src'); v.load(); v.style.display = 'none'; }
+  var im = document.getElementById('lightbox-img');
+  if (im) im.style.display = '';
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
